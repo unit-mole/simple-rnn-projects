@@ -10,11 +10,12 @@ htmlcov/
 venv/
 env/
 
-# IDE and OS
+# IDE and operating-system files
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # Notebook
 .ipynb_checkpoints/
@@ -40,10 +41,12 @@ outputs/runs/
 outputs/local_*
 *.xlsx
 
-# Keep portfolio artifacts explicitly included
+# Keep the deployable portfolio artifacts committed
 !data/sample_reviews.csv
 !outputs/*.csv
 !outputs/*.json
 !outputs/*.png
-!models/*.keras
-!models/*.json
+!models/
+!models/imdb_simple_rnn_model.keras
+!models/tokenizer.json
+!models/model_metadata.json
