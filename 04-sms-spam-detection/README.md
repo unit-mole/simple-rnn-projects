@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.21-orange.svg)](https://www.tensorflow.org/)
 [![Keras](https://img.shields.io/badge/Keras-SimpleRNN-red.svg)](https://keras.io/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Demo%20Ready-red.svg)](README_HOSTING.md)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
 [![SMS Spam RNN CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/sms-spam-rnn-ci.yml/badge.svg)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/sms-spam-rnn-ci.yml)
 
@@ -14,8 +14,9 @@ creation, class-weighted learning, stratified train/validation/test separation,
 validation-based threshold selection, classical NLP baselines, error analysis, saved
 inference artifacts, automated tests, and an interactive Streamlit application.
 
-**Status:** Portfolio-ready · deployment pending  
-**Live demo:** `ADD-LIVE-STREAMLIT-URL-HERE`  
+**Status:** Portfolio-ready  
+**Live demo:** [Open the Streamlit application](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)  
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)  
 **Primary stack:** Python · TensorFlow/Keras · scikit-learn · pandas · Streamlit
 
 > [!IMPORTANT]
@@ -74,16 +75,48 @@ The application produces:
 
 ## Application Preview
 
-Screenshots will be added after the public Streamlit application is deployed and tested.
+### 1. Application overview
 
-Use these exact filenames:
+The application overview presents the SMS spam-detection objective, responsible-use and privacy warning, supported workflows, maximum sequence length, and validation-selected decision threshold.
 
-```text
-images/01_streamlit_application_overview.png
-images/02_single_message_prediction.png
-images/03_batch_spam_detection_workflow.png
-images/04_model_performance_and_error_analysis.png
-```
+![SMS Spam Detection application overview](images/01_streamlit_application_overview.png)
+
+### 2. Single-message prediction
+
+Users can type or paste one SMS message and generate a probability-based spam or ham prediction.
+
+![Single SMS message prediction](images/02_single_message_prediction.png)
+
+The result includes:
+
+- predicted class;
+- spam probability;
+- threshold-distance confidence;
+- confidence band;
+- prediction interpretation;
+- visible surface cues; and
+- processed-message and sequence diagnostics.
+
+### 3. Batch spam-detection workflow
+
+Users can score the included privacy-safe sample messages or upload a compatible CSV file containing multiple SMS messages.
+
+![Batch SMS spam-detection workflow](images/03_batch_spam_detection_workflow.png)
+
+The batch workflow reports:
+
+- messages scored;
+- spam-prediction rate;
+- low-confidence results;
+- predicted class distribution;
+- optional uploaded-label accuracy; and
+- downloadable scored CSV output.
+
+### 4. Model-performance and error-analysis dashboard
+
+The performance dashboard reports held-out classification metrics, compares the Simple RNN with majority, Multinomial Naive Bayes, and TF-IDF Logistic Regression baselines, and displays evaluation charts and selected errors.
+
+![SMS spam model performance and error analysis](images/04_model_performance_and_error_analysis.png)
 
 ---
 
@@ -387,6 +420,8 @@ The app displays:
 The app never retrains during a user session and does not silently replace the
 Simple RNN with another classifier.
 
+**Live application:** [Open the SMS Spam Detection application](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)
+
 ---
 
 ## Project Structure
@@ -401,6 +436,11 @@ simple-rnn-projects/
     ├── app/
     ├── data/
     ├── images/
+    │   ├── README.md
+    │   ├── 01_streamlit_application_overview.png
+    │   ├── 02_single_message_prediction.png
+    │   ├── 03_batch_spam_detection_workflow.png
+    │   └── 04_model_performance_and_error_analysis.png
     ├── models/
     ├── notebooks/
     ├── outputs/
@@ -464,16 +504,28 @@ Review regenerated metrics and charts before publishing a new result set.
 
 ## Deployment
 
-Use Streamlit Community Cloud:
+The application is deployed on Streamlit Community Cloud and connected directly to the `main` branch of this GitHub repository.
+
+**Live application:**  
+[Open the SMS Spam Detection application](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)
+
+**Streamlit entry point:**
+
+```text
+04-sms-spam-detection/app/streamlit_app.py
+```
+
+**Deployment configuration:**
 
 ```text
 Repository: unit-mole/simple-rnn-projects
 Branch: main
-Main file path: 04-sms-spam-detection/app/streamlit_app.py
 Python: 3.12
 ```
 
-See [`README_HOSTING.md`](README_HOSTING.md).
+Changes pushed to the relevant project files on the `main` branch automatically trigger a Streamlit application update.
+
+See [README_HOSTING.md](README_HOSTING.md) for deployment configuration, maintenance instructions, privacy guidance, and troubleshooting.
 
 ---
 

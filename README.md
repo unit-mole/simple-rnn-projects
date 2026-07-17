@@ -2,7 +2,7 @@
 
 A structured portfolio of six Simple Recurrent Neural Network projects covering time-series forecasting, financial sequence modeling, Natural Language Processing, text classification, text generation, and representation learning.
 
-**Portfolio status:** 3 completed and deployed projects · 3 planned projects  
+**Portfolio status:** 4 completed and deployed projects · 2 planned projects  
 **Repository owner:** [Anmol Tripathi](https://github.com/unit-mole)
 
 ---
@@ -34,7 +34,7 @@ The portfolio is designed to demonstrate skills relevant to Data Science, Machin
 | 1 | [Electricity Consumption Forecasting](01-electricity-consumption-forecasting/) | Time-series regression and demand forecasting | [Live Demo](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/) |
 | 2 | [Google Stock Price Prediction](02-google-stock-price-prediction/) | Financial time-series forecasting | [Live Demo](https://simple-rnn-projects-8ppkcyb6itqkquyzd32rsk.streamlit.app/) |
 | 3 | [IMDb Movie Review Sentiment Analysis](03-imdb-data-analysis/) | NLP sentiment analysis and binary sequence classification | [Live Demo](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/) |
-| 4 | [SMS Spam Detection](04-sms-spam-detection/) | Binary text classification | Planned |
+| 4 | [SMS Spam Detection](04-sms-spam-detection/) | Imbalanced NLP binary classification and message filtering | [Live Demo](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/) |
 | 5 | [Text Generation](05-text-generation/) | Character- or word-level sequence generation | Planned |
 | 6 | [Word Embedding](06-word-embedding/) | Representation learning and semantic analysis | Planned |
 
@@ -116,6 +116,34 @@ Key capabilities:
 
 ---
 
+
+### 4. SMS Spam Detection
+
+A privacy-aware NLP sequence-classification project that uses an Embedding layer and Simple RNN to classify SMS messages as legitimate (`ham`) or `spam`.
+
+Key capabilities:
+
+- spam-aware normalization that preserves URL, phone, number, currency, and punctuation signals;
+- normalized duplicate removal before splitting to prevent text leakage;
+- stratified 70% / 15% / 15% training, validation, and test design;
+- class-weighted Simple RNN training for the imbalanced spam class;
+- 5,000-word training-only vocabulary and 50-token padded sequences;
+- validation-selected spam threshold;
+- accuracy, precision, recall, F1, specificity, ROC-AUC, PR-AUC, and MCC;
+- majority, Multinomial Naive Bayes, and TF-IDF Logistic Regression baselines;
+- manual message, privacy-safe sample, and CSV batch-scoring workflows; and
+- saved model and tokenizer artifacts, tests, CI, privacy controls, and Streamlit deployment.
+
+**Live application:** [Open SMS Spam Detection](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)
+
+[Open the complete project documentation](04-sms-spam-detection/)
+
+> **Privacy notice:** Do not upload private, sensitive, authentication, financial, health, employer, or customer SMS content to the public demo. The model is an educational portfolio prototype and should not be the sole basis for filtering real communications.
+
+---
+
 ## What the Portfolio Covers
 
 The six projects are intentionally varied so the repository demonstrates more than one type of recurrent-neural-network problem.
@@ -130,7 +158,7 @@ These projects demonstrate chronological splitting, leakage prevention, sequence
 ### Natural Language Processing and Text Classification
 
 - **IMDb Movie Review Sentiment Analysis** converts unstructured movie-review text into positive or negative sentiment predictions.
-- **SMS Spam Detection** will classify messages as spam or legitimate.
+- **SMS Spam Detection** classifies messages as spam or legitimate while handling class imbalance, threshold trade-offs, and privacy constraints.
 - **Text Generation** will model character- or word-level sequence continuation.
 - **Word Embedding** will explore learned semantic representations and similarity.
 
@@ -147,7 +175,8 @@ The completed projects cover:
 - tokenized natural-language sequences;
 - regression and binary classification;
 - one-step and multi-step forecasting;
-- probability-based sentiment scoring; and
+- probability-based sentiment and spam scoring;
+- class-weighted learning for imbalanced message classification; and
 - comparison with strong non-neural baselines.
 
 ---
@@ -192,7 +221,7 @@ Examples include:
 - precision, recall, F1, specificity, ROC-AUC, PR-AUC, and MCC for classification;
 - directional accuracy for financial forecasting;
 - confusion matrices and probability distributions;
-- threshold analysis for sentiment classification; and
+- threshold analysis for sentiment and spam classification; and
 - baseline comparisons to determine whether the Simple RNN adds measurable value.
 
 ### Reliable and Reusable Engineering
@@ -215,6 +244,7 @@ The applications do not stop at raw model outputs. Depending on the project, the
 - future-demand forecasts;
 - next-session price estimates;
 - predicted sentiment;
+- spam or ham classifications;
 - probabilities and confidence levels;
 - model and baseline comparisons;
 - error interpretations;
@@ -281,26 +311,27 @@ The exact files vary by project, but the standards remain consistent:
 |---|---|
 | Time-series regression | Electricity consumption forecasting |
 | Financial forecasting | Google stock price prediction |
-| NLP binary classification | IMDb movie-review sentiment analysis |
+| NLP binary classification | IMDb sentiment analysis and SMS spam detection |
 | Sequence-window generation | Electricity and Google stock projects |
-| Tokenization and vocabulary control | IMDb sentiment analysis |
-| Word embeddings | IMDb sentiment analysis and planned embedding project |
+| Tokenization and vocabulary control | IMDb sentiment analysis and SMS spam detection |
+| Word embeddings | IMDb sentiment analysis, SMS spam detection, and planned embedding project |
 | Chronological validation | Electricity and Google stock projects |
-| Classification thresholding | IMDb sentiment analysis |
+| Classification thresholding | IMDb sentiment analysis and SMS spam detection |
+| Class-imbalance handling | Class weights, stratified splitting, PR-AUC, and spam-focused evaluation |
 | Baseline forecasting | Electricity and Google stock projects |
-| Classical NLP baseline | TF-IDF + Logistic Regression for IMDb |
+| Classical NLP baselines | TF-IDF Logistic Regression and Naive Bayes for IMDb and SMS projects |
 | Regression evaluation | MAE, RMSE, MAPE, sMAPE, R² |
 | Classification evaluation | Precision, recall, F1, specificity, ROC-AUC, PR-AUC, MCC |
 | Manual inference | Interactive Streamlit input workflows |
 | Batch inference | CSV upload, sample scoring, downloadable outputs |
-| Model deployment | Three Streamlit Community Cloud applications |
+| Model deployment | Four Streamlit Community Cloud applications |
 | Testing and CI/CD | pytest and project-specific GitHub Actions workflows |
 
 ---
 
 ## Core Skills Demonstrated
 
-`Simple RNN` · `Recurrent Neural Networks` · `Sequence Modeling` · `Time-Series Forecasting` · `Financial Forecasting` · `Natural Language Processing` · `Text Cleaning` · `Tokenization` · `Vocabulary Management` · `Sequence Padding` · `Word Embeddings` · `Binary Classification` · `Feature Engineering` · `Chronological Validation` · `Leakage Prevention` · `Threshold Selection` · `Baseline Comparison` · `Regression Evaluation` · `Classification Evaluation` · `Residual Analysis` · `Error Analysis` · `TensorFlow` · `Keras` · `scikit-learn` · `pandas` · `Streamlit` · `Testing` · `GitHub Actions` · `CI/CD` · `Business Translation`
+`Simple RNN` · `Recurrent Neural Networks` · `Sequence Modeling` · `Time-Series Forecasting` · `Financial Forecasting` · `Natural Language Processing` · `SMS Spam Detection` · `Text Cleaning` · `Pattern Tokenization` · `Vocabulary Management` · `Sequence Padding` · `Word Embeddings` · `Binary Classification` · `Class Weighting` · `Feature Engineering` · `Chronological Validation` · `Leakage Prevention` · `Threshold Selection` · `Precision–Recall Analysis` · `Baseline Comparison` · `Regression Evaluation` · `Classification Evaluation` · `Residual Analysis` · `Error Analysis` · `Privacy-Aware Deployment` · `TensorFlow` · `Keras` · `scikit-learn` · `pandas` · `Streamlit` · `Testing` · `GitHub Actions` · `CI/CD` · `Business Translation`
 
 ---
 
