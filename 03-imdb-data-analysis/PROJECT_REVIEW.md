@@ -1,35 +1,25 @@
-# Original Project Review
+# Essential GitHub Review and Corrections
 
-## Identified task
+## Changes completed
 
-The supplied files implement **IMDb movie-review sentiment classification** using a
-Simple RNN. They are not an IMDb rating-prediction or general movie-metadata analysis
-project.
+1. Corrected the training metadata so the saved model is documented as a
+   1,600-review model-fitting partition with 400 validation reviews, not as a
+   post-selection refit on all 2,000 reviews.
+2. Recomputed the TF-IDF baseline on the same 1,600-review partition for a
+   fair comparison.
+3. Corrected the majority baseline so its predicted class is learned from the
+   model-fitting partition.
+4. Updated the retraining pipeline to regenerate every table and chart
+   referenced by the README and Streamlit app.
+5. Added repository artifact validation to CI.
+6. Added safer CSV upload, batch-size, and review-length controls.
+7. Added a downloadable CSV template.
+8. Clarified that mixed sample reviews are binary-model stress tests.
+9. Replaced fragile JSON loading in the app with standard `json.loads`.
+10. Updated hosting documentation with the deployed application URL.
 
-## Strong elements in the supplied version
+## Model conclusion
 
-- Real Keras IMDb data loading
-- Synthetic smoke-test stage
-- Embedding and SimpleRNN layers
-- Probability output
-- Confusion matrix and classification report
-- Downloadable CSV, Excel, and ZIP outputs
-- Initial Streamlit interface
-
-## Essential weaknesses corrected
-
-1. Real test rows were used in the validation dataset and then evaluated again.
-2. Only two final training epochs produced near-random test accuracy.
-3. Synthetic reviews were mixed into the final real-data training stage.
-4. The tokenizer and model were trained inside the Streamlit app.
-5. TensorFlow failure silently changed the demonstrated model into a different classifier.
-6. Long reviews were limited to one short sequence.
-7. Metrics omitted ROC-AUC, PR-AUC, specificity, MCC, and baseline comparison.
-8. Full review exports were not ideal for a public GitHub repository.
-9. There was no modular training/inference separation, saved tokenizer, test suite, or CI.
-
-## Portfolio version
-
-The final package uses a saved Simple RNN, deterministic tokenizer, overlapping sequence
-chunks, validation-only threshold selection, untouched testing, de-identified outputs,
-a strong classical baseline, error analysis, tests, CI, and a multi-workflow Streamlit app.
+The Simple RNN remains the primary architecture for portfolio demonstration.
+The fair TF-IDF baseline is stronger on the same model-fitting partition, which
+is reported transparently.

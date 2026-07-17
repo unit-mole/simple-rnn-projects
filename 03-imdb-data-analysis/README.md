@@ -51,7 +51,7 @@ The application produces:
 - Review-level train/validation split with untouched test data
 - Validation-selected probability threshold of **0.43**
 - Accuracy, precision, recall, F1, specificity, ROC-AUC, PR-AUC, and MCC
-- TF-IDF + Logistic Regression and majority-class baselines
+- Fair TF-IDF + Logistic Regression and majority-class baselines trained from the model-fitting partition
 - Confusion matrix, ROC, precision–recall, training, EDA, and error-analysis outputs
 - Manual review, bundled sample, and CSV batch workflows in Streamlit
 - Saved `.keras` model and JSON tokenizer
@@ -158,8 +158,10 @@ Reviewed source-run scope:
 
 | Dataset component | Rows |
 |---|---:|
-| Real training reviews | 2,000 |
-| Real test reviews | 600 |
+| Real training pool | 2,000 |
+| Model-fitting partition | 1,600 |
+| Validation partition | 400 |
+| Untouched real test reviews | 600 |
 | Synthetic development reviews | 600 |
 | Positive/negative labels | Approximately balanced |
 
@@ -170,7 +172,7 @@ includes:
 data/sample_reviews.csv
 ```
 
-This small file contains hand-written, privacy-safe reviews for application testing.
+This small file contains hand-written, privacy-safe reviews for application testing. Its `illustrative_tone` field may include mixed examples as stress tests; the deployed model still produces only positive or negative predictions.
 
 See [`data/README_data.md`](data/README_data.md) for schema, source, and repository-safety
 guidance.
@@ -307,13 +309,13 @@ Predictions below 65% confidence are flagged as uncertain in the app.
 
 | Model | Accuracy | Precision | Recall | F1 | ROC-AUC | PR-AUC |
 |---|---:|---:|---:|---:|---:|---:|
-| Majority class | 50.33% | 0.00% | 0.00% | 0.00% | 0.500 | 0.497 |
+| Majority class | 49.67% | 49.67% | 100.00% | 66.37% | 0.500 | 0.497 |
 | **Simple RNN** | **74.33%** | **69.89%** | **84.90%** | **76.67%** | **0.820** | **0.799** |
-| **TF-IDF + Logistic Regression** | **86.67%** | **84.94%** | **88.93%** | **86.89%** | **0.938** | **0.939** |
+| **TF-IDF + Logistic Regression** | **84.50%** | **82.54%** | **87.25%** | **84.83%** | **0.932** | **0.934** |
 
 ![IMDb model accuracy comparison](outputs/baseline_comparison.png)
 
-The classical baseline outperforms the Simple RNN on this limited subset. This is an
+The classical baseline outperforms the Simple RNN even when both models use the same 1,600-review model-fitting partition. This is an
 important analytical finding: neural-network complexity does not automatically produce
 better generalization. The Simple RNN remains the primary project model because this
 repository demonstrates recurrent sequence modeling, but the baseline would be preferred
@@ -404,7 +406,7 @@ The app displays:
 - batch sentiment distribution;
 - baseline comparison;
 - confusion matrix, ROC, precision–recall, training, and loss charts; and
-- downloadable scored CSV output.
+- downloadable CSV template and scored CSV output.
 
 **Live application:** [Open the IMDb Sentiment Analysis application](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)
 
@@ -480,17 +482,20 @@ simple-rnn-projects/
     │   ├── text_preprocessing.py
     │   ├── sequence_generation.py
     │   ├── model_training.py
+    │   ├── artifact_generation.py
     │   ├── model_evaluation.py
     │   ├── sentiment_pipeline.py
     │   └── visualization.py
     ├── tests/
+    │   └── test_artifact_contract.py
     ├── .gitignore
     ├── .python-version
     ├── README.md
     ├── README_HOSTING.md
     ├── requirements.txt
     ├── requirements-ci.txt
-    └── train_model.py
+    ├── train_model.py
+    └── validate_project.py
 ```
 
 ---
@@ -554,7 +559,15 @@ python -m pytest -q
 ```
 
 The CI workflow validates text cleaning, vocabulary behavior, sequence generation,
-probability aggregation, thresholding, and Python compilation.
+probability aggregation, thresholding, Python compilation, and the repository artifact contract.
+
+Run the repository validator before deployment or release:
+
+```bat
+python validate_project.py
+```
+
+The validator checks required files, screenshot paths, the deployed URL, metadata consistency, output metrics, baseline rows, and the sample-data schema.
 
 ---
 
@@ -593,6 +606,7 @@ See [README_HOSTING.md](README_HOSTING.md) for deployment configuration, mainten
 - Error-analysis excerpts are intentionally short.
 - Virtual environments, caches, temporary exports, and secrets are ignored.
 - Streamlit secrets must never be committed.
+- CSV uploads are limited to 5 MB and 1,000 reviews; individual reviews are limited to 50,000 characters.
 - Only the four curated application screenshots are stored under `images/`.
 
 ---

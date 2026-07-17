@@ -1,9 +1,11 @@
 # Hosting Guide — IMDb Simple RNN Sentiment Application
 
-## Recommended host
+## Deployment status
 
-Use **Streamlit Community Cloud**. The application is already written in Streamlit,
-loads saved artifacts from the repository, and requires no database or paid API.
+The application is deployed on Streamlit Community Cloud.
+
+**Live application:**  
+[Open the IMDb Movie Review Sentiment Analysis application](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)
 
 ## Deployment configuration
 
@@ -30,56 +32,53 @@ Python: 3.12
 03-imdb-data-analysis/src/*.py
 ```
 
-Do not change the relative folder structure because the application resolves its data,
-model, output, and source files from the project directory.
+Do not change the relative folder structure because the app resolves its model,
+data, output, and source files from the project directory.
 
-## Deployment steps
+## Deployment limits
 
-1. Push the project folder and CI workflow to GitHub.
-2. Sign in to Streamlit Community Cloud with GitHub.
-3. Select **Create app**.
-4. Choose `unit-mole/simple-rnn-projects`.
-5. Choose branch `main`.
-6. Enter:
-   `03-imdb-data-analysis/app/streamlit_app.py`
-7. Select Python 3.12.
-8. Deploy.
-9. Test all four app modes.
+```text
+Maximum CSV upload: 5 MB
+Maximum batch size: 1,000 reviews
+Maximum review length: 50,000 characters
+```
 
 ## Post-deployment validation
 
-Confirm:
+Confirm that:
 
-- the saved Keras model loads;
-- one manual review can be scored;
-- sample reviews generate predictions;
-- a compatible CSV can be uploaded;
-- scored CSV output downloads;
-- metrics and comparison tables appear;
-- confusion matrix, ROC, PR, and training charts render;
-- the app displays a controlled error for an invalid CSV;
-- no sign-in is required to view the public application.
+1. The saved Keras model and tokenizer load.
+2. One positive and one negative manual review can be scored.
+3. Sample-review predictions display correctly.
+4. The CSV template downloads.
+5. A compatible CSV can be uploaded.
+6. Batch predictions and the scored CSV download work.
+7. Metrics and all evaluation charts render.
+8. Invalid files produce a controlled error.
+9. The app is publicly accessible without sign-in.
 
-## Screenshot plan
+## Repository validation
 
-Save these files under `images/`:
+Before pushing a release, run:
 
-```text
-01_streamlit_application_overview.png
-02_single_review_prediction.png
-03_batch_sentiment_workflow.png
-04_model_performance_and_error_analysis.png
+```bat
+python -m pytest -q
+python validate_project.py
 ```
 
-## Updating the app
+The validator checks required artifacts, screenshot paths, metadata consistency,
+the model-comparison contract, the sample schema, and the deployed URL.
 
-Commits to the project files on `main` normally trigger a Streamlit redeployment.
+## Updating the deployed application
+
+Commits to the relevant project files on `main` normally trigger a Streamlit
+redeployment.
 
 ## Troubleshooting
 
 ### Model-loading error
 
-Confirm the model exists:
+Confirm:
 
 ```text
 03-imdb-data-analysis/models/imdb_simple_rnn_model.keras
@@ -101,15 +100,16 @@ Confirm Streamlit uses:
 03-imdb-data-analysis/app/requirements.txt
 ```
 
-### Memory or timeout issue
-
-The app does not retrain. Batch uploads are intentionally limited to 1,000 reviews.
-
 ### Invalid CSV
 
-Use a text column named `review`, `text`, `review_text`, `comment`, or `content`.
+Use a text column named `review`, `text`, `review_text`, `comment`, or
+`content`. Optional labels must be binary.
+
+### Memory or timeout issue
+
+Use a smaller CSV. The application does not retrain during deployment.
 
 ## Security
 
-No secrets are required. Do not add user review uploads, account credentials, API keys,
-or `.streamlit/secrets.toml` to the repository.
+No secrets are required. Do not commit user uploads, private feedback,
+credentials, API keys, or `.streamlit/secrets.toml`.

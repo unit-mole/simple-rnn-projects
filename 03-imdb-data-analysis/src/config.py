@@ -38,3 +38,11 @@ CHUNK_STRIDE = 60
 MAX_CHUNKS = 6
 DECISION_THRESHOLD = 0.43
 RANDOM_SEED = 42
+
+MAX_BATCH_REVIEWS = 1_000
+MAX_UPLOAD_BYTES = 5 * 1024 * 1024
+MAX_REVIEW_CHARACTERS = 50_000
+
+LIVE_APP_URL = (
+    "https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/"
+)

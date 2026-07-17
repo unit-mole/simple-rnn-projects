@@ -2,19 +2,21 @@
 
 ## Project data source
 
-The supplied project uses the TensorFlow/Keras IMDb movie-review dataset. The standard
-dataset contains labeled positive and negative reviews and is loaded programmatically
-through Keras during retraining.
+The project uses the TensorFlow/Keras IMDb movie-review dataset. The standard
+dataset contains positive and negative review labels and is loaded
+programmatically during retraining.
 
-The reviewed source run exported:
+The reviewed source run contains:
 
-- 2,000 real IMDb training reviews;
+- 2,000 real IMDb reviews in the training pool;
+- 1,600 reviews in the model-fitting partition;
+- 400 reviews in the validation partition;
 - 600 untouched real IMDb test reviews; and
-- 600 synthetic reviews used for pipeline validation.
+- 600 synthetic reviews retained only as historical development context.
 
-The complete exported review text is **not included in this GitHub package**. The project
-contains a small hand-written sample file for application testing and a saved model for
-immediate inference.
+The complete decoded IMDb review text is **not committed to GitHub**. The
+repository includes a small hand-written sample and a saved model for immediate
+inference.
 
 ## Included sample
 
@@ -22,19 +24,17 @@ immediate inference.
 data/sample_reviews.csv
 ```
 
-Columns:
-
 | Column | Purpose |
 |---|---|
 | `review` | Hand-written movie-review text |
-| `expected_sentiment` | Human-readable demonstration label |
+| `illustrative_tone` | Human-readable tone for demonstration only |
 
-The expected label is included only for sample interpretation. Uploaded files need only a
-text column.
+The application is a binary positive/negative classifier. Rows marked `mixed`
+are intentional stress tests, not a third model class.
 
 ## Supported upload columns
 
-The Streamlit application searches for the first matching column from:
+The application searches for the first matching text column from:
 
 ```text
 review
@@ -44,20 +44,31 @@ comment
 content
 ```
 
+A label column is optional. Supported binary labels include `0`/`1` and
+`negative`/`positive`.
+
+## Deployment limits
+
+- Maximum batch size: 1,000 reviews
+- Maximum uploaded CSV size: 5 MB
+- Maximum review length: 50,000 characters
+
 ## Retraining data
 
-`train_model.py` downloads the Keras IMDb dataset when it is not already cached. Keep the
-downloaded dataset, full decoded reviews, and temporary training files outside GitHub.
+`train_model.py` downloads the Keras IMDb dataset when it is not already
+cached. Keep the downloaded dataset, complete decoded reviews, and temporary
+training exports outside GitHub.
 
 ## Repository safety
 
 Do not commit:
 
-- the complete raw IMDb dataset;
-- private or licensed review corpora;
-- employer or customer feedback;
+- complete raw or decoded IMDb datasets;
+- private, employer, or customer feedback;
+- licensed text corpora without redistribution permission;
 - API keys or Streamlit secrets;
 - virtual environments or local cache directories.
 
-The saved model, tokenizer, metadata, aggregate metrics, and de-identified prediction
-artifacts under `models/` and `outputs/` are intentionally included.
+Saved model artifacts, aggregate metrics, de-identified predictions, and
+portfolio visualizations under `models/` and `outputs/` are intentionally
+included.

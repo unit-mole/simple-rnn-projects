@@ -2,7 +2,8 @@
 
 ## Intended use
 
-Educational and portfolio demonstration of embedding-based recurrent text classification.
+Educational and portfolio demonstration of embedding-based recurrent text
+classification.
 
 ## Model
 
@@ -10,27 +11,49 @@ Educational and portfolio demonstration of embedding-based recurrent text classi
 Embedding(80) → SimpleRNN(48) → Dense(32) → Dropout(0.30) → Sigmoid
 ```
 
-Long reviews are split into overlapping 80-token chunks. Review probability is the mean
-of chunk probabilities.
+Long reviews are split into overlapping 80-token chunks. The review-level
+probability is the mean of the chunk probabilities.
 
-## Training and evaluation
+## Training and evaluation scope
 
-- Supplied real training subset: 2,000 reviews
-- Untouched test set: 600 reviews
-- Decision threshold: 0.43, selected from validation data
-- Test accuracy: 74.33%
-- Test F1: 76.67%
-- ROC-AUC: 0.820
-- PR-AUC: 0.799
+| Component | Reviews |
+|---|---:|
+| Training pool | 2,000 |
+| Model-fitting partition | 1,600 |
+| Validation partition | 400 |
+| Untouched test set | 600 |
 
-## Baseline
+There is no post-selection full-data refit. The saved model corresponds to the
+early-stopped model selected from the model-fitting and validation partitions.
 
-TF-IDF + Logistic Regression achieved 86.67% accuracy and should be preferred for this
-evaluated subset when predictive performance is the primary objective.
+## Simple RNN test results
+
+| Metric | Result |
+|---|---:|
+| Accuracy | 74.33% |
+| F1-score | 76.67% |
+| ROC-AUC | 0.820 |
+| PR-AUC | 0.799 |
+
+## Fair baseline
+
+The TF-IDF + Logistic Regression baseline is trained on the same 1,600-review
+model-fitting partition.
+
+| Metric | Result |
+|---|---:|
+| Accuracy | 84.50% |
+| F1-score | 84.83% |
+| ROC-AUC | 0.932 |
+| PR-AUC | 0.934 |
+
+The classical baseline is stronger for this evaluated configuration. The
+Simple RNN remains the primary portfolio model because the project demonstrates
+recurrent sequence modeling.
 
 ## Limitations
 
-- Limited training data
+- Limited model-fitting data
 - Lower negative-class specificity
 - Weak long-range memory
 - Sensitivity to sarcasm, mixed sentiment, and domain shift
@@ -38,5 +61,6 @@ evaluated subset when predictive performance is the primary objective.
 
 ## Prohibited interpretation
 
-The model must not be treated as a definitive assessment of a person, employee, customer,
-or creative professional. Human review is required for consequential use.
+The model must not be treated as a definitive assessment of a person, employee,
+customer, or creative professional. Human review is required for consequential
+use.
