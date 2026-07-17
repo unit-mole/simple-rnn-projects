@@ -1,28 +1,31 @@
 # Simple RNN Projects
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow%20%2F%20Keras-SimpleRNN-orange.svg)](https://www.tensorflow.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Interactive%20Demos-red.svg)](#project-roadmap)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Portfolio Projects](https://img.shields.io/badge/Portfolio%20Projects-6-informational.svg)](#project-roadmap)
-[![Portfolio Ready](https://img.shields.io/badge/Portfolio%20Ready-2%20of%206-brightgreen.svg)](#project-roadmap)
+A structured portfolio of six Simple Recurrent Neural Network projects covering time-series forecasting, financial sequence modeling, Natural Language Processing, text classification, text generation, and representation learning.
 
-A structured portfolio of **Simple Recurrent Neural Network projects** covering time-series forecasting, financial sequence modeling, natural-language processing, text classification, text generation, and representation learning.
+**Portfolio status:** 3 completed and deployed projects · 3 planned projects  
+**Repository owner:** [Anmol Tripathi](https://github.com/unit-mole)
+
+---
 
 ## Portfolio Objective
 
-This repository demonstrates how Simple RNN and recurrent neural-network methods can be applied to practical sequential-data problems. Each completed project is developed as a complete case study containing:
+This repository demonstrates how Simple Recurrent Neural Networks can be applied to practical sequential-data problems. Each completed project is developed as an end-to-end case study containing:
 
-- A clearly defined business or analytical problem
-- Reproducible data preparation and sequence generation
-- Leakage-aware train, validation, and test design
-- A trainable Simple RNN as the primary model
-- Appropriate baseline comparison and model evaluation
-- Saved model and preprocessing artifacts
-- Interactive Streamlit deployment where appropriate
-- Automated testing and GitHub Actions CI
-- Local-run and hosting documentation
-- Honest discussion of assumptions, limitations, and future improvements
+- a clearly defined business or analytical problem;
+- reproducible data preparation and sequence generation;
+- leakage-aware training, validation, and test design;
+- a trainable Keras `SimpleRNN` as the primary model;
+- task-appropriate baseline comparison and evaluation;
+- saved model and preprocessing artifacts;
+- reusable inference code;
+- an interactive Streamlit demonstration;
+- automated tests and project-specific GitHub Actions CI;
+- local-run and deployment guidance; and
+- an honest discussion of assumptions, limitations, and future improvements.
+
+The portfolio is designed to demonstrate skills relevant to Data Science, Machine Learning, Applied AI, Data Analytics, Business Intelligence, Quality Analytics, and Analytics Engineering roles.
+
+---
 
 ## Project Roadmap
 
@@ -30,27 +33,29 @@ This repository demonstrates how Simple RNN and recurrent neural-network methods
 |---:|---|---|---|
 | 1 | [Electricity Consumption Forecasting](01-electricity-consumption-forecasting/) | Time-series regression and demand forecasting | [Live Demo](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/) |
 | 2 | [Google Stock Price Prediction](02-google-stock-price-prediction/) | Financial time-series forecasting | [Live Demo](https://simple-rnn-projects-8ppkcyb6itqkquyzd32rsk.streamlit.app/) |
-| 3 | [IMDb Data Analysis](03-imdb-data-analysis/) | Sentiment analysis and sequence classification | Planned |
+| 3 | [IMDb Movie Review Sentiment Analysis](03-imdb-data-analysis/) | NLP sentiment analysis and binary sequence classification | [Live Demo](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/) |
 | 4 | [SMS Spam Detection](04-sms-spam-detection/) | Binary text classification | Planned |
 | 5 | [Text Generation](05-text-generation/) | Character- or word-level sequence generation | Planned |
 | 6 | [Word Embedding](06-word-embedding/) | Representation learning and semantic analysis | Planned |
 
-## Featured Projects
+---
+
+## Completed Projects
 
 ### 1. Electricity Consumption Forecasting
 
-An end-to-end electricity-demand forecasting project that uses the previous **24 hourly observations** and calendar features to predict near-term consumption.
+An end-to-end demand-forecasting project that uses the previous 24 hourly observations and calendar features to predict near-term electricity consumption.
 
 Key capabilities:
 
-- Chronological 70% / 15% / 15% train, validation, and test split
-- Training-only scaling and leakage prevention
-- Trainable Keras `SimpleRNN`
-- Naive, seasonal-naive, and moving-average baselines
-- MAE, RMSE, MAPE, sMAPE, R², and residual analysis
-- Recursive 1–48 hour forecasting
-- CSV upload and downloadable forecast output
-- Saved model artifacts, tests, CI, and Streamlit deployment
+- chronological 70% / 15% / 15% train, validation, and test split;
+- training-only scaling and leakage prevention;
+- Keras `SimpleRNN` sequence model;
+- naive, seasonal-naive, and moving-average baselines;
+- MAE, RMSE, MAPE, sMAPE, R², and residual analysis;
+- recursive 1–48 hour forecasting;
+- CSV upload and downloadable forecast output; and
+- saved artifacts, tests, CI, and Streamlit deployment.
 
 **Live application:** [Open Electricity Consumption Forecasting](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)
 
@@ -62,19 +67,19 @@ Key capabilities:
 
 ### 2. Google Stock Price Prediction
 
-A financial time-series project that uses recent Google (`GOOG`) daily return behavior to estimate the next trading-session closing price.
+A financial sequence-modeling project that uses recent Google (`GOOG`) daily return behavior to estimate the next trading-session closing price.
 
 Key capabilities:
 
-- Return-based target formulation
-- Previous ten trading-day return sequence
-- Chronological 70% / 15% / 15% validation design
-- Train-only feature and target scaling
-- TensorFlow/Keras Simple RNN with Huber loss
-- Previous-close and five-day mean-return baselines
-- MAE, RMSE, MAPE, R², directional accuracy, and residual analysis
-- Bundled sample, CSV upload, optional live-data mode, and downloadable outputs
-- Saved model artifacts, tests, CI, and Streamlit deployment
+- return-based target formulation;
+- previous ten trading-day return sequence;
+- chronological 70% / 15% / 15% validation design;
+- train-only feature and target scaling;
+- TensorFlow/Keras Simple RNN with Huber loss;
+- previous-close and five-day mean-return baselines;
+- MAE, RMSE, MAPE, R², directional accuracy, and residual analysis;
+- bundled sample, CSV upload, optional live-data mode, and downloadable outputs; and
+- saved artifacts, tests, CI, and Streamlit deployment.
 
 **Live application:** [Open Google Stock Price Prediction](https://simple-rnn-projects-8ppkcyb6itqkquyzd32rsk.streamlit.app/)
 
@@ -82,68 +87,228 @@ Key capabilities:
 
 [Open the complete project documentation](02-google-stock-price-prediction/)
 
-> **Financial disclaimer:** The Google stock forecasting project is for educational and portfolio demonstration purposes only. It is not financial advice and should not be used for investment decisions.
+> **Financial disclaimer:** This project is for educational and portfolio demonstration purposes only. It is not financial advice and should not be used for investment decisions.
+
+---
+
+### 3. IMDb Movie Review Sentiment Analysis
+
+An NLP sequence-classification project that uses an embedding layer and Simple RNN to classify IMDb movie reviews as positive or negative.
+
+Key capabilities:
+
+- deterministic text cleaning and vocabulary management;
+- out-of-vocabulary handling and sequence padding;
+- long-review processing through overlapping 80-token chunks;
+- Embedding → SimpleRNN → Dense binary-classification architecture;
+- validation-selected decision threshold;
+- accuracy, precision, recall, F1, specificity, ROC-AUC, PR-AUC, and MCC;
+- TF-IDF + Logistic Regression and majority-class baselines;
+- confusion matrix, ROC, precision–recall, training, and error-analysis outputs;
+- manual review, sample-review, and CSV batch-scoring workflows; and
+- saved model and tokenizer artifacts, tests, CI, and Streamlit deployment.
+
+**Live application:** [Open IMDb Movie Review Sentiment Analysis](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)
+
+[Open the complete project documentation](03-imdb-data-analysis/)
+
+---
+
+## What the Portfolio Covers
+
+The six projects are intentionally varied so the repository demonstrates more than one type of recurrent-neural-network problem.
+
+### Time-Series Forecasting
+
+- **Electricity Consumption Forecasting** predicts future electricity demand from recent hourly consumption and calendar patterns.
+- **Google Stock Price Prediction** estimates next-session closing price from recent daily return sequences.
+
+These projects demonstrate chronological splitting, leakage prevention, sequence-window creation, scaling, regression evaluation, baseline comparison, residual analysis, and recursive or next-step forecasting.
+
+### Natural Language Processing and Text Classification
+
+- **IMDb Movie Review Sentiment Analysis** converts unstructured movie-review text into positive or negative sentiment predictions.
+- **SMS Spam Detection** will classify messages as spam or legitimate.
+- **Text Generation** will model character- or word-level sequence continuation.
+- **Word Embedding** will explore learned semantic representations and similarity.
+
+These projects demonstrate text cleaning, tokenization, vocabulary control, embeddings, sequence padding, recurrent text modeling, classification metrics, probability interpretation, and error analysis.
+
+### Representation Learning and Sequential Modeling
+
+Across the portfolio, Simple RNN models learn representations from ordered observations rather than treating each row or token independently.
+
+The completed projects cover:
+
+- numeric time-series sequences;
+- financial-return sequences;
+- tokenized natural-language sequences;
+- regression and binary classification;
+- one-step and multi-step forecasting;
+- probability-based sentiment scoring; and
+- comparison with strong non-neural baselines.
+
+---
+
+## What the Repository Demonstrates
+
+### End-to-End Machine Learning Delivery
+
+Every completed project is structured to move beyond notebook-only experimentation. The repository demonstrates:
+
+- business-problem definition;
+- reproducible data preparation;
+- sequence and feature engineering;
+- training, validation, and test separation;
+- model evaluation;
+- saved preprocessing and model artifacts;
+- reusable prediction pipelines;
+- manual and batch inference;
+- downloadable outputs;
+- local execution; and
+- cloud deployment.
+
+### Sequence Modeling with Correct Validation
+
+Sequential data requires more care than randomly shuffled tabular data. The repository emphasizes:
+
+- chronological splitting for forecasting projects;
+- review-level splitting for text classification;
+- training-only preprocessing;
+- consistent sequence generation during training and inference;
+- validation-based hyperparameter or threshold selection;
+- untouched final test evaluation; and
+- explicit documentation of leakage risks.
+
+### Model Evaluation Based on the Actual Problem
+
+The projects use metrics that match the task rather than relying on one headline score.
+
+Examples include:
+
+- MAE, RMSE, MAPE, sMAPE, R², and residual analysis for forecasting;
+- precision, recall, F1, specificity, ROC-AUC, PR-AUC, and MCC for classification;
+- directional accuracy for financial forecasting;
+- confusion matrices and probability distributions;
+- threshold analysis for sentiment classification; and
+- baseline comparisons to determine whether the Simple RNN adds measurable value.
+
+### Reliable and Reusable Engineering
+
+The repository includes practices required for dependable inference:
+
+- modular source files instead of notebook-only logic;
+- saved scalers, tokenizers, metadata, and Keras models;
+- consistent feature or token order between training and prediction;
+- safe handling of missing values, unknown tokens, and invalid uploads;
+- automated tests for important preprocessing and prediction paths;
+- project-specific GitHub Actions workflows;
+- Streamlit deployment from the repository’s `main` branch; and
+- GitHub-safe data and artifact management.
+
+### Business and Analytical Translation
+
+The applications do not stop at raw model outputs. Depending on the project, they provide:
+
+- future-demand forecasts;
+- next-session price estimates;
+- predicted sentiment;
+- probabilities and confidence levels;
+- model and baseline comparisons;
+- error interpretations;
+- batch summaries; and
+- downloadable scored datasets.
+
+This demonstrates the ability to convert technical model outputs into information that can be understood by analysts, engineers, managers, and other business stakeholders.
+
+### Responsible Model Communication
+
+Each project clearly documents its intended scope and limitations. The repository avoids presenting portfolio models as production-ready financial, operational, or human-decision systems without additional validation, governance, and monitoring.
+
+---
 
 ## Repository Convention
 
-The repository uses numbered folders so the development order remains clear on GitHub:
+The repository is organized as a monorepo. Each completed project generally follows this structure:
 
 ```text
 simple-rnn-projects/
 ├── .github/
 │   └── workflows/
-├── 01-electricity-consumption-forecasting/
-├── 02-google-stock-price-prediction/
-├── 03-imdb-data-analysis/
-├── 04-sms-spam-detection/
-├── 05-text-generation/
-├── 06-word-embedding/
-├── .gitignore
+│       └── project-specific-ci.yml
+│
+├── project-folder/
+│   ├── app/
+│   │   ├── streamlit_app.py
+│   │   └── requirements.txt
+│   ├── data/
+│   │   ├── sample_input.csv
+│   │   └── README_data.md
+│   ├── images/
+│   ├── models/
+│   ├── notebooks/
+│   ├── outputs/
+│   ├── src/
+│   ├── tests/
+│   ├── .gitignore
+│   ├── README.md
+│   ├── README_HOSTING.md
+│   ├── requirements.txt
+│   └── supporting project files
+│
 ├── LICENSE
 ├── PROJECT_ROADMAP.md
 └── README.md
 ```
 
-Each completed project follows this structure where appropriate:
+The exact files vary by project, but the standards remain consistent:
 
-```text
-project-name/
-├── README.md
-├── README_HOSTING.md
-├── app/
-├── data/
-├── images/
-├── models/
-├── notebooks/
-├── outputs/
-├── src/
-├── tests/
-├── requirements.txt
-└── train_model.py
-```
+- reproducible workflows;
+- modular code;
+- deployable inference;
+- automated validation;
+- clear documentation;
+- safe repository practices; and
+- transparent model limitations.
 
-## Portfolio Positioning
+---
 
-These projects are designed to demonstrate more than notebook-based experimentation. The portfolio emphasizes:
+## Technical Coverage
 
-- Translating business problems into machine-learning solutions
-- Correct handling of chronological and sequential data
-- Reproducible preprocessing, feature engineering, and sequence creation
-- Simple RNN architecture design and model training
-- Leakage prevention and train-only preprocessing
-- Baseline benchmarking and business-relevant evaluation
-- Clean inference and model-persistence workflows
-- Interactive deployment through Streamlit
-- Automated testing and CI/CD
-- Responsible communication of assumptions, uncertainty, and limitations
+| Area | Demonstrated Through |
+|---|---|
+| Time-series regression | Electricity consumption forecasting |
+| Financial forecasting | Google stock price prediction |
+| NLP binary classification | IMDb movie-review sentiment analysis |
+| Sequence-window generation | Electricity and Google stock projects |
+| Tokenization and vocabulary control | IMDb sentiment analysis |
+| Word embeddings | IMDb sentiment analysis and planned embedding project |
+| Chronological validation | Electricity and Google stock projects |
+| Classification thresholding | IMDb sentiment analysis |
+| Baseline forecasting | Electricity and Google stock projects |
+| Classical NLP baseline | TF-IDF + Logistic Regression for IMDb |
+| Regression evaluation | MAE, RMSE, MAPE, sMAPE, R² |
+| Classification evaluation | Precision, recall, F1, specificity, ROC-AUC, PR-AUC, MCC |
+| Manual inference | Interactive Streamlit input workflows |
+| Batch inference | CSV upload, sample scoring, downloadable outputs |
+| Model deployment | Three Streamlit Community Cloud applications |
+| Testing and CI/CD | pytest and project-specific GitHub Actions workflows |
 
-## Skills Demonstrated
+---
 
-`Simple RNN` · `Recurrent Neural Networks` · `Time-Series Forecasting` · `Financial Forecasting` · `Sequence Modeling` · `TensorFlow` · `Keras` · `Feature Engineering` · `Chronological Validation` · `Leakage Prevention` · `Baseline Comparison` · `Model Evaluation` · `Residual Analysis` · `Streamlit` · `Testing` · `CI/CD`
+## Core Skills Demonstrated
+
+`Simple RNN` · `Recurrent Neural Networks` · `Sequence Modeling` · `Time-Series Forecasting` · `Financial Forecasting` · `Natural Language Processing` · `Text Cleaning` · `Tokenization` · `Vocabulary Management` · `Sequence Padding` · `Word Embeddings` · `Binary Classification` · `Feature Engineering` · `Chronological Validation` · `Leakage Prevention` · `Threshold Selection` · `Baseline Comparison` · `Regression Evaluation` · `Classification Evaluation` · `Residual Analysis` · `Error Analysis` · `TensorFlow` · `Keras` · `scikit-learn` · `pandas` · `Streamlit` · `Testing` · `GitHub Actions` · `CI/CD` · `Business Translation`
+
+---
 
 ## Repository
 
 **GitHub:** [unit-mole/simple-rnn-projects](https://github.com/unit-mole/simple-rnn-projects)
+
+---
 
 ## Author
 
