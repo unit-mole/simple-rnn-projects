@@ -1,10 +1,11 @@
 # Hosting Guide — SMS Spam Simple RNN Application
 
-## Recommended host
+## Deployment status
 
-Use **Streamlit Community Cloud**. The application loads saved model artifacts,
-requires no database or paid API, and can deploy directly from the existing
-GitHub monorepo.
+The application is deployed on Streamlit Community Cloud.
+
+**Live application:**  
+[Open the SMS Spam Detection application](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/)
 
 ## Deployment configuration
 
@@ -33,6 +34,21 @@ No secrets are required.
 04-sms-spam-detection/src/*.py
 ```
 
+## Pre-deployment validation
+
+Run:
+
+```bat
+python -m pytest -q
+python validate_project.py
+python runtime_smoke_test.py
+```
+
+The lightweight validator checks documentation, screenshots, model and tokenizer
+presence, split integrity, metric consistency, output schemas, and privacy-safe
+prediction artifacts. The runtime smoke test loads the saved Keras model and
+tokenizer and performs real inference.
+
 ## Deployment steps
 
 1. Push the project and workflow to GitHub.
@@ -54,9 +70,9 @@ Test all four modes:
 - CSV Upload
 - Model Performance
 
-Confirm model loading, positive and negative examples, template download,
-batch scoring, downloadable output, metrics, charts, controlled invalid-file
-errors, and public access without sign-in.
+Confirm model loading, obvious spam-like and legitimate examples, template
+download, batch scoring, downloadable output, metrics, charts, controlled
+invalid-file errors, and public access without sign-in.
 
 ## Screenshot plan
 
@@ -74,6 +90,12 @@ Maximum upload: 5 MB
 Maximum batch: 1,000 messages
 Maximum message: 10,000 characters
 ```
+
+## Updating the deployment
+
+Changes pushed to relevant Project 04 files on the `main` branch normally trigger
+a Streamlit redeployment. Confirm the application and the two GitHub Actions jobs
+after each model or dependency update.
 
 ## Privacy
 

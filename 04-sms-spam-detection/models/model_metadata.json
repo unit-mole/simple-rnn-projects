@@ -103,5 +103,7 @@
       "tp": 0
     }
   },
-  "random_seed": 42
+  "random_seed": 42,
+  "train_validation_overlap": 0,
+  "validation_test_overlap": 0
 }

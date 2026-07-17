@@ -1,7 +1,9 @@
 """Project-wide configuration constants."""
+
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
 DATA_DIR = PROJECT_ROOT / "data"
 MODEL_DIR = PROJECT_ROOT / "models"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
@@ -20,11 +22,39 @@ DATA_SOURCE_URL = (
     "pycon-2016-tutorial/master/data/sms.tsv"
 )
 
-MESSAGE_COLUMN_CANDIDATES = ("message", "text", "sms", "body", "content", "v2")
-LABEL_COLUMN_CANDIDATES = ("label", "target", "class", "category", "v1")
+OFFICIAL_DATASET_URL = (
+    "https://archive.ics.uci.edu/dataset/228/"
+    "sms+spam+collection"
+)
+
+LIVE_APP_URL = (
+    "https://simple-rnn-projects-"
+    "mb5hckxzin7hhatgfak2tm.streamlit.app/"
+)
+
+MESSAGE_COLUMN_CANDIDATES = (
+    "message",
+    "text",
+    "sms",
+    "body",
+    "content",
+    "v2",
+)
+
+LABEL_COLUMN_CANDIDATES = (
+    "label",
+    "target",
+    "class",
+    "category",
+    "v1",
+)
 
 MAX_VOCABULARY = 5_000
 MAX_SEQUENCE_LENGTH = 50
+EMBEDDING_DIMENSION = 64
+RNN_UNITS = 48
+DENSE_UNITS = 24
+DROPOUT_RATE = 0.30
 DECISION_THRESHOLD = 0.255
 RANDOM_SEED = 42
 

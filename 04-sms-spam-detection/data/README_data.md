@@ -1,15 +1,38 @@
 # SMS Spam Dataset Guidance
 
-## Source used by the supplied project
+## Dataset provenance
 
-The original notebook downloads the public SMS Spam Collection from:
+The original notebook downloads a tab-separated mirror of the public SMS Spam
+Collection from:
 
 ```text
 https://raw.githubusercontent.com/justmarkham/pycon-2016-tutorial/master/data/sms.tsv
 ```
 
-The tab-separated source contains `label` and `message` columns. Labels are
-`ham` and `spam`.
+The mirror contains two columns:
+
+```text
+label
+message
+```
+
+Labels are `ham` and `spam`.
+
+The authoritative dataset record is maintained by the UCI Machine Learning
+Repository:
+
+- **Dataset:** SMS Spam Collection
+- **Creators:** Tiago Almeida and José María Gómez Hidalgo
+- **DOI:** `10.24432/C5CC84`
+- **License:** Creative Commons Attribution 4.0 International
+
+Recommended citation:
+
+> Almeida, T. & Hidalgo, J. (2011). SMS Spam Collection [Dataset].
+> UCI Machine Learning Repository. https://doi.org/10.24432/C5CC84
+
+The project retains the mirror used by the supplied notebook so the published
+training result remains reproducible.
 
 ## Portfolio cleaning result
 
@@ -22,8 +45,8 @@ The tab-separated source contains `label` and `message` columns. Labels are
 | Ham messages | 4,499 |
 | Spam messages | 602 |
 
-Duplicates are removed before splitting so normalized message text cannot appear
-in more than one partition.
+Normalized duplicates are removed **before** splitting. This prevents the same
+cleaned message from appearing in training, validation, and test partitions.
 
 ## Modeling split
 
@@ -33,7 +56,8 @@ Validation:   765 messages
 Testing:      766 messages
 ```
 
-All partitions are stratified. The test set is untouched until final evaluation.
+All partitions are stratified. The test set is untouched until final evaluation
+and threshold selection uses validation data only.
 
 ## Included sample
 

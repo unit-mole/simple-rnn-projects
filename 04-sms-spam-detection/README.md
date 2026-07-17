@@ -70,6 +70,8 @@ The application produces:
 - Majority, Multinomial Naive Bayes, and TF-IDF Logistic Regression baselines
 - Manual message, privacy-safe sample, and CSV batch workflows
 - Saved `.keras` model, JSON tokenizer, metadata, tests, and GitHub Actions CI
+- One-command retraining regenerates metrics, predictions, error analysis, EDA, baseline terms, charts, metadata, and the model card
+- Two-stage CI: lightweight repository checks plus saved-model inference smoke testing
 
 ---
 
@@ -159,6 +161,12 @@ Embedding layer and Simple RNN. The notebook loaded 5,572 real records and repor
 | Validation rows | 765 |
 | Test rows | 766 |
 | Cross-partition text overlap | 0 |
+
+The training mirror corresponds to the **UCI SMS Spam Collection**. The
+authoritative record cites Almeida and Hidalgo (2011), DOI
+[`10.24432/C5CC84`](https://doi.org/10.24432/C5CC84), and is licensed under
+CC BY 4.0. The project retains the mirror used by the supplied notebook so the
+published result remains reproducible.
 
 The full corpus is not committed. The repository includes only:
 
@@ -454,6 +462,7 @@ simple-rnn-projects/
     ├── requirements.txt
     ├── requirements-ci.txt
     ├── run_app.bat
+    ├── runtime_smoke_test.py
     ├── train_model.py
     └── validate_project.py
 ```
@@ -473,6 +482,7 @@ python -m pip install --upgrade pip setuptools wheel
 python -m pip install -r requirements.txt
 python -m pytest -q
 python validate_project.py
+python runtime_smoke_test.py
 python -m streamlit run app\streamlit_app.py
 ```
 
@@ -498,7 +508,29 @@ Or use a compatible local file:
 python train_model.py --data "data\your_sms_dataset.csv"
 ```
 
-Review regenerated metrics and charts before publishing a new result set.
+Retraining regenerates the model, tokenizer, metadata, dataset summary, predictions, classification report, fair baseline comparison, error analysis, EDA, threshold analysis, evaluation charts, baseline term charts, and model card. Review the new metrics before updating the headline README results.
+
+---
+
+## Release Validation
+
+Run all release checks before pushing a model, tokenizer, dependency, or
+retraining change:
+
+```bat
+python -m pytest -q
+python validate_project.py
+python runtime_smoke_test.py
+```
+
+The GitHub Actions workflow now has two jobs:
+
+1. **test** — unit tests, compilation, documentation and artifact-contract checks;
+2. **runtime-smoke** — installs the deployment dependencies, loads the saved
+   `.keras` model and tokenizer, and performs real inference.
+
+This closes the gap between a green source-code check and a genuinely loadable
+deployment artifact.
 
 ---
 

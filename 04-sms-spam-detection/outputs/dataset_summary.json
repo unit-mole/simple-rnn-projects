@@ -10,5 +10,7 @@
   "train_rows": 3570,
   "validation_rows": 765,
   "test_rows": 766,
-  "train_test_overlap": 0
+  "train_test_overlap": 0,
+  "train_validation_overlap": 0,
+  "validation_test_overlap": 0
 }
