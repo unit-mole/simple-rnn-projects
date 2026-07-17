@@ -1,0 +1,5 @@
+field,value
+Model,Simple RNN forecaster with recurrent hidden state
+Synthetic purpose,"Validate scaling, windowing, and RNN shape logic"
+Real purpose,Evaluate same pipeline on actual public time-series data when available
+Fallback behavior,Synthetic-like fallback keeps notebook runnable if internet is unavailable

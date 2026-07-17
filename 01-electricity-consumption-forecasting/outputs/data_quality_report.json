@@ -1,0 +1,10 @@
+{
+  "input_rows": 2880,
+  "output_rows": 2880,
+  "invalid_timestamps_removed": 0,
+  "invalid_target_values_detected": 0,
+  "duplicate_timestamps_aggregated": 0,
+  "missing_target_values_filled": 0,
+  "inferred_frequency": "h",
+  "outlier_rows_flagged": 0
+}

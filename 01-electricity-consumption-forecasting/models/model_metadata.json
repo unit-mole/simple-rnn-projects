@@ -1,0 +1,48 @@
+{
+  "project": "Electricity Consumption Forecasting with a Simple RNN",
+  "data_file": "sample_input.csv",
+  "data_is_synthetic_demo": true,
+  "timestamp_column": "timestamp",
+  "target_column": "consumption_kwh",
+  "frequency": "h",
+  "lookback": 24,
+  "forecast_horizon_training": 1,
+  "model_feature_columns": [
+    "consumption_scaled",
+    "hour_sin",
+    "hour_cos",
+    "day_of_week_sin",
+    "day_of_week_cos",
+    "month_sin",
+    "month_cos",
+    "weekend_flag",
+    "peak_flag"
+  ],
+  "train_rows": 2015,
+  "validation_rows": 433,
+  "test_rows": 432,
+  "split_strategy": "chronological_70_15_15",
+  "scaler_fit_scope": "training_target_only",
+  "keras_backend": "jax",
+  "epochs_completed": 44,
+  "metrics": {
+    "model": "Simple RNN",
+    "rows": 432,
+    "mae": 2.764598175331398,
+    "rmse": 3.4289526683732325,
+    "r2": 0.9378157132710703,
+    "mape_pct": 2.3631023915062643,
+    "smape_pct": 2.3988316496521334,
+    "mean_residual": 2.011312060885959
+  },
+  "data_quality_report": {
+    "input_rows": 2880,
+    "output_rows": 2880,
+    "invalid_timestamps_removed": 0,
+    "invalid_target_values_detected": 0,
+    "duplicate_timestamps_aggregated": 0,
+    "missing_target_values_filled": 0,
+    "inferred_frequency": "h",
+    "outlier_rows_flagged": 0
+  }
+}

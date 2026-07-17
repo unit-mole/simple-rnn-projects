@@ -1,0 +1,23 @@
+{
+  "project": "Simple RNN Electricity Consumption Forecasting - Synthetic to Real Unified Pipeline",
+  "created_at": "2026-04-29T09:05:19.695369",
+  "config": {
+    "synthetic_hours": 1600,
+    "real_max_rows": 1800,
+    "lookback": 24,
+    "horizon": 1,
+    "train_ratio": 0.75,
+    "hidden_size": 32,
+    "ridge_alpha": 0.001,
+    "real_data_required": false
+  },
+  "verification": {
+    "synthetic_data_used": true,
+    "real_or_fallback_data_used": true,
+    "actual_real_public_data_used": true,
+    "same_pipeline_used": true,
+    "streamlit_section_last": true
+  },
+  "real_data_source_name": "real_public:https://raw.githubusercontent.com/zhouhaoyi/ETDataset/main/ETT-small/ETTh1.csv",
+  "output_dir": "C:\\Users\\atripathi\\OneDrive - Veralto\\Desktop\\AI Codes\\Simple RNN Model\\Electricity Consumption Forecasting\\outputs\\rnn_forecasting_20260429_090515"
+}

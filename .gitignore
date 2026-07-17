@@ -1,0 +1,52 @@
+# Python bytecode and caches
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+**/.ipynb_checkpoints/
+
+# Virtual environments
+**/.venv/
+**/venv/
+**/env/
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets and local configuration
+**/.streamlit/secrets.toml
+.env
+.env.*
+!.env.example
+
+# Raw, private, or large data
+**/data/raw/
+**/data/private/
+**/data/external/
+*.parquet
+*.feather
+
+# Generated run folders and logs
+**/outputs/runs/
+**/logs/
+*.log
+
+# Build/package artifacts
+build/
+dist/
+*.egg-info/
+*.zip
+
+# Keep curated portfolio artifacts committed
+!**/models/*.keras
+!**/models/*.pkl
+!**/models/*.joblib
+!**/models/*.json
+!**/outputs/*.png
+!**/outputs/*.csv
+!**/outputs/*.json

@@ -1,0 +1,6 @@
+{
+  "best_rmse_label": "real_or_fallback",
+  "synthetic_rmse": 4.058328207968271,
+  "real_or_fallback_rmse": 0.8581106072459675,
+  "actual_real_public_data_used": true
+}

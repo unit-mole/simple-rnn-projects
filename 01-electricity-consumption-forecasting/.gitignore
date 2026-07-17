@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.streamlit/secrets.toml
+.env
+.env.*
+
+# Raw/private/large datasets
+data/raw/
+data/private/
+data/external/
+*.parquet
+*.feather
+*.xlsx
+
+# Generated run folders and logs
+outputs/runs/
+logs/
+*.log
+
+# Keep curated portfolio artifacts
+!models/electricity_rnn_model.keras
+!models/scaler.pkl
+!models/model_metadata.json
+!outputs/*.png
+!outputs/*.csv
+!outputs/*.json
