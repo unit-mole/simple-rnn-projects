@@ -1,0 +1,13 @@
+message,illustrative_category
+Congratulations! You have won a free holiday. Reply WIN now to claim your prize.,spam-like
+URGENT: Your mobile number has been selected for a cash reward. Call now.,spam-like
+Get a low-cost loan today. Apply at https://example.com before the offer expires.,spam-like
+Free entry into our weekly draw. Text CLAIM to receive your voucher.,spam-like
+"Hey, are we still meeting outside the station at 6 PM?",ham-like
+Please send me the notes when you get home. Thanks!,ham-like
+Your appointment is confirmed for tomorrow morning at 10.,ham-like
+I am running late. I will call you after work.,ham-like
+The shop is offering a free sample today if you are nearby.,ambiguous
+Please call the office urgently about your appointment.,ambiguous
+You won the office quiz. Come by my desk to collect the chocolate.,ambiguous
+Limited seats are available for the training session. Reply if you want to attend.,ambiguous

@@ -1,0 +1,16 @@
+error_type,label_id,predicted_label,spam_probability,message_excerpt
+false_positive,0,1,0.4728779,"Im in inperialmusic listening2the weirdest track ever byleafcutter john-sounds like insects being molested&someone plumbing,remixed by evil men on acid!"
+false_positive,0,1,0.47786823,Right it wasnt you who phoned it was someone with a number like yours!
+false_negative,1,0,0.009534736,LIFE has never been this much fun and great until you came in. You made it truly special for me. I won't forget you! enjoy @ one gbp/sms
+false_negative,1,0,0.024198245,Sorry I missed your call let's talk when you have the time. I'm on 07090201529
+false_negative,1,0,0.04293361,"accordingly. I repeat, just text the word ok on your mobile phone and send"
+false_positive,0,1,0.27004117,Which channel:-):-):):-).
+false_positive,0,1,0.28480598,Where @
+false_negative,1,0,0.03186844,For sale - arsenal dartboard. Good condition but no doubles or trebles!
+false_positive,0,1,0.31899303,Guess who spent all last night phasing in and out of the fourth dimension
+false_positive,0,1,0.35028267,Havent.
+false_positive,0,1,0.9825492,"Hey...Great deal...Farm tour 9am to 5pm $95/pax, $50 deposit by 16 May"
+false_positive,0,1,0.26193732,SO IS TH GOWER MATE WHICH IS WHERE I AM!?! HOW R U MAN? ALL IS GOOD IN WALES ILL B BACK MORROW. C U THIS WK? WHO WAS THE MSG 4?  RANDOM!
+false_negative,1,0,0.07551199,ASKED 3MOBILE IF 0870 CHATLINES INCLU IN FREE MINS. INDIA CUST SERVs SED YES. L8ER GOT MEGA BILL. 3 DONT GIV A SHIT. BAILIFF DUE IN DAYS. I O £250 3 WANT £800
+false_negative,1,0,0.058151063,RCT' THNQ Adrian for U text. Rgds Vatian
+false_positive,0,1,0.26610675,Thanks for yesterday sir. You have been wonderful. Hope you enjoyed the burial. MojiBiola

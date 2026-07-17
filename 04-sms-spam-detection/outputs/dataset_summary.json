@@ -1,0 +1,14 @@
+{
+  "input_rows": 5572,
+  "missing_label_rows_removed": 0,
+  "blank_message_rows_removed": 2,
+  "normalized_duplicate_messages_removed": 469,
+  "modeling_rows": 5101,
+  "ham_rows": 4499,
+  "spam_rows": 602,
+  "spam_rate": 0.118016075279357,
+  "train_rows": 3570,
+  "validation_rows": 765,
+  "test_rows": 766,
+  "train_test_overlap": 0
+}

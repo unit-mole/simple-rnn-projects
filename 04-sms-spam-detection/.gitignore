@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Notebook and Streamlit
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+
+# Local downloads, caches, raw/private data
+.keras/
+cache/
+downloads/
+logs/
+tmp/
+temp/
+data/raw/
+data/full/
+data/*.tsv
+data/*.txt
+data/*train*.csv
+data/*test*.csv
+outputs/runs/
+outputs/local_*
+*.xlsx
+
+# Keep deployable artifacts
+!data/sample_sms_messages.csv
+!outputs/*.csv
+!outputs/*.json
+!outputs/*.png
+!models/
+!models/sms_spam_simple_rnn_model.keras
+!models/tokenizer.json
+!models/model_metadata.json
