@@ -1,0 +1,9 @@
+{
+  "latest_observation_date": "2026-04-29",
+  "estimated_next_business_date": "2026-04-30",
+  "latest_close": 349.44000244140625,
+  "predicted_close": 350.34935538933354,
+  "predicted_change_pct": 0.260231496558494,
+  "interpretation": "The model indicates slight upward movement for the next trading session (+0.26% versus the latest close).",
+  "financial_disclaimer": "Educational portfolio demonstration only; not financial advice."
+}

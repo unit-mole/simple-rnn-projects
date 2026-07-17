@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets
+.streamlit/secrets.toml
+.env
+
+# Large/local data downloads
+data/raw/
+data/full_*.csv
+*.parquet
+
+# Generated local runs (curated portfolio outputs remain tracked)
+outputs/runs/
+logs/
+
+# TensorBoard and checkpoints
+checkpoints/
+tensorboard/
+*.h5
+
+# Packaging
+build/
+dist/
+*.egg-info/

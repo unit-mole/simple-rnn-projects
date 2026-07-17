@@ -1,0 +1,42 @@
+{
+  "project_name": "Google Stock Price Prediction using Simple RNN",
+  "created_at_utc": "2026-07-17T18:23:53.659823+00:00",
+  "training_data_start": "2025-05-07",
+  "training_data_end": "2026-04-29",
+  "target_column": "Close",
+  "forecast_target": "next-day log return reconstructed as next closing price",
+  "window_size": 10,
+  "forecast_horizon": 1,
+  "architecture": "SimpleRNN(16) -> Dropout(0.05) -> Dense(8) -> Dense(1)",
+  "loss": "Huber",
+  "optimizer": "Adam",
+  "chronological_split": {
+    "n_total_sequences": 235,
+    "train_end": 164,
+    "validation_end": 199,
+    "n_train": 164,
+    "n_validation": 35,
+    "n_test": 36
+  },
+  "quality_report": {
+    "rows_received": 246,
+    "rows_retained": 246,
+    "rows_removed": 0,
+    "duplicate_dates_removed": 0,
+    "missing_target_after_cleaning": 0,
+    "date_min": "2025-05-07T00:00:00",
+    "date_max": "2026-04-29T00:00:00",
+    "target_column": "Close"
+  },
+  "test_metrics": {
+    "MAE": 4.324133385850315,
+    "RMSE": 5.586022684783773,
+    "MAPE": 1.4004477320463347,
+    "R2": 0.9315523209416562,
+    "Directional_Accuracy": 0.6111111111111112
+  },
+  "latest_close": 349.44000244140625,
+  "predicted_next_close": 350.34935538933354,
+  "estimated_forecast_date": "2026-04-30",
+  "disclaimer": "Educational portfolio demonstration only; not financial advice."
+}
