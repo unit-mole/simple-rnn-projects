@@ -1,8 +1,8 @@
-﻿# Simple RNN Projects
+# Simple RNN Projects
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow%20%2F%20Keras-SimpleRNN-orange.svg)](https://www.tensorflow.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Interactive%20Demos-red.svg)](https://streamlit.io/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Projects](https://img.shields.io/badge/Portfolio%20Projects-6-informational.svg)](#project-roadmap)
 
@@ -26,7 +26,7 @@ This repository demonstrates how recurrent neural networks can be applied to pra
 
 | No. | Project | Problem Type | Status |
 |---:|---|---|---|
-| 1 | [Electricity Consumption Forecasting](01-electricity-consumption-forecasting/) | Time-series regression and demand forecasting | Portfolio-ready Â· deployment pending |
+| 1 | [Electricity Consumption Forecasting](01-electricity-consumption-forecasting/) | Time-series regression and demand forecasting | [Live Demo](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/) |
 | 2 | Google Stock Price Prediction | Financial time-series forecasting | Planned |
 | 3 | IMDb Data Analysis | Sentiment analysis and sequence classification | Planned |
 | 4 | SMS Spam Detection | Binary text classification | Planned |
@@ -39,38 +39,38 @@ The repository uses numbered project folders so that the portfolio order remains
 
 ```text
 simple-rnn-projects/
-â”œâ”€â”€ .github/
-â”‚   â””â”€â”€ workflows/
-â”œâ”€â”€ 01-electricity-consumption-forecasting/
-â”œâ”€â”€ 02-google-stock-price-prediction/
-â”œâ”€â”€ 03-imdb-data-analysis/
-â”œâ”€â”€ 04-sms-spam-detection/
-â”œâ”€â”€ 05-text-generation/
-â”œâ”€â”€ 06-word-embedding/
-â”œâ”€â”€ .gitignore
-â”œâ”€â”€ LICENSE
-â”œâ”€â”€ PROJECT_ROADMAP.md
-â””â”€â”€ README.md
+├── .github/
+│   └── workflows/
+├── 01-electricity-consumption-forecasting/
+├── 02-google-stock-price-prediction/
+├── 03-imdb-data-analysis/
+├── 04-sms-spam-detection/
+├── 05-text-generation/
+├── 06-word-embedding/
+├── .gitignore
+├── LICENSE
+├── PROJECT_ROADMAP.md
+└── README.md
 ```
 
 Each completed project will use the following pattern where appropriate:
 
 ```text
 project-name/
-â”œâ”€â”€ README.md
-â”œâ”€â”€ app/
-â”œâ”€â”€ assets/ or images/
-â”œâ”€â”€ data/
-â”œâ”€â”€ docs/
-â”œâ”€â”€ models/
-â”œâ”€â”€ notebooks/
-â”œâ”€â”€ outputs/
-â”œâ”€â”€ scripts/
-â”œâ”€â”€ src/
-â”œâ”€â”€ tests/
-â”œâ”€â”€ requirements.txt
-â”œâ”€â”€ README_HOSTING.md
-â””â”€â”€ Dockerfile
+├── README.md
+├── app/
+├── assets/ or images/
+├── data/
+├── docs/
+├── models/
+├── notebooks/
+├── outputs/
+├── scripts/
+├── src/
+├── tests/
+├── requirements.txt
+├── README_HOSTING.md
+└── Dockerfile
 ```
 
 ## Portfolio Positioning
@@ -96,16 +96,23 @@ The first project uses the previous **24 hourly observations** and calendar feat
 - Training-only scaling
 - A trainable Keras `SimpleRNN`
 - Naive, seasonal-naive, and moving-average baselines
-- MAE, RMSE, MAPE, sMAPE, and RÂ² evaluation
+- MAE, RMSE, MAPE, sMAPE, and R² evaluation
 - Residual and error analysis
 - Recursive multi-hour forecasting
-- A Streamlit upload and forecast workflow
+- CSV upload and downloadable forecast output
+- A deployed Streamlit application
+
+**Live application:** [Open Electricity Consumption Forecasting](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)
 
 [Open the complete project documentation](01-electricity-consumption-forecasting/)
+
+## Repository
+
+**GitHub:** [https://github.com/unit-mole/simple-rnn-projects](https://github.com/unit-mole/simple-rnn-projects)
 
 ## Author
 
 **Anmol Tripathi**  
 Quality Data Scientist building a portfolio for Data Science, Machine Learning, Applied AI, Analytics Engineering, Business Intelligence, and Quality Analytics roles.
-
-

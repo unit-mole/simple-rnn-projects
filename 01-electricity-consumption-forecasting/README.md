@@ -1,20 +1,23 @@
 # Electricity Consumption Forecasting using a Simple RNN
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow%20%2F%20Keras-SimpleRNN-orange.svg)](https://www.tensorflow.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Deployment%20Pending-lightgrey.svg)](#streamlit-demo)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-SimpleRNN-orange.svg)](https://www.tensorflow.org/)
+[![Keras](https://img.shields.io/badge/Keras-3.x-red.svg)](https://keras.io/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
 [![Electricity RNN CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/electricity-rnn-ci.yml/badge.svg)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/electricity-rnn-ci.yml)
 
 An end-to-end electricity-demand forecasting project that uses a trainable
 **Simple Recurrent Neural Network** to learn sequential consumption patterns and
-forecast near-term electricity usage. The project includes leakage-aware
-time-series preprocessing, chronological validation, baseline forecasting,
-saved model artifacts, residual diagnostics, recursive future forecasting, and
-an interactive Streamlit application for sample and uploaded CSV data.
+forecast near-term electricity usage. The project combines leakage-aware
+time-series preprocessing, chronological model validation, calendar feature
+engineering, transparent baseline comparison, residual diagnostics, recursive
+multi-hour forecasting, saved inference artifacts, automated testing, and a
+deployed Streamlit application.
 
-**Status:** Portfolio-ready · live deployment pending  
-**Live demo:** Add the Streamlit URL after deployment  
+**Status:** Portfolio-ready  
+**Live demo:** [Open the Streamlit application](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)  
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)  
 **Primary stack:** Python · Keras · TensorFlow · pandas · scikit-learn · Streamlit
 
 ---
@@ -31,44 +34,92 @@ This project answers:
 > Given historical electricity-consumption data, what will near-term
 > electricity demand look like?
 
-The forecasting workflow returns:
+The deployed application produces:
 
-- **Forecast horizon**
 - **Forecasted electricity consumption**
+- **Selectable 1–48 hour forecast horizon**
 - **Expected demand trend**
-- **Expected peak-demand timestamp**
+- **Change versus recent electricity usage**
+- **Expected peak-demand value and timestamp**
 - **Model error metrics**
-- **Operational interpretation**
-- **Downloadable forecast results**
+- **Business interpretation**
+- **Downloadable forecast CSV**
 
-## Project Objective
+---
 
-Build a portfolio-ready Simple RNN solution that can:
+## Project Highlights
 
-1. Validate and prepare timestamped electricity-consumption data.
-2. Sort observations chronologically and resolve duplicate timestamps.
-3. Regularize the time series and fill missing target values transparently.
-4. Engineer calendar features that are available at forecast time.
-5. Create past-to-future sequence windows without random shuffling.
-6. Fit the target scaler only on training observations.
-7. Train a genuine Keras `SimpleRNN` regression model.
-8. Compare the RNN with transparent forecasting baselines.
-9. Evaluate performance using MAE, RMSE, MAPE, sMAPE, and R².
-10. Diagnose forecast bias through residual and error analysis.
-11. Generate recursive forecasts for a selectable future horizon.
-12. Save and reload the model, scaler, metadata, metrics, and charts.
-13. Provide an interactive Streamlit workflow for sample and uploaded data.
+- End-to-end electricity time-series workflow from validation to deployment
+- Genuine trainable Keras `SimpleRNN` model
+- Previous 24 hourly observations used to predict the next hour
+- Chronological 70% / 15% / 15% train, validation, and test split
+- Training-only target scaling to reduce data leakage
+- Calendar and cyclical time-feature engineering
+- Naive, seasonal-naive, and moving-average baseline comparison
+- Recursive 1–48 hour forecasting
+- MAE, RMSE, MAPE, sMAPE, R², and residual analysis
+- CSV upload and preloaded sample-data workflows
+- Downloadable forecast output
+- Modular source code, tests, CI workflow, and Streamlit deployment
 
-## Portfolio Scope
+---
 
-The committed sample and trained artifact are an educational portfolio
-demonstration built on a deterministic **synthetic hourly electricity series**.
-No private company or customer data is included.
+## Application Preview
 
-The included outputs prove that the complete training, evaluation, persistence,
-and inference workflow runs end to end. Before presenting the model as a
-real-world forecasting solution, retrain it on an approved real electricity
-dataset and update the documented results.
+The README uses four focused application screenshots to avoid repeating the
+model-output graphs already stored in `outputs/`.
+
+### 1. Application overview
+
+The main view combines forecast controls, data-quality checks, the prepared
+electricity history, and the first forecast summary.
+
+![Electricity Consumption Forecasting application overview](images/01_streamlit_application_overview.png)
+
+### 2. Forecast results and business interpretation
+
+The forecast view presents the selected horizon, average forecast, expected
+trend, change versus recent usage, forecast trajectory, and operational
+interpretation.
+
+![Forecast results and business interpretation](images/02_forecast_results_and_interpretation.png)
+
+### 3. Model-performance summary
+
+The model-performance dashboard reports the held-out regression metrics and
+compares the Simple RNN with transparent forecasting baselines.
+
+![Model-performance summary](images/03_model_performance_summary.png)
+
+### 4. CSV upload workflow
+
+Users can upload compatible time-series data, select the timestamp and
+consumption columns, preview the data, and generate a forecast.
+
+<details>
+<summary><strong>View the CSV upload workflow</strong></summary>
+
+![CSV upload workflow](images/04_csv_upload_workflow.png)
+
+</details>
+
+---
+
+## Project Status and Honest Scope
+
+This is a complete, deployable portfolio prototype built around a deterministic
+**synthetic hourly electricity-consumption dataset**. The synthetic dataset is
+privacy-safe and allows the entire preprocessing, training, evaluation,
+persistence, and deployment workflow to be reproduced without exposing company
+or customer information.
+
+The committed metrics demonstrate that the project works end to end, but they
+should not be interpreted as production grid performance. Operational use would
+require retraining and backtesting on governed real electricity-consumption
+data, domain review, uncertainty estimation, monitoring, and business-specific
+error tolerances.
+
+---
 
 ## Dataset
 
@@ -78,7 +129,7 @@ The repository includes:
 data/sample_input.csv
 ```
 
-The sample contains 2,880 hourly observations with:
+The sample contains **2,880 hourly observations**.
 
 | Column | Description |
 |---|---|
@@ -88,38 +139,79 @@ The sample contains 2,880 hourly observations with:
 | `humidity_pct` | Demonstration weather context |
 | `source_type` | Explicit synthetic-data provenance |
 
-The current saved RNN uses lagged consumption and known calendar variables. The
-weather fields remain available for future multivariate-model extensions.
+| Dataset detail | Value |
+|---|---:|
+| Total observations | 2,880 |
+| Frequency | Hourly |
+| Training observations | 2,015 |
+| Validation observations | 433 |
+| Test observations | 432 |
+| Invalid timestamps removed | 0 |
+| Duplicate timestamps aggregated | 0 |
+| Missing target values filled | 0 |
+| Outlier rows flagged | 0 |
+| Private operational data | None |
 
-For a real-data upgrade, the project includes:
+The current saved RNN uses lagged consumption and calendar variables. The
+weather columns are retained for future multivariate-model extensions.
+
+A helper script is also included for a documented real-data extension:
 
 ```text
 scripts/download_tetouan_data.py
 ```
 
-See [`data/README_data.md`](data/README_data.md) for dataset-placement,
-provenance, and safety guidance.
+See [`data/README_data.md`](data/README_data.md) for data placement, provenance,
+and repository-safety guidance.
 
-## Tools and Technologies
+---
 
-| Area | Technology |
+## Time-Series Preprocessing
+
+The preprocessing workflow applies the following controls:
+
+| Control | Implementation |
 |---|---|
-| Language | Python 3.12 |
-| Data processing | pandas, NumPy |
-| Time-series preparation | pandas chronological indexing and interpolation |
-| Modeling | TensorFlow / Keras `SimpleRNN` |
-| Scaling | scikit-learn `MinMaxScaler` |
-| Evaluation | scikit-learn metrics and custom forecasting metrics |
-| Visualization | Matplotlib and Streamlit charts |
-| Model persistence | Keras `.keras`, Joblib, JSON |
-| Demo application | Streamlit |
-| Testing / quality | pytest, compile checks, GitHub Actions |
-| Hosting | Streamlit Community Cloud |
+| Timestamp parsing | Invalid timestamps are coerced and reported |
+| Chronological ordering | Data is sorted before sequence generation |
+| Duplicate timestamps | Duplicate observations are aggregated by mean |
+| Missing intervals | The series is reindexed to the configured frequency |
+| Missing target values | Time interpolation followed by forward/backward fill |
+| Invalid targets | Coerced to missing and handled through the documented fill logic |
+| Outlier review | IQR-based flags are retained for audit rather than silently deleting rows |
+| Training order | RNN training uses `shuffle=False` |
+| Leakage prevention | The scaler is fitted only on training target values |
 
-## Project Workflow
+A structured quality report is saved in:
 
 ```text
-Electricity CSV or safe sample data
+outputs/data_quality_report.json
+```
+
+---
+
+## Feature Engineering
+
+Nine features are supplied at each time step:
+
+| Feature | Purpose |
+|---|---|
+| `consumption_scaled` | Historical electricity-consumption signal |
+| `hour_sin`, `hour_cos` | Cyclical hour-of-day representation |
+| `day_of_week_sin`, `day_of_week_cos` | Cyclical weekday representation |
+| `month_sin`, `month_cos` | Cyclical month representation |
+| `weekend_flag` | Weekend-demand indicator |
+| `peak_flag` | 17:00–21:00 peak-period indicator |
+
+Cyclical encoding preserves relationships such as hour 23 being adjacent to
+hour 0 rather than treating them as distant numeric endpoints.
+
+---
+
+## Technical Workflow
+
+```text
+Electricity CSV or privacy-safe sample
                 │
                 ▼
 Schema validation and timestamp parsing
@@ -134,7 +226,7 @@ Frequency regularization and missing-value treatment
 Outlier audit and electricity-trend analysis
                 │
                 ▼
-Calendar feature engineering
+Calendar and cyclical feature engineering
                 │
                 ▼
 Chronological 70% / 15% / 15% split
@@ -146,73 +238,23 @@ Training-only target scaling
 24-step sequence generation
                 │
                 ▼
-Simple RNN training with shuffle disabled
+Simple RNN training with shuffling disabled
                 │
                 ▼
-Held-out evaluation and baseline comparison
+Held-out test evaluation and baseline comparison
                 │
                 ▼
-Residual diagnostics and saved artifacts
+Saved model, scaler, metadata, metrics, and plots
                 │
                 ▼
-Recursive future forecast and Streamlit demo
+Recursive future forecast and Streamlit deployment
 ```
 
-## Time-Series Preprocessing
+---
 
-The preprocessing pipeline performs the following controls:
+## Sequence Design
 
-| Control | Implementation |
-|---|---|
-| Timestamp parsing | Invalid timestamps are coerced and reported |
-| Chronological order | Data is sorted before sequence generation |
-| Duplicate timestamps | Duplicate observations are aggregated by mean |
-| Missing intervals | The series is reindexed to the configured frequency |
-| Missing target values | Time interpolation, then forward/backward fill |
-| Invalid target values | Coerced to missing and treated through the documented fill logic |
-| Outlier review | IQR-based flags are created for audit; rows are not silently removed |
-| Shuffling | Disabled during RNN training |
-| Leakage prevention | Scaler is fitted only on training target values |
-
-The preprocessing output includes a structured data-quality report stored in:
-
-```text
-outputs/data_quality_report.json
-```
-
-## Chronological Split
-
-The 2,880-row sample is divided as follows:
-
-| Partition | Rows | Purpose |
-|---|---:|---|
-| Training | 2,015 | Model fitting and scaler fitting |
-| Validation | 433 | Early stopping and learning-rate control |
-| Test | 432 | Final untouched evaluation |
-
-The sequence target determines partition membership. Validation and test
-sequences may use earlier observations as historical context, but their target
-timestamps remain inside the correct chronological partition.
-
-## Feature Engineering
-
-The model receives nine features at every time step:
-
-| Feature | Purpose |
-|---|---|
-| `consumption_scaled` | Historical electricity-consumption signal |
-| `hour_sin`, `hour_cos` | Cyclical hour-of-day representation |
-| `day_of_week_sin`, `day_of_week_cos` | Cyclical weekday representation |
-| `month_sin`, `month_cos` | Cyclical seasonal representation |
-| `weekend_flag` | Weekend-demand indicator |
-| `peak_flag` | 17:00–21:00 peak-period indicator |
-
-Cyclical encoding prevents values such as hour 23 and hour 0 from being treated
-as unrelated endpoints.
-
-## Sequence Generation
-
-The main supervised-learning setup is:
+The supervised-learning setup is:
 
 ```text
 Previous 24 hourly time steps
@@ -226,11 +268,17 @@ Formally:
 X(t-23), X(t-22), ..., X(t)  →  y(t+1)
 ```
 
-The input shape supplied to Keras is:
+The Keras input shape is:
 
 ```text
 (samples, 24 time steps, 9 features)
 ```
+
+Validation and test sequences may use earlier observations as historical
+context, while their target timestamps remain inside the correct chronological
+partition.
+
+---
 
 ## Simple RNN Architecture
 
@@ -258,33 +306,51 @@ Training uses:
 - `shuffle=False`
 - Best-weight restoration
 
-Simple RNN remains the primary model because this project belongs to the
-Simple RNN portfolio series. GRU and LSTM comparisons are reserved for a future
-benchmarking extension.
+Simple RNN remains the primary model because this project is the first case
+study in the Simple RNN portfolio series. GRU and LSTM comparisons are planned
+as future benchmarking extensions.
+
+---
 
 ## Forecasting Approach
 
-### Single-step model
+### Single-step training objective
 
 The trained model predicts the next one-hour consumption value from the
-previous 24 observations.
+previous 24 hourly observations.
 
-### Multi-hour application forecast
+### Recursive multi-hour application forecast
 
-The Streamlit application supports a selectable **1–48 hour horizon** using
-recursive forecasting:
+The Streamlit application supports a selectable **1–48 hour horizon**:
 
 1. Predict the next hour.
-2. Append that prediction to the working sequence.
-3. Generate the next timestamp and calendar features.
+2. Append the prediction to the active sequence.
+3. Generate the next timestamp and its calendar features.
 4. Repeat until the requested horizon is complete.
 
-Recursive forecasting is practical for demonstration, but uncertainty and
-one-step errors can accumulate as the horizon increases.
+Recursive forecasting is practical for demonstration, but one-step errors and
+uncertainty can accumulate as the requested horizon becomes longer.
+
+---
+
+## Supplied-Model Test Results
+
+| Metric | Result | Interpretation |
+|---|---:|---|
+| MAE | **2.765 kWh** | Average absolute forecast error |
+| RMSE | **3.429 kWh** | Penalizes larger forecast misses |
+| MAPE | **2.36%** | Average percentage forecast error |
+| sMAPE | **2.40%** | Symmetric percentage forecast error |
+| R² | **0.938** | Share of held-out variation explained |
+| Mean residual | **2.011 kWh** | Positive value indicates mild underprediction |
+
+The results apply only to the committed synthetic demonstration split.
+
+---
 
 ## Baseline Comparison
 
-A recurrent model should outperform simple transparent forecasts before its
+A recurrent model should outperform transparent forecasting rules before its
 additional complexity is justified.
 
 | Model | MAE (kWh) | RMSE (kWh) | MAPE | R² |
@@ -294,261 +360,109 @@ additional complexity is justified.
 | Seasonal naive — previous 24-hour value | 4.350 | 5.108 | 3.72% | 0.862 |
 | Moving average — previous 24 hours | 11.656 | 13.152 | 10.08% | 0.085 |
 
-On the included synthetic test split, the Simple RNN reduced RMSE by
-approximately **23.6%** compared with the previous-value baseline.
+The Simple RNN reduced RMSE by approximately **23.6%** compared with the
+previous-value baseline on the included test split.
 
-## Model Results
+---
 
-| Metric | Test Result | Interpretation |
-|---|---:|---|
-| MAE | 2.765 kWh | Average absolute forecast miss |
-| RMSE | 3.429 kWh | Error measure that penalizes large misses |
-| MAPE | 2.36% | Average percentage forecast error |
-| sMAPE | 2.40% | Symmetric percentage error |
-| R² | 0.938 | Share of test-set variation explained |
-| Mean residual | 2.011 kWh | Positive value indicates mild underprediction |
+## Model Diagnostics
 
-These results apply only to the committed synthetic demonstration split and
-must not be represented as production performance.
+### Actual vs. predicted electricity consumption
 
-## Forecast Diagnostics
-
-### Actual vs Predicted
-
-The held-out predictions follow the main electricity-demand pattern closely.
+The held-out comparison shows how closely the Simple RNN follows observed
+electricity demand.
 
 ![Actual versus predicted electricity consumption](outputs/actual_vs_predicted.png)
 
-### Future Forecast
+### Next 24-hour forecast
 
-The saved pipeline generates a practical future-horizon output.
+The saved pipeline produces a practical future-horizon forecast.
 
 ![Next 24-hour electricity forecast](outputs/forecast_plot.png)
 
-### Residual Analysis
+### Residual analysis
 
-Residuals help identify whether prediction errors are centered around zero and
-whether errors increase during particular demand conditions.
+Residuals reveal systematic underprediction, overprediction, and changes in
+error behavior across the prediction range.
 
 ![Residual analysis](outputs/residual_plot.png)
 
-### Training Curve
+### Training and validation loss
 
-The training and validation curves support review of convergence and
-overfitting.
+The training history supports review of convergence and potential overfitting.
 
 ![Training and validation loss](outputs/training_curve.png)
 
-### Error Distribution
-
-The absolute-error distribution highlights typical and extreme forecast misses.
-
-![Forecast error distribution](outputs/error_distribution.png)
-
-### Consumption Trend
-
-The source-series trend provides context before modeling.
-
-![Electricity consumption trend](outputs/consumption_trend.png)
+---
 
 ## Business Interpretation
 
-The inference pipeline compares the average future forecast with the recent
-24-hour average and identifies the expected peak.
+The inference pipeline compares the future average with the recent 24-hour
+average and identifies the expected peak.
 
 Example output:
 
 ```text
 Forecast Horizon: Next 24 hours
-Average Forecast: 118.4 kWh
+Average Forecast: 122.41 kWh
 Trend: Increasing
-Expected Peak: 132.7 kWh at 18:00
+Change vs Recent: +1.8%
 Business Interpretation:
 Higher near-term demand is expected. Review available capacity,
 peak-demand monitoring, and operational readiness.
 ```
 
-Forecast error matters because:
+Forecast error has different operational implications:
 
-- **Underprediction** can contribute to insufficient capacity preparation.
-- **Overprediction** can contribute to unnecessary reserve allocation or cost.
-- **Peak-hour error** may be more operationally important than average error.
-- Long recursive horizons should be interpreted with greater caution.
+- **Underprediction** may lead to insufficient capacity preparation.
+- **Overprediction** may contribute to unnecessary reserve allocation or cost.
+- **Peak-hour error** may be more important than average error.
+- **Long recursive horizons** should be interpreted with greater caution.
 
-## Streamlit Demo
+---
 
-### Application Overview
+## Streamlit Application
 
-The main application view combines data-quality validation, historical
-electricity patterns, forecast controls, and the initial forecast summary.
+The deployed application supports:
 
-![Electricity Consumption Forecasting application](images/01_streamlit_application_overview.png)
-
-### Forecast Results and Business Interpretation
-
-The forecast view presents the selected horizon, average expected consumption,
-demand trend, change versus recent usage, expected peak, and operational
-interpretation.
-
-![Forecast results and business interpretation](images/02_forecast_results_and_interpretation.png)
-
-### Model Performance Summary
-
-The performance dashboard reports MAE, RMSE, MAPE, R², and the comparison
-between the Simple RNN and transparent forecasting baselines.
-
-![Model performance summary](images/03_model_performance_summary.png)
-
-<details>
-<summary><strong>View the CSV upload workflow</strong></summary>
-
-The upload workflow allows users to select compatible timestamp and
-electricity-consumption columns and generate forecasts from uploaded data.
-
-![CSV upload workflow](images/04_csv_upload_workflow.png)
-
-</details>
-
-The application supports:
-
-- Safe preloaded sample data
-- CSV upload
+- Privacy-safe preloaded sample data
+- Compatible CSV upload
 - Timestamp-column selection
 - Consumption-column selection
 - Uploaded-data preview
-- Time-series quality checks
-- Electricity-trend visualization
+- Time-series data-quality checks
+- Historical electricity-trend visualization
 - Selectable 1–48 hour forecast horizon
 - Forecast summary cards
 - Expected peak and trend interpretation
-- Saved-model performance table
+- Model-performance and baseline tables
 - Actual-versus-predicted and residual charts
 - Downloadable forecast CSV
 
-### Application Entrypoint
+**Live application:**  
+[Open Electricity Consumption Forecasting](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)
+
+**Streamlit entrypoint:**
 
 ```text
 01-electricity-consumption-forecasting/app/streamlit_app.py
 ```
 
-### Deployment Status
-
-The application code and model artifacts are ready. The live URL will be added
-after the repository is pushed and connected to Streamlit Community Cloud.
-
-Add screenshots to `images/` after the local and hosted application have been
-tested.
+---
 
 ## Model Artifacts
 
 | Artifact | Purpose |
 |---|---|
 | `models/electricity_rnn_model.keras` | Trained Simple RNN used by the application |
-| `models/scaler.pkl` | Training-fitted target scaler |
-| `models/model_metadata.json` | Input shape, feature order, split design, metrics, and provenance |
+| `models/scaler.pkl` | Target scaler fitted only on training data |
+| `models/model_metadata.json` | Feature order, sequence design, split strategy, metrics, and provenance |
 | `outputs/model_metrics.json` | Held-out Simple RNN metrics |
 | `outputs/baseline_comparison.csv` | RNN and baseline comparison |
 | `outputs/test_predictions.csv` | Timestamped actual values, predictions, residuals, and errors |
 | `outputs/next_24_hour_forecast.csv` | Example future forecast |
 
-## Run Locally
-
-### 1. Open the project directory
-
-From the `simple-rnn-projects` repository:
-
-```bash
-cd 01-electricity-consumption-forecasting
-```
-
-### 2. Create and activate a virtual environment
-
-Windows Command Prompt:
-
-```bat
-py -3.12 -m venv .venv
-.venv\Scripts\activate
-```
-
-macOS or Linux:
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
-
-Install development tools when needed:
-
-```bash
-python -m pip install -r requirements-dev.txt
-```
-
-### 4. Run tests
-
-```bash
-python -m pytest -q
-python -m compileall src app train_model.py
-```
-
-### 5. Launch the supplied pretrained demo
-
-```bash
-python -m streamlit run app/streamlit_app.py
-```
-
-Open the local address displayed in the terminal, normally:
-
-```text
-http://localhost:8501
-```
-
-### 6. Optional: retrain the model
-
-Train on the included sample:
-
-```bash
-python train_model.py
-```
-
-Train on a compatible hourly CSV:
-
-```bash
-python train_model.py ^
-  --data data/your_dataset.csv ^
-  --timestamp-column timestamp ^
-  --target-column consumption_kwh ^
-  --frequency h
-```
-
-The training workflow writes the model and scaler to `models/` and evaluation
-artifacts to `outputs/`.
-
-## Deploy
-
-The recommended hosting platform is **Streamlit Community Cloud**.
-
-Use:
-
-- **Repository:** `unit-mole/simple-rnn-projects`
-- **Branch:** `main`
-- **Entrypoint:** `01-electricity-consumption-forecasting/app/streamlit_app.py`
-- **Python:** `3.12`
-
-A deployment dependency file is included beside the app:
-
-```text
-01-electricity-consumption-forecasting/app/requirements.txt
-```
-
-See [`README_HOSTING.md`](README_HOSTING.md) for the complete deployment and
-maintenance process.
+---
 
 ## Project Structure
 
@@ -557,182 +471,305 @@ simple-rnn-projects/
 ├── .github/
 │   └── workflows/
 │       └── electricity-rnn-ci.yml
-├── 01-electricity-consumption-forecasting/
-│   ├── .streamlit/
-│   │   └── config.toml
-│   ├── app/
-│   │   ├── requirements.txt
-│   │   └── streamlit_app.py
-│   ├── archive/
-│   │   └── original_streamlit_app.py
-│   ├── data/
-│   │   ├── README_data.md
-│   │   └── sample_input.csv
-│   ├── images/
-│   │   └── README.md
-│   ├── models/
-│   │   ├── electricity_rnn_model.keras
-│   │   ├── model_metadata.json
-│   │   └── scaler.pkl
-│   ├── notebooks/
-│   │   ├── archive/
-│   │   │   └── Code_original.ipynb
-│   │   └── electricity_consumption_forecasting.ipynb
-│   ├── outputs/
-│   │   ├── actual_vs_predicted.png
-│   │   ├── baseline_comparison.csv
-│   │   ├── consumption_trend.png
-│   │   ├── data_quality_report.json
-│   │   ├── error_distribution.png
-│   │   ├── forecast_plot.png
-│   │   ├── model_metrics.json
-│   │   ├── next_24_hour_forecast.csv
-│   │   ├── residual_plot.png
-│   │   ├── test_predictions.csv
-│   │   ├── training_curve.png
-│   │   └── training_history.csv
-│   ├── scripts/
-│   │   └── download_tetouan_data.py
-│   ├── src/
-│   │   ├── config.py
-│   │   ├── data_preprocessing.py
-│   │   ├── feature_engineering.py
-│   │   ├── forecasting_pipeline.py
-│   │   ├── model_evaluation.py
-│   │   ├── model_training.py
-│   │   ├── sequence_generation.py
-│   │   └── visualization.py
-│   ├── tests/
-│   │   ├── conftest.py
-│   │   ├── test_preprocessing.py
-│   │   └── test_sequences.py
-│   ├── .gitignore
-│   ├── Dockerfile
-│   ├── FILE_MANIFEST.csv
-│   ├── LICENSE
-│   ├── PROJECT_AUDIT.md
-│   ├── README.md
-│   ├── README_HOSTING.md
-│   ├── requirements-dev.txt
-│   ├── requirements.txt
-│   ├── run_local.bat
-│   ├── run_local.sh
-│   └── train_model.py
-├── 02-google-stock-price-prediction/
-├── 03-imdb-data-analysis/
-├── 04-sms-spam-detection/
-├── 05-text-generation/
-├── 06-word-embedding/
-├── .gitignore
-├── LICENSE
-├── PROJECT_ROADMAP.md
-└── README.md
+│
+└── 01-electricity-consumption-forecasting/
+    ├── .streamlit/
+    │   └── config.toml
+    ├── app/
+    │   ├── requirements.txt
+    │   └── streamlit_app.py
+    ├── archive/
+    │   └── original_streamlit_app.py
+    ├── data/
+    │   ├── README_data.md
+    │   └── sample_input.csv
+    ├── images/
+    │   ├── 01_streamlit_application_overview.png
+    │   ├── 02_forecast_results_and_interpretation.png
+    │   ├── 03_model_performance_summary.png
+    │   └── 04_csv_upload_workflow.png
+    ├── models/
+    │   ├── electricity_rnn_model.keras
+    │   ├── model_metadata.json
+    │   └── scaler.pkl
+    ├── notebooks/
+    │   ├── electricity_consumption_forecasting.ipynb
+    │   └── archive/
+    │       └── Code_original.ipynb
+    ├── outputs/
+    │   ├── actual_vs_predicted.png
+    │   ├── baseline_comparison.csv
+    │   ├── consumption_trend.png
+    │   ├── data_quality_report.json
+    │   ├── error_distribution.png
+    │   ├── forecast_plot.png
+    │   ├── model_metrics.json
+    │   ├── next_24_hour_forecast.csv
+    │   ├── residual_plot.png
+    │   ├── test_predictions.csv
+    │   ├── training_curve.png
+    │   └── training_history.csv
+    ├── scripts/
+    │   └── download_tetouan_data.py
+    ├── src/
+    │   ├── config.py
+    │   ├── data_preprocessing.py
+    │   ├── feature_engineering.py
+    │   ├── forecasting_pipeline.py
+    │   ├── model_evaluation.py
+    │   ├── model_training.py
+    │   ├── sequence_generation.py
+    │   └── visualization.py
+    ├── tests/
+    │   ├── conftest.py
+    │   ├── test_preprocessing.py
+    │   └── test_sequences.py
+    ├── .gitignore
+    ├── Dockerfile
+    ├── LICENSE
+    ├── PROJECT_AUDIT.md
+    ├── README.md
+    ├── README_HOSTING.md
+    ├── requirements-dev.txt
+    ├── requirements.txt
+    ├── run_local.bat
+    ├── run_local.sh
+    └── train_model.py
 ```
 
-## Testing and CI
+---
 
-Run lightweight tests:
+## Run Locally
 
-```bash
+Use Python 3.12 to match the tested local and deployment environments.
+
+### Windows Command Prompt
+
+Clone the repository and enter the project folder:
+
+```bat
+git clone https://github.com/unit-mole/simple-rnn-projects.git
+
+cd simple-rnn-projects\01-electricity-consumption-forecasting
+```
+
+Create and activate the virtual environment:
+
+```bat
+python -m venv "%USERPROFILE%\venvs\simple-rnn"
+
+call "%USERPROFILE%\venvs\simple-rnn\Scripts\activate.bat"
+```
+
+A short environment path is recommended on Windows to avoid long-path issues
+with deeply nested dependency folders.
+
+Install the project and development dependencies:
+
+```bat
+python -m pip install --upgrade pip setuptools wheel
+
+python -m pip install -r requirements-dev.txt
+```
+
+Run the automated tests:
+
+```bat
 python -m pytest -q
+
+python -m compileall src app scripts tests train_model.py
 ```
 
-Check Python syntax:
+Launch the Streamlit application:
 
-```bash
-python -m compileall src app train_model.py
+```bat
+python -m streamlit run app\streamlit_app.py
 ```
 
-The GitHub Actions workflow is located at:
+Open the local address displayed by Streamlit, normally:
 
 ```text
-.github/workflows/electricity-rnn-ci.yml
+http://localhost:8501
 ```
 
-It runs only when files related to the electricity project or its workflow are
-changed.
+### Future local runs
+
+```bat
+cd simple-rnn-projects\01-electricity-consumption-forecasting
+
+call "%USERPROFILE%\venvs\simple-rnn\Scripts\activate.bat"
+
+python -m streamlit run app\streamlit_app.py
+```
+
+---
+
+## Optional Retraining
+
+The included saved model runs without retraining.
+
+Retrain on the included demonstration sample:
+
+```bat
+python train_model.py --epochs 60 --batch-size 64
+```
+
+Retrain on a compatible hourly CSV:
+
+```bat
+python train_model.py ^
+  --data data\your_dataset.csv ^
+  --timestamp-column timestamp ^
+  --target-column consumption_kwh ^
+  --frequency h
+```
+
+Retraining overwrites the model artifacts in `models/` and regenerates the
+evaluation outputs in `outputs/`.
+
+---
+
+## Deployment
+
+The application is deployed on Streamlit Community Cloud and connected directly
+to the `main` branch of this GitHub repository.
+
+**Live application:**  
+[Open Electricity Consumption Forecasting](https://simple-rnn-projects-8mxgmrutejhv5mgxnddvra.streamlit.app/)
+
+**Repository:**
+
+```text
+unit-mole/simple-rnn-projects
+```
+
+**Branch:**
+
+```text
+main
+```
+
+**Streamlit entrypoint:**
+
+```text
+01-electricity-consumption-forecasting/app/streamlit_app.py
+```
+
+Changes pushed to the relevant project files on the `main` branch automatically
+trigger a Streamlit application update.
+
+See [`README_HOSTING.md`](README_HOSTING.md) for deployment configuration,
+maintenance instructions, and troubleshooting guidance.
+
+---
+
+## Data and Repository Safety
+
+- The committed demonstration data is synthetic and privacy-safe.
+- No company, customer, billing, or grid-operational data is included.
+- Only a small sample dataset is committed for testing and demonstration.
+- Virtual environments, caches, local logs, private data, and secrets are excluded through `.gitignore`.
+- Streamlit secrets must not be committed to GitHub.
+- The saved model, scaler, and metadata are required for inference and should remain under `models/`.
+
+---
 
 ## Original-Code Improvements
 
-The original uploaded implementation was preserved under `archive/`, while the
-portfolio version was strengthened in the following ways:
+The original supplied implementation is preserved under `archive/`. The
+portfolio version improves it by:
 
-- Replaced fixed random recurrent weights plus ridge regression with a
-  trainable Keras `SimpleRNN`.
-- Removed the misleading treatment of a transformer oil-temperature target as
-  electricity consumption.
-- Added chronological train, validation, and test partitions.
-- Fitted scaling only on the training target.
-- Added transparent timestamp, duplicate, missing-value, and outlier handling.
-- Added known-at-forecast-time calendar features.
-- Added naive, seasonal-naive, and moving-average baselines.
-- Added MAE, RMSE, MAPE, sMAPE, R², and residual diagnostics.
-- Added reusable model persistence and forecast inference.
-- Added a recruiter-friendly Streamlit application.
-- Added tests, CI, hosting instructions, and a detailed project README.
+- Replacing fixed random recurrent weights plus ridge regression with a
+  trainable Keras `SimpleRNN`
+- Removing the misleading treatment of a transformer oil-temperature target as
+  electricity consumption
+- Adding chronological train, validation, and test partitions
+- Fitting target scaling only on the training partition
+- Adding transparent timestamp, duplicate, missing-value, and outlier handling
+- Adding known-at-forecast-time calendar features
+- Adding naive, seasonal-naive, and moving-average baselines
+- Adding MAE, RMSE, MAPE, sMAPE, R², and residual diagnostics
+- Adding reusable model persistence and forecasting inference
+- Adding a recruiter-friendly Streamlit application
+- Adding tests, CI, hosting documentation, and portfolio screenshots
 
-See [`PROJECT_AUDIT.md`](PROJECT_AUDIT.md) for the technical audit.
+See [`PROJECT_AUDIT.md`](PROJECT_AUDIT.md) for the detailed technical audit.
+
+---
+
+## Known Limitations
+
+- The committed training data is synthetic, which limits external validity.
+- Recursive forecasts can accumulate one-step prediction errors.
+- The application does not currently provide prediction intervals.
+- Weather columns exist in the sample but are not yet used by the saved model.
+- Holidays, tariffs, outages, and operating events are not modeled.
+- A single chronological split is less robust than rolling-origin backtesting.
+- The saved metrics should not be generalized to production electricity systems.
+- Production use would require governed real data, domain validation, monitoring, and retraining.
+
+---
 
 ## Future Improvements
 
-- Retrain and validate on an approved real electricity-consumption dataset.
-- Add forecasted weather, holidays, tariffs, and operating events.
-- Add rolling-origin backtesting across multiple time folds.
-- Compare Simple RNN performance with GRU, LSTM, temporal CNN, XGBoost, and
-  statistical forecasting models.
-- Implement direct multi-output forecasting rather than recursive prediction.
-- Add prediction intervals and uncertainty calibration.
-- Add peak-weighted business metrics.
-- Add drift monitoring and scheduled retraining.
-- Add automated model-artifact smoke tests in CI.
-- Add final local and hosted Streamlit screenshots.
+- Retrain and validate on approved real electricity-consumption data
+- Add forecasted weather, holidays, tariffs, outages, and operating events
+- Add rolling-origin backtesting across multiple temporal folds
+- Compare Simple RNN with GRU, LSTM, temporal CNN, XGBoost, and statistical models
+- Implement direct multi-output forecasting rather than recursive prediction
+- Add prediction intervals and uncertainty calibration
+- Add peak-weighted business metrics
+- Add model and data-drift monitoring
+- Add scheduled retraining and model-version tracking
+- Add a model-artifact smoke test to CI
+
+---
 
 ## Skills Demonstrated
 
-- Time-series data validation
-- Chronological model evaluation
-- Data-leakage prevention
-- Calendar feature engineering
-- Sequence and window generation
-- Simple RNN architecture design
-- Regression and forecasting metrics
-- Forecast-baseline benchmarking
-- Residual and error analysis
-- Recursive multi-step forecasting
-- Keras model persistence
-- Reusable inference pipelines
-- Streamlit application development
-- CSV upload and downloadable outputs
-- Unit testing and GitHub Actions
-- Deployment-ready ML project organization
-- Business interpretation of demand forecasts
+`Time-Series Forecasting` · `Simple RNN` · `Recurrent Neural Networks` ·
+`Chronological Validation` · `Data-Leakage Prevention` · `Sequence Generation` ·
+`Calendar Feature Engineering` · `Baseline Benchmarking` · `Regression Metrics` ·
+`Residual Analysis` · `Recursive Forecasting` · `TensorFlow` · `Keras` ·
+`scikit-learn` · `Streamlit` · `Model Persistence` · `Testing` · `CI/CD` ·
+`Deployment` · `Business Interpretation`
 
-## Portfolio Positioning
+---
 
-**One-line description:** Simple RNN electricity-demand forecasting pipeline
-with chronological validation, baseline benchmarking, recursive forecasts, and
-an interactive Streamlit application.
+## Portfolio Description
 
-**Pinned repository description:** Six-project Simple RNN portfolio featuring
-time-series forecasting and NLP workflows; the first completed case study
-forecasts electricity demand using leakage-aware sequence generation, Keras,
-baseline comparison, residual analysis, and Streamlit deployment.
+**One-line description**
+
+> Built and deployed a Simple RNN electricity-demand forecasting pipeline with
+> chronological validation, transparent baseline comparison, recursive
+> multi-hour forecasts, and a Streamlit application.
+
+**Pinned-repository description**
+
+> Simple RNN portfolio featuring an end-to-end electricity forecasting project
+> with time-series validation, training-only scaling, sequence generation,
+> baseline benchmarking, residual diagnostics, CSV upload, testing, CI/CD, and
+> Streamlit deployment.
 
 This project supports a transition from Quality Data Scientist to broader Data
-Science, Machine Learning, Applied AI, Analytics Engineering, and Quality
-Analytics roles by demonstrating the ability to convert sequential operational
-data into a reproducible predictive workflow and decision-oriented application.
+Science, Machine Learning, Applied AI, Analytics Engineering, Business
+Intelligence, and Quality Analytics roles by demonstrating how sequential
+operational data can be converted into a reproducible predictive workflow and
+decision-oriented application.
+
+---
 
 ## Responsible Use
 
 This repository is a portfolio demonstration. The included model is not
-validated for production grid operations, billing, energy trading, or
-safety-critical control. Forecasts should not be used for operational decisions
-without real-data validation, uncertainty analysis, monitoring, and domain
-review.
+validated for production grid operations, electricity billing, energy trading,
+or safety-critical control. Forecasts should not be used for operational
+decisions without real-data validation, uncertainty analysis, monitoring, and
+domain review.
+
+---
 
 ## Author
 
 **Anmol Tripathi**  
-Quality Data Scientist transitioning toward Data Science, Machine Learning,
-Applied AI, Analytics Engineering, Business Intelligence, and Quality Analytics roles.
+Quality Data Scientist | Data Science | Machine Learning | Applied AI | Analytics
