@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.21-orange.svg)](https://www.tensorflow.org/)
 [![Keras](https://img.shields.io/badge/Keras-SimpleRNN-red.svg)](https://keras.io/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Demo%20Ready-red.svg)](README_HOSTING.md)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
 [![IMDb Simple RNN CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/imdb-simple-rnn-ci.yml/badge.svg)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/imdb-simple-rnn-ci.yml)
 
@@ -14,7 +14,8 @@ validation-selected decision threshold, an untouched test set, a strong TF-IDF b
 error analysis, saved model artifacts, automated tests, and an interactive Streamlit app.
 
 **Status:** Portfolio-ready  
-**Live demo:** `ADD-LIVE-STREAMLIT-URL-HERE`  
+**Live demo:** [Open the Streamlit application](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)  
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)  
 **Primary stack:** Python · TensorFlow/Keras · scikit-learn · pandas · Streamlit
 
 ---
@@ -60,16 +61,43 @@ The application produces:
 
 ## Application Preview
 
-Screenshots will be added after the deployed Streamlit application is tested.
+### 1. Application overview
 
-Recommended filenames:
+The overview presents the NLP objective, model scope, supported workflows, 80-token sequence-chunk configuration, and validation-selected sentiment threshold.
 
-```text
-images/01_streamlit_application_overview.png
-images/02_single_review_prediction.png
-images/03_batch_sentiment_workflow.png
-images/04_model_performance_and_error_analysis.png
-```
+![IMDb Simple RNN application overview](images/01_streamlit_application_overview.png)
+
+### 2. Single-review sentiment prediction
+
+Users can type or paste an individual movie review and generate a probability-based positive or negative sentiment prediction.
+
+![Single IMDb review sentiment prediction](images/02_single_review_prediction.png)
+
+The result includes:
+
+- predicted sentiment;
+- positive-sentiment probability;
+- predicted-class confidence;
+- confidence band;
+- interpretation text; and
+- processed-review and sequence details.
+
+### 3. Batch sentiment workflow
+
+Users can evaluate the included privacy-safe sample reviews or upload a compatible CSV file for batch classification.
+
+![IMDb batch sentiment workflow](images/03_batch_sentiment_workflow.png)
+
+The application summarizes the number of reviews scored, predicted sentiment distribution, low-confidence results, and provides a downloadable scored CSV file.
+
+### 4. Model-performance and error-analysis dashboard
+
+The performance section reports held-out classification metrics, compares the Simple RNN with majority and TF-IDF logistic-regression baselines, and presents model-diagnostic charts and selected classification errors.
+
+![IMDb model performance and error analysis](images/04_model_performance_and_error_analysis.png)
+
+---
+
 
 ---
 
@@ -357,12 +385,12 @@ review of ambiguous language is especially important.
 
 ## Streamlit Application
 
-The application supports four workflows:
+The deployed application supports four workflows:
 
-1. **Single Review** — type or paste a review.
-2. **Sample Reviews** — score included hand-written examples.
-3. **CSV Upload** — batch-score up to 1,000 reviews.
-4. **Model Performance** — inspect metrics, baselines, charts, and errors.
+1. **Single Review** — type or paste a movie review and receive an immediate sentiment prediction.
+2. **Sample Reviews** — score included hand-written examples and inspect their predicted sentiment distribution.
+3. **CSV Upload** — batch-score up to 1,000 reviews from a compatible file.
+4. **Model Performance** — inspect held-out metrics, baseline comparisons, diagnostic charts, and error-analysis examples.
 
 The app displays:
 
@@ -373,8 +401,12 @@ The app displays:
 - predicted-class confidence;
 - confidence band;
 - interpretation text;
-- batch sentiment distribution; and
+- batch sentiment distribution;
+- baseline comparison;
+- confusion matrix, ROC, precision–recall, training, and loss charts; and
 - downloadable scored CSV output.
+
+**Live application:** [Open the IMDb Sentiment Analysis application](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)
 
 ---
 
@@ -412,7 +444,11 @@ simple-rnn-projects/
     │   ├── README_data.md
     │   └── sample_reviews.csv
     ├── images/
-    │   └── README.md
+    │   ├── README.md
+    │   ├── 01_streamlit_application_overview.png
+    │   ├── 02_single_review_prediction.png
+    │   ├── 03_batch_sentiment_workflow.png
+    │   └── 04_model_performance_and_error_analysis.png
     ├── models/
     │   ├── imdb_simple_rnn_model.keras
     │   ├── tokenizer.json
@@ -524,20 +560,28 @@ probability aggregation, thresholding, and Python compilation.
 
 ## Deployment
 
-Streamlit Community Cloud is recommended because the project is a Python-native
-interactive ML demonstration and can deploy directly from GitHub.
+The application is deployed on Streamlit Community Cloud and connected directly to the `main` branch of this GitHub repository.
 
-Use:
+**Live application:**  
+[Open the IMDb Movie Review Sentiment Analysis application](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/)
+
+**Streamlit entry point:**
+
+```text
+03-imdb-data-analysis/app/streamlit_app.py
+```
+
+**Deployment configuration:**
 
 ```text
 Repository: unit-mole/simple-rnn-projects
 Branch: main
-Main file path: 03-imdb-data-analysis/app/streamlit_app.py
 Python: 3.12
 ```
 
-See [`README_HOSTING.md`](README_HOSTING.md) for the complete deployment and
-troubleshooting guide.
+Changes pushed to the relevant project files on the `main` branch automatically trigger a Streamlit application update.
+
+See [README_HOSTING.md](README_HOSTING.md) for deployment configuration, maintenance instructions, and troubleshooting guidance.
 
 ---
 
@@ -549,6 +593,7 @@ troubleshooting guide.
 - Error-analysis excerpts are intentionally short.
 - Virtual environments, caches, temporary exports, and secrets are ignored.
 - Streamlit secrets must never be committed.
+- Only the four curated application screenshots are stored under `images/`.
 
 ---
 
