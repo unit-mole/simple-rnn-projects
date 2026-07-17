@@ -61,13 +61,13 @@ The application produces:
 
 The overview presents the business objective, financial disclaimer, forecasting configuration, bundled Google stock sample, historical closing-price trend, and the next-session prediction workflow.
 
-![Google Stock Price Prediction application overview](images/01_streamlit_application_overview.png)
+![Google Stock Price Prediction application overview](./images/01_streamlit_application_overview.png)
 
 ### 2. Model performance and baseline comparison
 
 The model-performance section reports the Simple RNN evaluation metrics and compares the neural-network forecast against the previous-close and five-day mean-return baselines.
 
-![Google Stock Simple RNN performance and baseline comparison](images/03_model_performance_and_baseline_comparison.png)
+![Google Stock Simple RNN performance and baseline comparison](./images/03_model_performance_and_baseline_comparison.png)
 
 The evaluation dashboard helps demonstrate whether the Simple RNN adds measurable value beyond simple time-series forecasting rules.
 
@@ -75,7 +75,7 @@ The evaluation dashboard helps demonstrate whether the Simple RNN adds measurabl
 
 Users can upload a compatible CSV file, inspect the cleaned data, generate a next-session forecast, review the backtest output, and download the generated forecast and prediction files.
 
-![Google stock CSV upload and download workflow](images/04_csv_upload_and_download_workflow.png)
+![Google stock CSV upload and download workflow](./images/04_csv_upload_and_download_workflow.png)
 
 ---
 
@@ -139,6 +139,12 @@ Sample period:
 The original project downloaded `GOOG` through `yfinance` and standardized the series to `Date` and `Close`; therefore, `Close` remains the default target in this version. Uploaded datasets may also contain `Adj Close`, Open, High, Low, and Volume, but the saved model currently uses the selected close-price sequence only.
 
 See [`data/README_data.md`](data/README_data.md) for schema and data-safety guidance.
+
+### Historical Google closing-price trend
+
+The bundled sample preserves chronological order and shows the price regime used for the portfolio backtest and next-session demonstration forecast.
+
+![Historical Google closing-price trend](./outputs/stock_price_trend.png)
 
 ---
 
@@ -255,6 +261,34 @@ The Simple RNN reduces RMSE by approximately **0.40%** versus the previous-close
 
 ---
 
+## Model Evaluation and Diagnostics
+
+### Actual versus predicted closing price
+
+This chart compares the Simple RNN forecast with the observed closing price across the untouched chronological test period. The close alignment reflects low price-level error, while the remaining gaps show that next-session movement remains difficult to predict precisely.
+
+![Actual versus predicted Google closing price](./outputs/actual_vs_predicted.png)
+
+### Baseline comparison
+
+The baseline chart compares the Simple RNN with the previous-close forecast and the five-day mean-return forecast. The small improvement over the previous-close baseline is reported transparently rather than overstated.
+
+![Simple RNN and baseline RMSE comparison](./outputs/baseline_comparison.png)
+
+### Residual analysis
+
+Residuals are calculated as `Actual Close − Predicted Close`. Values above zero indicate underprediction, while values below zero indicate overprediction. The chart helps reveal forecast bias and periods with larger errors.
+
+![Google stock forecast residual analysis](./outputs/residual_plot.png)
+
+### Training and validation loss
+
+The loss curve shows how the Huber objective changed across training and validation epochs. Early stopping retains the model state with the strongest validation performance.
+
+![Simple RNN training and validation loss](./outputs/training_curve.png)
+
+---
+
 ## Demonstration Forecast
 
 ```text
@@ -265,6 +299,12 @@ Forecast horizon:          Next trading session
 ```
 
 This historical demonstration output is not a current market prediction and is not financial advice.
+
+### Next-session forecast visualization
+
+The final observed closing prices are shown together with the reconstructed next-session Simple RNN forecast.
+
+![Google stock next-session forecast](./outputs/forecast_plot.png)
 
 ---
 
@@ -323,6 +363,7 @@ simple-rnn-projects/
     │   ├── README_data.md
     │   └── sample_google_stock_data.csv
     ├── images/
+    │   ├── README.md
     │   ├── 01_streamlit_application_overview.png
     │   ├── 03_model_performance_and_baseline_comparison.png
     │   └── 04_csv_upload_and_download_workflow.png
