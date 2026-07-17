@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Notebook
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local downloads and caches
+.keras/
+cache/
+downloads/
+logs/
+tmp/
+temp/
+
+# Full/raw datasets and local exports
+data/raw/
+data/full/
+data/*.zip
+data/*train*.csv
+data/*test*.csv
+outputs/runs/
+outputs/local_*
+*.xlsx
+
+# Keep portfolio artifacts explicitly included
+!data/sample_reviews.csv
+!outputs/*.csv
+!outputs/*.json
+!outputs/*.png
+!models/*.keras
+!models/*.json
