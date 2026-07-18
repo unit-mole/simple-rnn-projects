@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import os
 import re
 import json
@@ -15,7 +15,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
-APP_TITLE = "Word Embedding Lab — Synthetic to Real Text"
+APP_TITLE = "Word Embedding Lab â€” Synthetic to Real Text"
 RUN_ID = datetime.now().strftime("%Y%m%d_%H%M%S")
 OUTPUT_DIR = Path("outputs") / f"word_embedding_streamlit_{RUN_ID}"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

@@ -43,8 +43,10 @@ jobs:
       - name: Check dependency consistency
         run: python -m pip check
 
-      - name: Compile project files
-        run: python -m compileall app src tests train_model.py validate_project.py
+      - name: Compile active project files
+        run: |
+          python -m py_compile app/streamlit_app.py train_model.py validate_project.py
+          python -m compileall -q src tests
 
       - name: Run automated tests
         run: python -m pytest -q
