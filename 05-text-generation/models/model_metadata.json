@@ -24,5 +24,10 @@
     "top_k": 20,
     "random_seed": 42
   },
-  "responsible_use": "Educational portfolio demonstration only; human review is required."
+  "responsible_use": "Educational portfolio demonstration only; human review is required.",
+  "framework_version": "2.10.0",
+  "model_parameters": 13159,
+  "model_size_bytes": 56470,
+  "model_sha256": "d63117622a91faa27ed5ce39fb7b600878245adbd3777b759d38e9cc26fffc7a",
+  "corpus_sha256": "967ec83cc94618ecc5e4368a90fec386a96a0eb4836bfe964d0f95792a814878"
 }

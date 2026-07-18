@@ -14,7 +14,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.text_generator import generate_text, load_generation_bundle
+from src.text_generator import generate_text, load_generation_bundle, sha256_file
 
 
 REQUIRED_PATHS = [
@@ -54,6 +54,7 @@ REQUIRED_PATHS = [
     "tests/test_preprocessing.py",
     "tests/test_generation.py",
     "tests/test_model_loading.py",
+    "tests/test_artifact_consistency.py",
     "train_model.py",
 ]
 
@@ -89,12 +90,19 @@ def validate_project(*, write_report: bool = True) -> dict:
         metadata_ok = required_metadata.issubset(metadata)
         vocabulary_ok = int(vocabulary["vocabulary_size"]) == int(metadata["vocabulary_size"])
         metrics_ok = abs(float(metrics["validation_loss"]) - float(metadata["validation_loss"])) < 1e-9
-        passed = metadata_ok and vocabulary_ok and metrics_ok
+        model_path = PROJECT_ROOT / "models/text_generation_simple_rnn_model.pt"
+        corpus_path = PROJECT_ROOT / "data/sample_text.txt"
+        checksum_ok = (
+            metadata.get("model_sha256") == sha256_file(model_path)
+            and metadata.get("corpus_sha256") == sha256_file(corpus_path)
+        )
+        model_size_ok = int(metadata.get("model_size_bytes", -1)) == model_path.stat().st_size
+        passed = metadata_ok and vocabulary_ok and metrics_ok and checksum_ok and model_size_ok
         details = (
             f"Vocabulary={metadata.get('vocabulary_size')}, sequence_length={metadata.get('sequence_length')}, "
-            f"validation_loss={metadata.get('validation_loss'):.4f}"
+            f"validation_loss={metadata.get('validation_loss'):.4f}, checksums=verified"
             if passed
-            else "Metadata, vocabulary, or metrics are inconsistent."
+            else "Metadata, vocabulary, metrics, model size, or checksums are inconsistent."
         )
     except Exception as exc:  # pragma: no cover - diagnostic path
         passed = False

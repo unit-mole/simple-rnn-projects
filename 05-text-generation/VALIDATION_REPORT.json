@@ -1,6 +1,6 @@
 {
   "project": "05-text-generation",
-  "validated_at_utc": "2026-07-18T00:02:28.454531+00:00",
+  "validated_at_utc": "2026-07-18T00:30:24.208503+00:00",
   "passed": true,
   "checks": [
     {
@@ -11,7 +11,7 @@
     {
       "check": "artifact_metadata_consistency",
       "passed": true,
-      "details": "Vocabulary=71, sequence_length=50, validation_loss=1.9543"
+      "details": "Vocabulary=71, sequence_length=50, validation_loss=1.9543, checksums=verified"
     },
     {
       "check": "notebook_integrity",

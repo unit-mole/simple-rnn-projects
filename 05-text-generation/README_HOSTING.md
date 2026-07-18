@@ -60,8 +60,9 @@ From the repository root:
 
 ```bat
 cd 05-text-generation
-py -3.12 -m venv .venv
-.venv\Scripts\activate.bat
+if not exist "C:\venvs" mkdir "C:\venvs"
+python -m venv "C:\venvs\textgen"
+call "C:\venvs\textgen\Scripts\activate.bat"
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install -r requirements.txt -r requirements-ci.txt
 python -m pytest -q
@@ -120,17 +121,17 @@ Test:
 - Model-performance charts
 - Mobile and desktop layout
 
-The values displayed in the app should match `models/model_metadata.json`.
+The values displayed in the app should match `models/model_metadata.json`, and the model checksum validation should pass during startup.
 
-## 5. Add the Live URL
+## 5. Live Application URL
 
-Update the following README line:
+The deployed application is available at:
 
 ```text
-**Live demo:** ADD_STREAMLIT_APP_URL_AFTER_DEPLOYMENT
+https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/
 ```
 
-You can then share the link through:
+Share this link through:
 
 - GitHub repository description
 - GitHub pinned repository
@@ -176,7 +177,7 @@ Do not move `app/streamlit_app.py` outside the provided structure. The applicati
 
 ### Dependency file is not found
 
-Keep `app/requirements.txt` beside the Streamlit entrypoint. It mirrors the project-level runtime dependencies.
+Keep `app/requirements.txt` beside the Streamlit entrypoint. It mirrors the pinned project-level runtime dependencies used by the deployed application.
 
 ### Deployment takes too long
 

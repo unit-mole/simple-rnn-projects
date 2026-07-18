@@ -43,9 +43,12 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install -r requirements-ci.txt
 
+      - name: Verify dependency consistency
+        run: python -m pip check
+
       - name: Compile Python files
         run: |
-          python -m compileall app src train_model.py validate_project.py
+          python -m compileall app src tests train_model.py validate_project.py
 
       - name: Run automated tests
         run: python -m pytest -q

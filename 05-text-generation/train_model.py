@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
 import pandas as pd
+import torch
 
 from src.data_preprocessing import load_text_corpus
 from src.model_evaluation import (
@@ -25,6 +27,15 @@ from src.visualization import (
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parent
+
+
+def sha256_file(path: Path) -> str:
+    """Return a SHA-256 digest for a generated artifact."""
+    digest = hashlib.sha256()
+    with path.open("rb") as file_handle:
+        for chunk in iter(lambda: file_handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -84,6 +95,11 @@ def main() -> None:
         "validation_accuracy": float(validation_accuracy),
         "validation_perplexity": perplexity_from_loss(validation_loss),
         "framework": "PyTorch",
+        "framework_version": torch.__version__,
+        "model_parameters": int(sum(parameter.numel() for parameter in model.parameters())),
+        "model_size_bytes": int(model_path.stat().st_size),
+        "model_sha256": sha256_file(model_path),
+        "corpus_sha256": sha256_file(args.corpus),
         "default_generation": {
             "length": 300,
             "temperature": 0.7,

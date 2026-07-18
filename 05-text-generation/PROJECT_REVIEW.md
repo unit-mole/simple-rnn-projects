@@ -46,3 +46,18 @@ The supplied notebook and Streamlit application implemented **character-level ne
 ## Final Positioning
 
 The revised repository should be presented as an educational, deployment-ready NLP project that demonstrates the foundations of recurrent sequence modeling before moving to LSTM, GRU, and Transformer architectures. It should not be described as a production language model or factual generative-AI system.
+
+## Post-Deployment Repository Review
+
+After the application was deployed, the project received an additional engineering pass focused on reproducibility and portfolio maintenance:
+
+- Pinned the runtime dependency versions used by the deployed application.
+- Updated the Windows launcher to use the short-path `C:\venvs\textgen` environment and fall back to `.venv` only when available.
+- Added model and corpus SHA-256 checksums to `model_metadata.json`.
+- Added model-size and parameter-count metadata.
+- Added startup checks that fail clearly when the checkpoint, vocabulary, or metadata do not match.
+- Added dedicated artifact-consistency tests.
+- Added `pip check` and test-file compilation to GitHub Actions.
+- Corrected generated-text metrics so they describe the generated continuation rather than the seed plus continuation.
+- Added direct GitHub and live-application links inside the Streamlit interface.
+- Updated the README and hosting guide with the deployed URL and corrected Windows setup.

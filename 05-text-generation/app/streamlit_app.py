@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 
@@ -19,6 +18,8 @@ from src.text_generator import generate_text, load_generation_bundle
 MODEL_DIR = PROJECT_ROOT / "models"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
 PROMPTS_PATH = PROJECT_ROOT / "data" / "sample_prompts.csv"
+GITHUB_URL = "https://github.com/unit-mole/simple-rnn-projects/tree/main/05-text-generation"
+LIVE_APP_URL = "https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/"
 
 st.set_page_config(
     page_title="Simple RNN Text Generator",
@@ -44,13 +45,6 @@ def load_sample_prompts() -> pd.DataFrame:
             "seed_prompt": ["Alice was beginning", "The White Rabbit"],
         }
     )
-
-
-@st.cache_data(show_spinner=False)
-def load_json(path: Path) -> dict:
-    if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))
-    return {}
 
 
 @st.cache_data(show_spinner=False)
@@ -123,6 +117,7 @@ with st.sidebar:
 
     st.divider()
     st.caption("The app loads a pre-trained model and never retrains during startup.")
+    st.markdown(f"[View source code on GitHub]({GITHUB_URL})")
 
 
 generation_tab, performance_tab, overview_tab = st.tabs(
@@ -145,6 +140,13 @@ with generation_tab:
             f"Character IDs → Embedding ({metadata['embedding_dim']}) → "
             f"Simple RNN ({metadata['rnn_units']}) → Dropout → Vocabulary logits"
         )
+        artifact_details = []
+        if metadata.get("model_parameters") is not None:
+            artifact_details.append(f"{int(metadata['model_parameters']):,} parameters")
+        if metadata.get("model_size_bytes") is not None:
+            artifact_details.append(f"{int(metadata['model_size_bytes']) / 1024:.1f} KB checkpoint")
+        if artifact_details:
+            st.caption(" · ".join(artifact_details))
         with st.expander("How temperature works", expanded=True):
             st.write(
                 "Lower temperature concentrates probability on likely characters and usually "
@@ -168,9 +170,10 @@ with generation_tab:
                         random_seed=int(random_seed),
                     )
                 st.text_area("Generated text", value=generated, height=360)
-                metrics = generated_text_metrics(generated)
+                continuation = generated[-generation_length:]
+                metrics = generated_text_metrics(continuation)
                 metric_columns = st.columns(3)
-                metric_columns[0].metric("Characters", metrics["characters"])
+                metric_columns[0].metric("Generated characters", metrics["characters"])
                 metric_columns[1].metric(
                     "Unique trigram ratio", f"{metrics['unique_trigram_ratio']:.1%}"
                 )
@@ -284,3 +287,10 @@ Interactive Streamlit inference""",
         "The project is intentionally positioned as an educational generative sequence-modeling "
         "system that explains the foundations preceding LSTM, GRU, and Transformer models."
     )
+
+
+st.divider()
+st.caption(
+    "Educational portfolio project by Anmol Tripathi · "
+    f"[GitHub source]({GITHUB_URL}) · [Live application]({LIVE_APP_URL})"
+)

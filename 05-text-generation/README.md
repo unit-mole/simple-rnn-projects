@@ -48,6 +48,8 @@ The model is not a search engine or a large language model. It learns statistica
 - Embedding layer followed by a PyTorch `nn.RNN` Simple RNN
 - Cross-entropy training with Adam, gradient clipping, validation monitoring, and early stopping
 - Saved model, vocabulary, training configuration, and model metadata
+- SHA-256 checksums and cross-artifact consistency validation for the committed model and corpus
+- Pinned runtime dependencies for reproducible local and Streamlit deployments
 - Temperature, top-k, and reproducible random-seed sampling
 - Perplexity, next-character accuracy, generated-text metrics, and qualitative analysis
 - Three-character Markov baseline comparison
@@ -265,6 +267,8 @@ The included model was evaluated on the chronological validation segment.
 | Training sequences | 13,598 |
 | Validation sequences | 1,497 |
 | Vocabulary size | 71 |
+| Trainable parameters | 13,159 |
+| Saved checkpoint size | 55.1 KB |
 | Validation loss | **1.9543** |
 | Validation next-character accuracy | **44.09%** |
 | Validation perplexity | **7.06** |
@@ -307,6 +311,8 @@ The application supports:
 - Top-k control
 - Random-seed control
 - Pre-trained model loading through `st.cache_resource`
+- Model checkpoint, vocabulary, metadata, parameter-count, and checksum validation
+- Direct links to the GitHub source and live application
 - Downloadable generated text
 - Vocabulary, sequence length, validation loss, and perplexity display
 - Learning-curve and temperature-analysis plots
@@ -449,11 +455,7 @@ Launch Streamlit:
 python -m streamlit run app\streamlit_app.py
 ```
 
-You can also double-click:
-
-```text
-run_app.bat
-```
+You can also double-click `run_app.bat`. The updated batch file first looks for the recommended short-path environment at `C:\venvs\textgen` and then falls back to a project-local `.venv` when available.
 
 Open the local URL shown by Streamlit, normally:
 
@@ -533,6 +535,7 @@ The project includes tests for:
 - Vocabulary encoding and unknown-character handling
 - Sequence-window preparation
 - Deterministic sampling
+- Model, vocabulary, metadata, checkpoint-size, and SHA-256 checksum consistency
 - Temperature validation
 - Seed-context preparation
 - Saved-model loading and inference
@@ -548,9 +551,10 @@ The GitHub Actions workflow runs when the text-generation project or its workflo
 1. Checks out the repository.
 2. Configures Python 3.12.
 3. Installs project and CI dependencies.
-4. Compiles Python files.
-5. Runs pytest.
-6. Runs the saved-model and project-artifact validation.
+4. Runs `pip check` to detect dependency conflicts.
+5. Compiles application, source, test, training, and validation files.
+6. Runs pytest.
+7. Runs saved-model, checksum, and project-artifact validation.
 
 ---
 
