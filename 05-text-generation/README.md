@@ -4,7 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-Simple%20RNN-orange.svg)](https://pytorch.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
-[![Text Generation Simple RNN CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/text-generation-rnn-ci.yml/badge.svg)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/text-generation-rnn-ci.yml)
+[![Text Generation Simple RNN CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/text-generation-rnn-ci.yml/badge.svg?branch=main&event=push)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/text-generation-rnn-ci.yml?query=branch%3Amain+event%3Apush)
 
 An end-to-end NLP and generative sequence-modeling project that uses a **character-level Simple Recurrent Neural Network** to predict the next character and generate new text from a seed prompt. The project includes leakage-aware preprocessing, reusable training and inference modules, a saved PyTorch model, quantitative and qualitative evaluation, automated tests, GitHub Actions CI, and an interactive Streamlit application.
 
@@ -61,31 +61,31 @@ The model is not a search engine or a large language model. It learns statistica
 
 ## Application Preview
 
-The preview images below mirror the layout and content of the included Streamlit application.
+The screenshots below were captured directly from the deployed Streamlit application and show the complete user workflow from configuration through model evaluation.
 
-### 1. Text-generation interface
+### 1. Application overview
 
-Users can choose a sample prompt or enter a custom seed, control generation length, temperature, top-k sampling, and the random seed, and then download the generated output.
+The overview presents the project objective, model scope, responsible-use guidance, saved-model summary, and navigation across the text-generation workflow.
 
-![Text generation interface](images/01_text_generation_interface.png)
+![Character-Level Text Generation application overview](images/01_application_overview.png)
 
-### 2. Generated-text result
+### 2. Generation controls
 
-The application generates text one character at a time and reports simple repetition and diversity indicators for qualitative review.
+Users can select a sample prompt or enter custom seed text, then configure generation length, temperature, top-k filtering, and the random seed before running inference.
 
-![Generated text result](images/02_generated_text_result.png)
+![Text-generation controls](images/02_generation_controls.png)
 
-### 3. Model-performance dashboard
+### 3. Generated-text result
 
-The performance tab displays validation loss, next-character accuracy, perplexity, learning curves, temperature analysis, and the Markov baseline comparison.
+The application generates a continuation one character at a time using the saved Simple RNN model. It also reports lightweight diversity and repetition indicators and provides a downloadable text output.
 
-![Model performance dashboard](images/03_model_performance_dashboard.png)
+![Generated-text result and qualitative indicators](images/03_generated_text_result.png)
 
-### 4. Project-overview tab
+### 4. Model-performance summary
 
-The overview tab explains the complete sequence-modeling workflow, portfolio skills, and honest project limitations.
+The performance view presents validation loss, next-character accuracy, perplexity, model configuration, temperature behavior, and the Markov baseline comparison.
 
-![Project overview](images/04_project_overview.png)
+![Text-generation model-performance summary](images/04_model_performance_summary.png)
 
 ---
 
@@ -275,13 +275,47 @@ The included model was evaluated on the chronological validation segment.
 
 ### Metric interpretation
 
-- **Cross-entropy loss** evaluates how much probability the model assigns to the correct next character.
-- **Next-character accuracy** is the percentage of validation windows where the highest-probability character is correct.
-- **Perplexity** is the exponential of average cross-entropy loss; lower values indicate a more concentrated and accurate next-character distribution.
-- **Generated samples** reveal repetition, spelling-like structure, punctuation behavior, and practical readability.
-- **Temperature comparison** shows how sampling configuration changes diversity and stability.
+- **Cross-entropy loss** measures how much probability the model assigns to the correct next character.
+- **Next-character accuracy** is the percentage of validation windows where the highest-probability character matches the actual next character.
+- **Perplexity** is the exponential of average cross-entropy loss. Lower perplexity indicates a more concentrated and accurate predictive distribution.
+- **Generated-sample analysis** reveals repetition, character diversity, punctuation behavior, spelling-like structure, and practical readability.
+- **Temperature analysis** shows how sampling settings change diversity and repetition.
 
-Text generation should never be evaluated from a single classification-style metric. Quantitative evaluation and human review are both required.
+Text generation cannot be assessed through one classification-style metric. Quantitative metrics, learning curves, multiple generated samples, and human review should be considered together.
+
+---
+
+## Model-Performance Analysis
+
+### Training and validation loss
+
+Training and validation loss decreased consistently across the 18 epochs. The lowest validation loss was **1.9543**, reached at the final saved checkpoint.
+
+![Simple RNN training and validation loss](images/05_training_validation_loss.png)
+
+### Training and validation accuracy
+
+Validation next-character accuracy improved as the model learned character transitions, punctuation behavior, and local word structure. The selected checkpoint achieved **44.09% validation accuracy**.
+
+![Simple RNN training and validation accuracy](images/06_training_validation_accuracy.png)
+
+### Temperature and generated-text diversity
+
+Unique-trigram ratio increases as temperature rises. Lower temperatures favor the most likely characters and therefore repeat familiar local patterns, while higher temperatures produce a broader range of character combinations.
+
+![Temperature effect on generated-text diversity](images/07_temperature_diversity_analysis.png)
+
+### Temperature and generated-text repetition
+
+Repeated-trigram ratio falls as temperature increases. This does not mean that the highest temperature is automatically best: reduced repetition can be accompanied by weaker spelling, grammar, and coherence.
+
+![Temperature effect on generated-text repetition](images/08_temperature_repetition_analysis.png)
+
+### Simple RNN and Markov baseline comparison
+
+The chart compares one representative Simple RNN sample generated at temperature `0.7` with the three-character Markov baseline. The Markov sample has higher trigram diversity in this run, while the RNN sample is more repetitive. These surface metrics do not directly measure coherence or semantic quality, so the generated samples must also be reviewed qualitatively.
+
+![Simple RNN and Markov baseline generated-sample comparison](images/09_rnn_markov_baseline_comparison.png)
 
 ---
 
@@ -341,10 +375,15 @@ simple-rnn-projects/
     │   ├── sample_prompts.csv
     │   └── sample_text.txt
     ├── images/
-    │   ├── 01_text_generation_interface.png
-    │   ├── 02_generated_text_result.png
-    │   ├── 03_model_performance_dashboard.png
-    │   ├── 04_project_overview.png
+    │   ├── 01_application_overview.png
+    │   ├── 02_generation_controls.png
+    │   ├── 03_generated_text_result.png
+    │   ├── 04_model_performance_summary.png
+    │   ├── 05_training_validation_loss.png
+    │   ├── 06_training_validation_accuracy.png
+    │   ├── 07_temperature_diversity_analysis.png
+    │   ├── 08_temperature_repetition_analysis.png
+    │   ├── 09_rnn_markov_baseline_comparison.png
     │   └── README.md
     ├── models/
     │   ├── text_generation_simple_rnn_model.pt
@@ -375,6 +414,7 @@ simple-rnn-projects/
     │   ├── text_preprocessing.py
     │   └── visualization.py
     ├── tests/
+    │   ├── test_artifact_consistency.py
     │   ├── test_generation.py
     │   ├── test_model_loading.py
     │   └── test_preprocessing.py

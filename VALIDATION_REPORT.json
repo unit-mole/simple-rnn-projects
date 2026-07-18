@@ -1,0 +1,6 @@
+{
+  "python_compile": "passed",
+  "pytest": "passed",
+  "required_root_files": true,
+  "required_project_files": true
+}

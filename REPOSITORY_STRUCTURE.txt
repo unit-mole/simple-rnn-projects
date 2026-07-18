@@ -1,0 +1,103 @@
+simple-rnn-projects/
+├── .github/
+│   └── workflows/
+│       └── electricity-rnn-ci.yml
+├── 01-electricity-consumption-forecasting/
+│   ├── .streamlit/
+│   │   └── config.toml
+│   ├── app/
+│   │   ├── requirements.txt
+│   │   └── streamlit_app.py
+│   ├── archive/
+│   │   └── original_streamlit_app.py
+│   ├── data/
+│   │   ├── README_data.md
+│   │   └── sample_input.csv
+│   ├── images/
+│   │   └── README.md
+│   ├── models/
+│   │   ├── electricity_rnn_model.keras
+│   │   ├── model_metadata.json
+│   │   └── scaler.pkl
+│   ├── notebooks/
+│   │   ├── archive/
+│   │   │   └── Code_original.ipynb
+│   │   └── electricity_consumption_forecasting.ipynb
+│   ├── outputs/
+│   │   ├── original_run/
+│   │   │   ├── absolute_error_boxplot.png
+│   │   │   ├── actual_vs_prediction_scatter.png
+│   │   │   ├── all_predictions.csv
+│   │   │   ├── baseline_comparison.csv
+│   │   │   ├── data_source_summary.csv
+│   │   │   ├── executive_summary.json
+│   │   │   ├── improvement_over_naive.csv
+│   │   │   ├── manifest.json
+│   │   │   ├── metrics.csv
+│   │   │   ├── model_card.csv
+│   │   │   ├── real_daily_average.png
+│   │   │   ├── real_first_14_days.png
+│   │   │   ├── real_forecast.png
+│   │   │   ├── real_full_series.png
+│   │   │   ├── real_predictions_preview.csv
+│   │   │   ├── residuals_by_stage.png
+│   │   │   └── rmse_comparison.png
+│   │   ├── actual_vs_predicted.png
+│   │   ├── baseline_comparison.csv
+│   │   ├── consumption_trend.png
+│   │   ├── data_quality_report.json
+│   │   ├── error_distribution.png
+│   │   ├── forecast_plot.png
+│   │   ├── model_metrics.json
+│   │   ├── next_24_hour_forecast.csv
+│   │   ├── residual_plot.png
+│   │   ├── test_predictions.csv
+│   │   ├── training_curve.png
+│   │   └── training_history.csv
+│   ├── scripts/
+│   │   └── download_tetouan_data.py
+│   ├── src/
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── data_preprocessing.py
+│   │   ├── feature_engineering.py
+│   │   ├── forecasting_pipeline.py
+│   │   ├── model_evaluation.py
+│   │   ├── model_training.py
+│   │   ├── sequence_generation.py
+│   │   └── visualization.py
+│   ├── tests/
+│   │   ├── conftest.py
+│   │   ├── test_preprocessing.py
+│   │   └── test_sequences.py
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── FILE_MANIFEST.csv
+│   ├── LICENSE
+│   ├── MONOREPO_INTEGRATION.md
+│   ├── PROJECT_AUDIT.md
+│   ├── README.md
+│   ├── README_HOSTING.md
+│   ├── requirements-dev.txt
+│   ├── requirements.txt
+│   ├── run_local.bat
+│   ├── run_local.sh
+│   └── train_model.py
+├── 02-google-stock-price-prediction/
+│   └── README.md
+├── 03-imdb-data-analysis/
+│   └── README.md
+├── 04-sms-spam-detection/
+│   └── README.md
+├── 05-text-generation/
+│   └── README.md
+├── 06-word-embedding/
+│   └── README.md
+├── .gitignore
+├── LICENSE
+├── PROJECT_ROADMAP.md
+├── README.md
+├── REPOSITORY_FILE_MANIFEST.csv
+├── REPOSITORY_SETUP_NOTES.md
+├── REPOSITORY_STRUCTURE.txt
+└── VALIDATION_REPORT.json

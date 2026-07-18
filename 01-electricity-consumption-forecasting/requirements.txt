@@ -1,9 +1,10 @@
-tensorflow>=2.18,<2.22
-keras>=3.8,<4
-streamlit>=1.41,<2
-pandas>=2.2,<3
-numpy>=1.26,<2.3
-scikit-learn>=1.5,<2
-matplotlib>=3.8,<4
-joblib>=1.4,<2
-requests>=2.32,<3
+# Exact deployment versions for Streamlit Community Cloud (Python 3.12)
+tensorflow==2.21.0
+keras==3.15.0
+streamlit==1.59.2
+pandas==2.3.3
+numpy==2.2.6
+scikit-learn==1.9.0
+matplotlib==3.11.0
+joblib==1.5.3
+requests==2.34.2
