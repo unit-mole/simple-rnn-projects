@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets
+.streamlit/secrets.toml
+.env
+
+# Training runs and large local corpora
+outputs/runs/
+data/private_*
+data/raw/
+*.log
+
+# Optional large checkpoints; keep the portfolio model below GitHub limits
+models/checkpoints/
+*.h5
+*.ckpt
+
+# Notebook checkpoints
+.ipynb_checkpoints/

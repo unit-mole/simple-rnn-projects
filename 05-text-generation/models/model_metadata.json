@@ -1,0 +1,28 @@
+{
+  "project_name": "Character-Level Text Generation using Simple RNN",
+  "model_type": "PyTorch nn.RNN (Simple RNN)",
+  "task": "next-character prediction",
+  "corpus_file": "sample_text.txt",
+  "corpus_characters": 45382,
+  "train_characters": 40843,
+  "validation_characters": 4539,
+  "training_sequences": 13598,
+  "validation_sequences": 1497,
+  "sequence_length": 50,
+  "step": 3,
+  "vocabulary_size": 71,
+  "embedding_dim": 32,
+  "rnn_units": 64,
+  "dropout_rate": 0.2,
+  "validation_loss": 1.9542904248935187,
+  "validation_accuracy": 0.4408817635270541,
+  "validation_perplexity": 7.058908420517671,
+  "framework": "PyTorch",
+  "default_generation": {
+    "length": 300,
+    "temperature": 0.7,
+    "top_k": 20,
+    "random_seed": 42
+  },
+  "responsible_use": "Educational portfolio demonstration only; human review is required."
+}

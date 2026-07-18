@@ -1,0 +1,13 @@
+{
+  "sequence_length": 50,
+  "step": 3,
+  "validation_fraction": 0.1,
+  "embedding_dim": 32,
+  "rnn_units": 64,
+  "dropout_rate": 0.2,
+  "batch_size": 256,
+  "epochs": 18,
+  "learning_rate": 0.002,
+  "patience": 3,
+  "random_seed": 42
+}

@@ -1,0 +1,12 @@
+model,summary,characters,unique_characters,unique_character_ratio,unique_trigram_ratio,repeated_trigram_ratio,alphabetic_ratio,whitespace_ratio,sample
+3-character Markov baseline,Captures short local transitions but has no recurrent hidden state.,419,44,0.10501193317422435,0.7817745803357314,0.21822541966426856,0.7374701670644391,0.18854415274463007,"Alice was beginning!” said go dow,” said pebble—’”
+
+As she Mouse I home, withe fan a quite a little swam sudden I hanger getherst her
+passaged sort out is, “Oh! the would! Our for herself as she did grow long,” this hipped it Sender a soon they
+_would do you knot them wish I then? Tell rought was thought once know,” Alice came, and Rome veraliam surese I’ve partwhen Alice! Head.
+
+“Cometice,) a little_—’”
+
+“Ah, I sur"
+Simple RNN,Learns a recurrent representation of the preceding character sequence.,419,26,0.06205250596658711,0.6187050359712231,0.38129496402877694,0.7780429594272077,0.21479713603818615,"Alice was beginning mosered is she sat shitg of thing all she now, she
+wher painge she and waid the mome she cound ig to growe ard foos the the readed she were it of shat co litoke if as at ind antarst it maser as anighton and and as she seery was allon’t saily oning it reat a let but de ald the wo calle lich wat with and of bed and it wore to keought selat to snose the ritting aid the was bet it wisher, what and pl"
