@@ -1,122 +1,111 @@
 # Word Embedding and NLP Representation Learning
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-Neural%20Embeddings-orange.svg)](https://pytorch.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Deploy%20Pending-lightgrey.svg)](#deployment)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange.svg)](https://pytorch.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
 [![Word Embedding CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/word-embedding-rnn-ci.yml/badge.svg)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/word-embedding-rnn-ci.yml)
 
-An end-to-end NLP representation-learning project that converts words into dense learned
-vectors with a neural skip-gram model. The project demonstrates deterministic text
-preprocessing, vocabulary management, sentence-bounded context-window generation,
-PyTorch embedding training, nearest-word analysis, sentence-vector construction,
-PCA visualization, semantic search, artifact management, automated testing, and
-Streamlit deployment.
+An end-to-end NLP representation-learning project that converts words into dense numerical vectors using a neural skip-gram model. The project combines deterministic text preprocessing, vocabulary management, sentence-bounded context generation, PyTorch embedding training, nearest-word analysis, sentence-vector construction, semantic search, PCA visualization, baseline comparison, automated testing, and Streamlit deployment.
 
-**Status:** Portfolio-ready · Deployment pending  
-**Live demo:** Add the Streamlit URL after deployment  
+**Status:** Portfolio-ready and deployed  
+**Live demo:** [Open the Word Embedding application](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/)  
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/)  
 **Primary stack:** Python · PyTorch · scikit-learn · pandas · NumPy · Matplotlib · Streamlit
 
 ---
 
 ## NLP Problem
 
-Raw words cannot be passed directly into a neural network. One-hot vectors assign each
-word a separate sparse position, but they do not describe whether two words are related.
+Raw words cannot be passed directly into a neural network. One-hot vectors give every word a separate sparse position, but they do not communicate whether two words are contextually related.
 
 This project answers:
 
-> How can words be represented as dense numerical vectors so that a neural model can
-> learn contextual similarity and sequence-ready representations from text?
+> How can words be represented as dense numerical vectors so that a neural model can learn contextual similarity and create sequence-ready representations from text?
 
 The application produces:
 
-- cleaned text and tokens;
-- integer word indices;
-- 32-dimensional word vectors;
-- nearest words by cosine similarity;
-- token-by-embedding matrices;
-- mean-pooled sentence vectors;
-- two-dimensional PCA visualizations; and
-- embedding-based semantic-search results.
+- **Cleaned and tokenized text**
+- **Integer word indices**
+- **32-dimensional learned word vectors**
+- **Nearest words using cosine similarity**
+- **Token-by-embedding matrices**
+- **Mean-pooled sentence vectors**
+- **Embedding-based semantic-search results**
+- **Two-dimensional PCA visualizations**
 
 ---
 
 ## Project Highlights
 
-- Neural skip-gram model with a trainable PyTorch `Embedding` layer
-- 32-dimensional dense representation for each vocabulary item
-- Sentence-bounded context-window generation
+- Neural skip-gram training with a PyTorch `Embedding` layer
+- 32-dimensional dense vector representation for each vocabulary item
+- Sentence-bounded center/context pair generation
 - Stable `<PAD>` and `<UNK>` handling
-- Held-out validation pairs and early stopping
-- TF-IDF + Truncated SVD recreation of the supplied approach as an LSA baseline
+- Deterministic training and validation split of skip-gram pairs
+- Early stopping based on validation loss
+- TF-IDF + Truncated SVD recreation of the supplied method as an LSA baseline
 - Nearest-word lookup using cosine similarity
-- Sentence tokenization, index mapping, and embedding-matrix inspection
-- Mean-pooled sentence representations and semantic search
-- PCA visualization of selected embedding neighborhoods
-- Saved model, vocabulary, embedding matrix, configuration, metadata, and checksums
-- Modular Python code, automated tests, GitHub Actions CI, and Streamlit interface
+- Sentence tokenization, integer mapping, and embedding-matrix inspection
+- Mean-pooled sentence representations and lightweight semantic search
+- PCA-based embedding visualization
+- Saved model, vocabulary, embedding matrix, metadata, configuration, and checksums
+- Modular source code, tests, GitHub Actions CI, and Streamlit deployment
 
 ---
 
 ## Application Preview
 
-### 1. Word Explorer
+The screenshots below were captured directly from the deployed Streamlit application and show the main user workflows.
 
-Users can select or enter a word, inspect its vocabulary index and vector, compare its
-nearest neighbors, download similarity results, and visualize the local neighborhood.
+### 1. Application overview
 
-![Word Explorer preview](images/01_word_explorer.png)
+The overview introduces the representation-learning objective, the neural skip-gram workflow, the saved-model scope, and the available application sections.
 
-### 2. Sentence Embedding
+![Word Embedding application overview](images/01_application_overview.png)
 
-A sentence is cleaned, tokenized, converted into integer indices, and mapped to a
-token-by-embedding matrix. The app also creates a lightweight mean-pooled sentence vector.
+### 2. Word Explorer results
 
-![Sentence embedding preview](images/02_sentence_embedding.png)
+The Word Explorer displays the selected word's vocabulary index, embedding-vector preview, nearest neighbors by cosine similarity, and a local two-dimensional neighborhood visualization.
 
-### 3. Semantic Search
+![Word Explorer results](images/02_word_explorer_results.png)
 
-The application compares a query vector with included sentence vectors and ranks the
-closest sentences using cosine similarity.
+### 3. Sentence embedding analysis
 
-![Semantic search preview](images/03_semantic_search.png)
+The sentence-analysis workflow shows cleaned text, tokens, integer indices, known and out-of-vocabulary words, the token-by-embedding matrix shape, and the mean-pooled sentence vector.
 
-### 4. Model Performance
+![Sentence embedding analysis](images/03_sentence_embedding_analysis.png)
 
-The dashboard reports held-out context-prediction metrics, domain purity, the LSA
-baseline comparison, training curves, vector norms, and a PCA projection.
+### 4. Semantic-search results
 
-![Model performance preview](images/04_model_performance.png)
+The semantic-search workflow converts the query into a sentence vector and ranks the included sentences by cosine similarity, with results available for download.
+
+![Semantic-search results](images/04_semantic_search_results.png)
 
 ---
 
 ## Project Status and Honest Scope
 
-This is a complete, deployable educational portfolio prototype. The primary model learns
-embeddings from a small **synthetic and privacy-safe** corpus designed around five
-domains. It demonstrates representation learning and embedding analysis; it is not a
-general-purpose language model or a production semantic-search system.
+This is a complete, deployable educational portfolio prototype built from the supplied notebook and application code. The primary model learns embeddings from a small **synthetic and privacy-safe** corpus organized around five domains.
 
-The supplied project used TF-IDF followed by Truncated SVD to create term and document
-vectors. That method is retained as a documented **latent semantic analysis baseline**.
-The improved project adds a true neural `Embedding` layer trained through a skip-gram
-context-prediction objective.
+The project is suitable for demonstrating NLP preprocessing, neural representation learning, embedding evaluation, reusable inference, testing, and deployment. It is not a general-purpose language model, a production semantic-search system, or a substitute for large pretrained Word2Vec, GloVe, FastText, or transformer embeddings.
+
+The supplied project used TF-IDF followed by Truncated SVD to create dense term and document vectors. That method is retained as a documented **Latent Semantic Analysis baseline**. The improved project adds a genuine neural `Embedding` layer trained through a full-softmax skip-gram context-prediction objective.
 
 ---
 
 ## Dataset
 
-The included corpus contains 1,020 synthetic sentences and
-9,306 processed tokens.
+The included privacy-safe corpus contains **1,020 synthetic sentences** and **9,306 processed tokens**.
 
 | Dataset detail | Value |
 |---|---:|
 | Corpus sentences | 1,020 |
 | Processed tokens | 9,306 |
 | Curated domains | 5 |
+| Vocabulary size | 171 |
 | Personal or employer data | None |
-| External download required by app | No |
+| External download required by deployed app | No |
 
 The five domains are:
 
@@ -126,18 +115,15 @@ The five domains are:
 - Energy
 - Quality and Manufacturing
 
-The corpus was built from the themes already present in the supplied notebook and
-expanded into a deterministic educational dataset. See
-[`data/README_data.md`](data/README_data.md) for provenance and safety guidance.
+The corpus was constructed from the themes already present in the supplied notebook and expanded into a deterministic educational dataset. See [`data/README_data.md`](data/README_data.md) for data provenance and repository-safety guidance.
 
-The project also provides an optional local loader for selected 20 Newsgroups categories.
-That external corpus is not redistributed and is never downloaded by the deployed app.
+An optional local loader for selected 20 Newsgroups categories is provided for experimentation. That external corpus is not redistributed and is not downloaded by the deployed application.
 
 ---
 
 ## Text Preprocessing
 
-The pipeline applies:
+The preprocessing pipeline applies:
 
 1. HTML entity decoding and tag removal
 2. URL and email removal
@@ -148,15 +134,13 @@ The pipeline applies:
 7. Stable `<PAD>` and `<UNK>` indices
 8. Saved word-to-index mapping
 
-Punctuation and casing are removed because this project studies word-level semantic
-co-occurrence rather than authorship style or character generation.
+Punctuation and capitalization are removed because this project focuses on word-level contextual co-occurrence rather than authorship style or character-level generation.
 
 ---
 
 ## Vocabulary and Tokenization
 
-The saved vocabulary contains **171 entries**, including the
-special tokens.
+The saved vocabulary contains **171 entries**, including two special tokens:
 
 ```text
 <PAD> → 0
@@ -170,105 +154,157 @@ A sentence such as:
 quality inspection finds a manufacturing defect
 ```
 
-is transformed into:
+is processed as:
 
 ```text
-cleaned words
-        ↓
-integer token indices
-        ↓
-number of tokens × 32 embedding matrix
+Raw sentence
+    ↓
+Cleaned tokens
+    ↓
+Integer word indices
+    ↓
+Number of tokens × 32 embedding matrix
 ```
 
-Unknown words map to `<UNK>` so inference does not fail on unseen input.
+Unknown words map to `<UNK>` so inference remains stable when unseen text is entered.
 
 ---
 
-## Word Embedding Approach
+## Technical Workflow
 
-### Primary model: neural skip-gram
+1. Load the included privacy-safe text corpus.
+2. Clean and tokenize each sentence.
+3. Build the training-only vocabulary with `<PAD>` and `<UNK>` entries.
+4. Create sentence-bounded center/context pairs using a two-word context window.
+5. Split the skip-gram pairs into training and validation sets.
+6. Train the PyTorch embedding model using cross-entropy loss and Adam optimization.
+7. Select the best checkpoint using validation loss and early stopping.
+8. Extract and save the learned embedding matrix.
+9. Evaluate context prediction using loss, perplexity, top-1 accuracy, and top-5 accuracy.
+10. Evaluate nearest-neighbor domain purity on the curated vocabulary.
+11. Rebuild the original TF-IDF + SVD method as a baseline.
+12. Generate similarity tables, PCA outputs, sentence analyses, and semantic-search examples.
+13. Serve saved artifacts through Streamlit without retraining at startup.
 
-The primary model predicts nearby context words from a center word.
+---
+
+## Neural Embedding Architecture
+
+The primary PyTorch model contains **11,115 trainable parameters**.
 
 ```text
-Center word index
+Center-word index
         ↓
-Embedding layer: 171 × 32
+Embedding layer: 171 vocabulary entries × 32 dimensions
         ↓
-Dense vocabulary projection
+Dense projection: 32 → 171
         ↓
-Context-word probability distribution
+Softmax context-word distribution
+        ↓
+Predicted surrounding word
 ```
 
 The model uses:
 
 - PyTorch `nn.Embedding`
+- PyTorch `nn.Linear`
+- full-vocabulary softmax prediction
 - cross-entropy loss
 - Adam optimization
-- a two-word context window on each side
-- held-out center/context validation pairs
-- early stopping based on validation loss
+- context-window size of two words on each side
+- validation-based early stopping
 
 The learned embedding matrix has shape:
 
 ```text
-(171, 32)
+171 × 32
 ```
 
-A 32-dimensional vector is lightweight enough for a small
-educational corpus while still allowing visible semantic grouping.
-
-### Baseline: TF-IDF + Truncated SVD
-
-The supplied code created sparse TF-IDF document features and projected them with
-Truncated SVD. The resulting term vectors capture latent co-occurrence and are useful,
-but they are not trained through a neural context-prediction objective.
-
-The cleaned project keeps this method as a baseline so the portfolio shows both:
-
-- classical latent semantic analysis; and
-- neural word-embedding learning.
+A 32-dimensional embedding was selected because it is expressive enough to demonstrate contextual grouping while remaining lightweight for a small educational corpus and cloud deployment.
 
 ---
 
-## Representation Comparison
+## Representation Baseline
 
-| Representation | Vector type | Semantic relationship | Word order | Role |
+The supplied application used TF-IDF and Truncated SVD:
+
+```text
+Text corpus
+    ↓
+Sparse TF-IDF document matrix
+    ↓
+Truncated SVD
+    ↓
+Dense term and document vectors
+```
+
+This is a useful Latent Semantic Analysis baseline, but it is not a neural embedding model. The improved project keeps the baseline so the portfolio demonstrates the difference between classical sparse-to-dense projection and learned neural context representations.
+
+| Representation | Vector type | Semantic relationship | Word order | Portfolio role |
 |---|---|---|---|---|
-| One-hot | Sparse | None | No | Conceptual baseline |
+| One-hot encoding | Sparse | None | No | Conceptual baseline |
 | Bag-of-Words | Sparse | Frequency only | No | Count baseline |
 | TF-IDF | Sparse | Weighted document importance | No | Weighted baseline |
-| TF-IDF + SVD | Dense | Latent co-occurrence | No | Supplied-project baseline |
+| TF-IDF + SVD | Dense | Latent document co-occurrence | No | Supplied-project baseline |
 | Neural skip-gram | Dense | Learned local context | Context-window based | Primary model |
 
 ---
 
-## Evaluation
+## Saved-Model Results
 
-Embedding quality is assessed quantitatively and qualitatively.
-
-### Saved-model results
-
-| Metric | Result |
-|---|---:|
-| Validation loss | **3.3070** |
-| Validation perplexity | **27.30** |
-| Validation top-1 context accuracy | **20.77%** |
-| Validation top-5 context accuracy | **53.75%** |
-| Neural embedding domain purity@5 | **94.34%** |
-| TF-IDF + SVD baseline domain purity@5 | **80.61%** |
+| Task | Metric | Result |
+|---|---|---:|
+| Context prediction | Validation loss | **3.3070** |
+| Context prediction | Validation perplexity | **27.30** |
+| Context prediction | Top-1 accuracy | **20.77%** |
+| Context prediction | Top-5 accuracy | **53.75%** |
+| Embedding analysis | Neural domain purity@5 | **94.34%** |
+| Baseline analysis | TF-IDF + SVD domain purity@5 | **80.61%** |
 
 ### Metric interpretation
 
 - **Validation loss** measures held-out context-word prediction error.
-- **Perplexity** is the exponential of validation loss and summarizes context-prediction uncertainty.
-- **Top-1 accuracy** checks the highest-scoring predicted context word.
-- **Top-5 accuracy** checks whether the real context word appears among the five highest scores.
-- **Domain purity@5** measures the percentage of nearest neighbors that share the curated domain of the query word.
-- **Nearest-word examples and PCA** provide qualitative evidence of learned grouping.
+- **Perplexity** is the exponential of validation loss and summarizes prediction uncertainty.
+- **Top-1 accuracy** checks whether the highest-scoring word is the true context word.
+- **Top-5 accuracy** checks whether the true context word appears among the five highest-scoring predictions.
+- **Domain purity@5** measures the proportion of five nearest neighbors that share the curated domain of the query word.
+- **PCA and nearest-word examples** provide qualitative evidence of grouping and neighborhood structure.
 
-The curated corpus makes domain purity a useful internal diagnostic. It is not a standard
-open-domain benchmark and should not be interpreted as broad language understanding.
+Domain purity is an internal diagnostic created for this controlled corpus. It is not a standard open-domain benchmark and should not be interpreted as proof of broad language understanding.
+
+---
+
+## Model-Performance Analysis
+
+### Training and validation loss
+
+Training loss continued to decline while validation loss stabilized. The selected checkpoint corresponds to the minimum validation loss before early stopping.
+
+![Skip-gram training and validation loss](images/05_training_validation_loss.png)
+
+### Held-out context-prediction accuracy
+
+Top-5 accuracy is substantially higher than top-1 accuracy because several nearby context words may be plausible for the same center word. The selected checkpoint achieved **20.77% top-1 accuracy** and **53.75% top-5 accuracy**.
+
+![Held-out context prediction accuracy](images/06_validation_context_accuracy.png)
+
+### Neural embedding versus LSA baseline
+
+The neural skip-gram representation achieved higher curated domain purity than the recreated TF-IDF + SVD baseline.
+
+![Neural and LSA domain-purity comparison](images/07_domain_purity_comparison.png)
+
+### Embedding-vector norm distribution
+
+The vector-norm distribution helps detect collapsed, near-zero, or unusually large embedding vectors. The learned vocabulary shows a reasonable spread rather than identical vector magnitudes.
+
+![Embedding-vector norm distribution](images/08_embedding_norm_distribution.png)
+
+### Two-dimensional embedding projection
+
+PCA compresses the 32-dimensional vectors into two dimensions for visualization. Words from the same curated topic often appear in nearby regions, although two-dimensional projection can distort true high-dimensional distances.
+
+![Two-dimensional PCA projection of learned word embeddings](images/09_embedding_visualization_2d.png)
 
 ---
 
@@ -283,37 +319,35 @@ electricity → renewable, energy, consumption, carbon, grid
 quality → defect, failure, inspection, manufacturing, improvement
 ```
 
-Exact ordering can change after retraining.
+Exact neighbor ordering may change after retraining.
 
 ---
 
 ## Sentence Representation
 
-For each input sentence, the app displays:
+For an input sentence, the application displays:
 
 - cleaned text;
 - token list;
-- token indices;
+- integer indices;
 - known and out-of-vocabulary words;
 - token embedding-matrix shape;
 - vector preview; and
 - mean-pooled sentence vector.
 
-Mean pooling provides a simple sentence baseline:
+The sentence baseline is:
 
 ```text
 sentence vector = mean of known word vectors
 ```
 
-It is intentionally transparent, but it loses word order. A Simple RNN would instead
-consume the embedding vectors sequentially and maintain a recurrent hidden state.
+Mean pooling is transparent and efficient, but it loses word order. A Simple RNN would instead consume the embedding vectors sequentially and update a recurrent hidden state.
 
 ---
 
 ## Why This Project Belongs in the Simple RNN Portfolio
 
-The embedding layer is the representation stage used before a recurrent model processes
-token sequences.
+An embedding layer is the representation stage used before a recurrent network processes token sequences.
 
 ```text
 Raw text
@@ -329,49 +363,53 @@ Simple RNN
 Task-specific output
 ```
 
-The IMDb and SMS projects demonstrate complete classification pipelines. This project
-isolates the embedding stage so the portfolio explains what the recurrent model receives
-as input instead of repeating another classifier.
+The IMDb and SMS projects demonstrate complete Simple RNN classification pipelines. This project isolates and explains the embedding stage so the portfolio clearly shows what a recurrent model receives as input rather than repeating another text classifier.
 
 ---
 
 ## Streamlit Application
 
-The application contains five sections:
+The deployed application supports:
 
-1. **Word Explorer**
-   - word lookup;
-   - embedding-vector preview;
-   - nearest neighbors;
-   - downloadable similarities; and
-   - local PCA visualization.
+### Word Explorer
 
-2. **Sentence Embedding**
-   - cleaning and tokenization;
-   - integer indices;
-   - OOV handling;
-   - token embedding matrix; and
-   - downloadable sentence vector.
+- select or enter a vocabulary word;
+- inspect its index and embedding-vector preview;
+- retrieve nearest words using cosine similarity;
+- visualize the local embedding neighborhood; and
+- download similarity results.
 
-3. **Semantic Search**
-   - sentence-vector query;
-   - cosine-similarity ranking; and
-   - downloadable results.
+### Sentence Embedding
 
-4. **Model Performance**
-   - validation metrics;
-   - baseline comparison;
-   - training curves;
-   - embedding norms; and
-   - PCA output.
+- clean and tokenize an input sentence;
+- display token indices and OOV words;
+- inspect the token-by-embedding matrix;
+- create a mean-pooled sentence representation; and
+- download the sentence vector.
 
-5. **Project Overview**
-   - model workflow;
-   - saved-model information;
-   - responsible-use note; and
-   - portfolio skills.
+### Semantic Search
 
-The app loads saved artifacts and does not retrain or download data at startup.
+- convert a query into a sentence vector;
+- compare it with included sentence representations;
+- rank results using cosine similarity; and
+- download the ranked table.
+
+### Model Performance
+
+- review validation metrics;
+- compare the neural model with the LSA baseline;
+- inspect training behavior;
+- examine embedding-vector norms; and
+- review the PCA projection.
+
+### Project Overview
+
+- understand the model workflow;
+- review artifact information;
+- read responsible-use guidance; and
+- inspect the portfolio skills demonstrated.
+
+The app loads committed artifacts and does not retrain or download external data during startup.
 
 ---
 
@@ -386,17 +424,24 @@ simple-rnn-projects/
 └── 06-word-embedding/
     ├── app/
     │   ├── streamlit_app.py
-    │   └── requirements.txt
+    │   ├── requirements.txt
+    │   └── archive/
+    │       └── word_embedding_streamlit_app_original.py
     ├── data/
     │   ├── README_data.md
     │   ├── sample_sentences.txt
     │   ├── sample_text.csv
     │   └── topic_lexicon.json
     ├── images/
-    │   ├── 01_word_explorer.png
-    │   ├── 02_sentence_embedding.png
-    │   ├── 03_semantic_search.png
-    │   └── 04_model_performance.png
+    │   ├── 01_application_overview.png
+    │   ├── 02_word_explorer_results.png
+    │   ├── 03_sentence_embedding_analysis.png
+    │   ├── 04_semantic_search_results.png
+    │   ├── 05_training_validation_loss.png
+    │   ├── 06_validation_context_accuracy.png
+    │   ├── 07_domain_purity_comparison.png
+    │   ├── 08_embedding_norm_distribution.png
+    │   └── 09_embedding_visualization_2d.png
     ├── models/
     │   ├── word_embedding_model.pt
     │   ├── embedding_matrix.npy
@@ -410,12 +455,9 @@ simple-rnn-projects/
     │   └── archive/
     │       └── word_embedding_original.ipynb
     ├── outputs/
-    │   ├── embedding_visualization_2d.png
-    │   ├── embedding_projection_2d.csv
-    │   ├── embedding_norm_distribution.png
-    │   ├── training_curve.png
     │   ├── training_history.csv
     │   ├── model_metrics.json
+    │   ├── embedding_projection_2d.csv
     │   ├── embedding_matrix_summary.json
     │   ├── word_similarity_examples.csv
     │   ├── semantic_search_examples.csv
@@ -454,14 +496,11 @@ simple-rnn-projects/
     └── validate_project.py
 ```
 
-The hyphenated lowercase name `06-word-embedding` is used because it matches the existing
-numbered repository convention and works cleanly in GitHub and command-line paths.
-
 ---
 
 ## Run Locally
 
-Use Python 3.12 to match the intended local and deployment environments.
+Use Python 3.12 to match the tested local and deployment environments.
 
 ### Windows Command Prompt
 
@@ -479,7 +518,7 @@ python -m venv "C:\venvs\wordembed"
 call "C:\venvs\wordembed\Scripts\activate.bat"
 ```
 
-Install dependencies:
+Install runtime and test dependencies:
 
 ```bat
 python -m pip install --upgrade pip setuptools wheel
@@ -487,26 +526,26 @@ python -m pip install -r requirements.txt
 python -m pip install -r requirements-ci.txt
 ```
 
-Run tests and validation:
+Run automated tests and project validation:
 
 ```bat
 python -m pytest -q
 python validate_project.py
 ```
 
-Launch Streamlit:
+Launch the Streamlit application:
 
 ```bat
 python -m streamlit run app\streamlit_app.py
 ```
 
-Open the local address displayed by Streamlit, normally:
+Open the local URL displayed by Streamlit, normally:
 
 ```text
 http://localhost:8501
 ```
 
-### Future Windows runs
+### Future local runs
 
 ```bat
 cd /d "C:\Users\atripathi\OneDrive - Veralto\Desktop\AI Codes\GIT Projects\simple-rnn-projects\06-word-embedding"
@@ -518,7 +557,7 @@ python -m streamlit run app\streamlit_app.py
 
 ## Optional Retraining
 
-Retraining is not required to run the included application.
+The included model runs without retraining.
 
 To rebuild the saved artifacts from the included corpus:
 
@@ -526,38 +565,40 @@ To rebuild the saved artifacts from the included corpus:
 python train_model.py
 ```
 
-A configurable example:
+A configurable example is:
 
 ```bat
 python train_model.py --embedding-dim 32 --window-size 2 --epochs 60 --batch-size 4096
 ```
 
-Retraining overwrites the files in `models/` and regenerates the analysis files in
-`outputs/`.
-
-The optional 20 Newsgroups loader can be used during custom local experimentation, but
-the deployment intentionally uses the included privacy-safe corpus.
+Retraining overwrites artifacts in `models/` and regenerates evaluation files in `outputs/`. The optional 20 Newsgroups loader is intended only for governed local experimentation.
 
 ---
 
 ## Deployment
 
-Deploy with Streamlit Community Cloud using:
+The application is deployed on Streamlit Community Cloud and connected to the `main` branch of this GitHub repository.
+
+**Live application:**  
+[Open the Word Embedding and NLP Representation Learning application](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/)
+
+**Streamlit entrypoint:**
+
+```text
+06-word-embedding/app/streamlit_app.py
+```
+
+**Deployment configuration:**
 
 ```text
 Repository:      unit-mole/simple-rnn-projects
 Branch:          main
-Main file path:  06-word-embedding/app/streamlit_app.py
 Python version:  3.12
 ```
 
-The required dependencies are declared in `app/requirements.txt`.
+Changes pushed to the relevant project files on the `main` branch automatically trigger a Streamlit application update.
 
-See [`README_HOSTING.md`](README_HOSTING.md) for deployment, maintenance, and
-troubleshooting instructions.
-
-After deployment, replace the pending badge and live-demo text at the top of this README
-with the final application URL.
+See [`README_HOSTING.md`](README_HOSTING.md) for deployment maintenance and troubleshooting instructions.
 
 ---
 
@@ -565,10 +606,10 @@ with the final application URL.
 
 - The included corpus is synthetic and privacy-safe.
 - No employer, customer, health, authentication, or private-message data is included.
-- External corpora are not downloaded by the deployed app.
-- Local downloaded datasets and secrets are excluded through `.gitignore`.
+- External corpora are not downloaded by the deployed application.
+- Local downloaded datasets, virtual environments, logs, temporary files, and secrets are excluded through `.gitignore`.
 - Saved model artifacts are required for inference and should remain under `models/`.
-- Review licensing and privacy before adding any new corpus.
+- Licensing and privacy must be reviewed before adding any new corpus.
 
 ---
 
@@ -578,51 +619,48 @@ This project is for education and portfolio demonstration.
 
 The learned relationships:
 
-- depend on the small curated corpus;
+- depend on a small curated corpus;
 - may be incomplete or misleading;
 - may not generalize to new domains;
 - should not be treated as dictionary definitions;
 - should not be used as fairness evidence; and
 - should not support high-impact decisions.
 
-Human review is required before using embedding outputs in any real workflow.
+Human review is required before embedding outputs are used in any real workflow.
 
 ---
 
 ## Known Limitations
 
 - Small synthetic vocabulary
-- Static, context-independent word vectors
+- Static and context-independent word vectors
+- Pair-level validation rather than sentence-level or corpus-level external evaluation
 - Out-of-vocabulary words map to a single unknown token
 - Mean-pooled sentence vectors lose word order
-- PCA compresses high-dimensional distances and can distort neighborhoods
+- PCA can distort high-dimensional neighborhoods
 - Domain-purity evaluation is tailored to the curated dataset
-- Skip-gram embeddings do not capture polysemy
-- Results are not comparable with large pretrained Word2Vec, GloVe, FastText, or transformer embeddings
+- Skip-gram embeddings do not represent multiple meanings of the same word
+- Results are not directly comparable with large pretrained embeddings
 
 ---
 
 ## Future Improvements
 
 - Train on a larger governed public corpus
-- Compare with pretrained GloVe or FastText vectors
+- Compare with pretrained GloVe, Word2Vec, and FastText vectors
 - Add subword embeddings for rare and unseen words
-- Evaluate standard word-similarity datasets where licensing permits
-- Add analogy evaluation
+- Evaluate on standard word-similarity datasets where licensing permits
+- Add word-analogy evaluation
 - Compare mean pooling with Simple RNN sentence representations
-- Add contextual embeddings as a separate transformer project
-- Add model-version and drift tracking for a production experiment
+- Add sentence-level validation and more external evaluation
+- Introduce contextual embeddings in a separate transformer project
+- Add model-version and drift tracking for production experimentation
 
 ---
 
 ## Skills Demonstrated
 
-`Natural Language Processing` · `Text Preprocessing` · `Tokenization` ·
-`Vocabulary Management` · `Word Embeddings` · `Dense Vector Representations` ·
-`Skip-gram` · `PyTorch` · `Embedding Layers` · `Context Windows` ·
-`Cosine Similarity` · `PCA` · `Latent Semantic Analysis` · `TF-IDF` ·
-`Truncated SVD` · `Semantic Search` · `Artifact Management` · `Model Evaluation` ·
-`Testing` · `GitHub Actions` · `CI/CD` · `Streamlit` · `Model Deployment`
+`Natural Language Processing` · `Text Preprocessing` · `Tokenization` · `Vocabulary Management` · `Word Embeddings` · `Dense Vector Representations` · `Skip-gram` · `PyTorch` · `Embedding Layers` · `Context Windows` · `Cosine Similarity` · `PCA` · `Latent Semantic Analysis` · `TF-IDF` · `Truncated SVD` · `Semantic Search` · `Artifact Management` · `Model Evaluation` · `Testing` · `GitHub Actions` · `CI/CD` · `Streamlit` · `Model Deployment`
 
 ---
 
@@ -630,22 +668,15 @@ Human review is required before using embedding outputs in any real workflow.
 
 **One-line description**
 
-> Built a deployment-ready neural word-embedding system that learns dense semantic
-> vectors, explores nearest-word relationships, visualizes embedding neighborhoods, and
-> performs lightweight sentence search.
+> Built and deployed a neural word-embedding system that learns dense semantic vectors, identifies nearest-word relationships, visualizes embedding neighborhoods, and performs lightweight sentence search.
 
 **Pinned-repository description**
 
-> NLP representation-learning project featuring deterministic preprocessing,
-> vocabulary management, neural skip-gram embeddings, TF-IDF + SVD baseline comparison,
-> cosine similarity, PCA visualization, sentence-vector analysis, semantic search,
-> testing, CI/CD, and Streamlit deployment.
+> NLP representation-learning project featuring deterministic preprocessing, vocabulary management, neural skip-gram embeddings, TF-IDF + SVD baseline comparison, cosine similarity, PCA visualization, sentence-vector analysis, semantic search, testing, CI/CD, and Streamlit deployment.
 
 **Resume bullet**
 
-> Developed a deployable PyTorch word-embedding pipeline with skip-gram training,
-> held-out context evaluation, 94.34% curated domain purity@5, semantic-neighbor analysis,
-> PCA visualization, saved inference artifacts, automated tests, and a Streamlit interface.
+> Developed and deployed a PyTorch word-embedding pipeline with skip-gram training, held-out context evaluation, 94.34% curated domain purity@5, semantic-neighbor analysis, PCA visualization, saved inference artifacts, automated tests, and a Streamlit interface.
 
 ---
 

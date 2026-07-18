@@ -1,8 +1,8 @@
 # Simple RNN Projects
 
-A structured portfolio of six Simple Recurrent Neural Network projects covering time-series forecasting, financial sequence modeling, Natural Language Processing, text classification, text generation, and representation learning.
+A structured portfolio of six completed and deployed neural sequence-modeling projects covering time-series forecasting, financial sequence modeling, Natural Language Processing, text classification, text generation, and representation learning.
 
-**Portfolio status:** 5 completed and deployed projects · 1 planned project  
+**Portfolio status:** 6 completed and deployed projects  
 **Repository owner:** [Anmol Tripathi](https://github.com/unit-mole)
 
 ---
@@ -14,7 +14,7 @@ This repository demonstrates how Simple Recurrent Neural Networks can be applied
 - a clearly defined business or analytical problem;
 - reproducible data preparation and sequence generation;
 - leakage-aware training, validation, and test design;
-- a trainable Simple RNN as the primary neural architecture;
+- a trainable Simple RNN or supporting neural representation model aligned with the project objective;
 - task-appropriate baseline comparison and evaluation;
 - saved model and preprocessing artifacts;
 - reusable inference code;
@@ -36,7 +36,7 @@ The portfolio is designed to demonstrate skills relevant to Data Science, Machin
 | 3 | [IMDb Movie Review Sentiment Analysis](03-imdb-data-analysis/) | NLP sentiment analysis and binary sequence classification | [Live Demo](https://simple-rnn-projects-ljp2wrybnrz4eheng2xsd8.streamlit.app/) |
 | 4 | [SMS Spam Detection](04-sms-spam-detection/) | Imbalanced NLP binary classification and message filtering | [Live Demo](https://simple-rnn-projects-mb5hckxzin7hhatgfak2tm.streamlit.app/) |
 | 5 | [Text Generation](05-text-generation/) | Character-level next-character generation | [Live Demo](https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/) |
-| 6 | [Word Embedding](06-word-embedding/) | Representation learning and semantic analysis | Planned |
+| 6 | [Word Embedding](06-word-embedding/) | Neural representation learning and semantic analysis | [Live Demo](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/) |
 
 ---
 
@@ -173,6 +173,38 @@ Key capabilities:
 
 ---
 
+### 6. Word Embedding and NLP Representation Learning
+
+An end-to-end NLP representation-learning project that trains a PyTorch skip-gram model to convert words into dense numerical vectors and demonstrate semantic-neighbor analysis, sentence representation, and lightweight semantic search.
+
+Key capabilities:
+
+- deterministic text cleaning, tokenization, and vocabulary management;
+- stable `<PAD>` and `<UNK>` handling;
+- sentence-bounded center/context pair generation;
+- 32-dimensional PyTorch `Embedding` layer trained with a skip-gram objective;
+- validation loss, perplexity, top-1 accuracy, and top-5 context accuracy;
+- nearest-word retrieval using cosine similarity;
+- sentence-vector construction through transparent mean pooling;
+- PCA-based two-dimensional embedding visualization;
+- TF-IDF + Truncated SVD baseline comparison;
+- saved model, embedding matrix, vocabulary, metadata, checksums, tests, CI, and Streamlit deployment; and
+- clear limitations and responsible-use guidance for a small curated corpus.
+
+**Supplied-model validation results:** 3.3070 validation loss · 27.30 perplexity · 20.77% top-1 accuracy · 53.75% top-5 accuracy
+
+**Embedding analysis:** 94.34% neural domain purity@5 versus 80.61% for the TF-IDF + SVD baseline
+
+**Live application:** [Open Word Embedding and NLP Representation Learning](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/)
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/)
+
+[Open the complete project documentation](06-word-embedding/)
+
+> **Responsible-use notice:** The learned relationships come from a small curated educational corpus. They may be incomplete, misleading, or domain-specific and should not be treated as dictionary definitions, fairness evidence, or production semantic judgments.
+
+---
+
 ## What the Portfolio Covers
 
 The six projects are intentionally varied so the repository demonstrates more than one type of recurrent-neural-network problem.
@@ -189,13 +221,13 @@ These projects demonstrate chronological splitting, leakage prevention, sequence
 - **IMDb Movie Review Sentiment Analysis** converts unstructured movie-review text into positive or negative sentiment predictions.
 - **SMS Spam Detection** classifies messages as spam or legitimate while handling class imbalance, threshold trade-offs, and privacy constraints.
 - **Text Generation** generates character-level text autoregressively using a saved PyTorch Simple RNN with temperature and top-k sampling.
-- **Word Embedding** will explore learned semantic representations and similarity.
+- **Word Embedding** learns dense word vectors with a neural skip-gram model and supports nearest-word analysis, sentence vectors, PCA visualization, and semantic search.
 
 These projects demonstrate text cleaning, tokenization, vocabulary control, embeddings, sequence padding, recurrent text modeling, classification metrics, probability interpretation, autoregressive generation, temperature and top-k sampling, perplexity, and qualitative error analysis.
 
 ### Representation Learning and Sequential Modeling
 
-Across the portfolio, Simple RNN models learn representations from ordered observations rather than treating each row or token independently.
+Across the portfolio, recurrent and representation-learning models learn from ordered observations or local token context rather than treating each row or word independently.
 
 The completed projects cover:
 
@@ -209,6 +241,9 @@ The completed projects cover:
 - character-level autoregressive text generation;
 - temperature, top-k, and reproducible random-seed sampling;
 - validation perplexity and qualitative generation analysis; and
+- neural word-embedding training and semantic-neighbor analysis;
+- sentence-vector construction and lightweight semantic search;
+- PCA-based embedding visualization;
 - comparison with strong non-neural baselines.
 
 ---
@@ -254,8 +289,9 @@ Examples include:
 - directional accuracy for financial forecasting;
 - confusion matrices and probability distributions;
 - threshold analysis for sentiment and spam classification;
-- validation loss, next-character accuracy, perplexity, and qualitative sample review for text generation; and
-- baseline comparisons to determine whether the Simple RNN adds measurable value.
+- validation loss, next-character accuracy, perplexity, and qualitative sample review for text generation;
+- context-prediction loss, perplexity, top-k accuracy, domain purity, and qualitative neighborhood review for word embeddings; and
+- baseline comparisons to determine whether the neural model adds measurable value.
 
 ### Reliable and Reusable Engineering
 
@@ -279,6 +315,8 @@ The applications do not stop at raw model outputs. Depending on the project, the
 - predicted sentiment;
 - spam or ham classifications;
 - generated text with controllable creativity and sampling settings;
+- nearest-word relationships and embedding-vector previews;
+- sentence representations and ranked semantic-search results;
 - probabilities and confidence levels;
 - model and baseline comparisons;
 - error interpretations;
@@ -350,7 +388,10 @@ The exact files vary by project, but the standards remain consistent:
 | Generative sampling | Temperature, top-k, and reproducible random-seed controls |
 | Sequence-window generation | Electricity and Google stock projects |
 | Tokenization and vocabulary control | IMDb sentiment analysis and SMS spam detection |
-| Word embeddings | IMDb sentiment analysis, SMS spam detection, and planned embedding project |
+| Word embeddings | IMDb sentiment analysis, SMS spam detection, and neural skip-gram representation learning |
+| Embedding similarity | Cosine-similarity nearest neighbors and semantic search |
+| Dimensionality reduction | PCA visualization of learned word vectors |
+| Representation baselines | One-hot, Bag-of-Words, TF-IDF, and TF-IDF + Truncated SVD comparison |
 | Chronological validation | Electricity and Google stock projects |
 | Classification thresholding | IMDb sentiment analysis and SMS spam detection |
 | Class-imbalance handling | Class weights, stratified splitting, PR-AUC, and spam-focused evaluation |
@@ -360,14 +401,14 @@ The exact files vary by project, but the standards remain consistent:
 | Classification evaluation | Precision, recall, F1, specificity, ROC-AUC, PR-AUC, MCC |
 | Manual inference | Interactive Streamlit input workflows |
 | Batch inference | CSV upload, sample scoring, downloadable outputs |
-| Model deployment | Five Streamlit Community Cloud applications |
+| Model deployment | Six Streamlit Community Cloud applications |
 | Testing and CI/CD | pytest and project-specific GitHub Actions workflows |
 
 ---
 
 ## Core Skills Demonstrated
 
-`Simple RNN` · `Recurrent Neural Networks` · `Sequence Modeling` · `Time-Series Forecasting` · `Financial Forecasting` · `Natural Language Processing` · `SMS Spam Detection` · `Character-Level Text Generation` · `Autoregressive Generation` · `Temperature Sampling` · `Top-k Sampling` · `Perplexity` · `Text Cleaning` · `Pattern Tokenization` · `Vocabulary Management` · `Sequence Padding` · `Word Embeddings` · `Binary Classification` · `Class Weighting` · `Feature Engineering` · `Chronological Validation` · `Leakage Prevention` · `Threshold Selection` · `Precision–Recall Analysis` · `Baseline Comparison` · `Regression Evaluation` · `Classification Evaluation` · `Residual Analysis` · `Error Analysis` · `Responsible AI Communication` · `Privacy-Aware Deployment` · `TensorFlow` · `Keras` · `PyTorch` · `scikit-learn` · `pandas` · `Streamlit` · `Testing` · `GitHub Actions` · `CI/CD` · `Business Translation`
+`Simple RNN` · `Recurrent Neural Networks` · `Sequence Modeling` · `Time-Series Forecasting` · `Financial Forecasting` · `Natural Language Processing` · `SMS Spam Detection` · `Character-Level Text Generation` · `Autoregressive Generation` · `Temperature Sampling` · `Top-k Sampling` · `Perplexity` · `Text Cleaning` · `Pattern Tokenization` · `Vocabulary Management` · `Sequence Padding` · `Word Embeddings` · `Neural Skip-gram` · `Dense Vector Representations` · `Context Windows` · `Cosine Similarity` · `PCA` · `Latent Semantic Analysis` · `Semantic Search` · `Binary Classification` · `Class Weighting` · `Feature Engineering` · `Chronological Validation` · `Leakage Prevention` · `Threshold Selection` · `Precision–Recall Analysis` · `Baseline Comparison` · `Regression Evaluation` · `Classification Evaluation` · `Residual Analysis` · `Error Analysis` · `Responsible AI Communication` · `Privacy-Aware Deployment` · `TensorFlow` · `Keras` · `PyTorch` · `scikit-learn` · `pandas` · `Streamlit` · `Testing` · `GitHub Actions` · `CI/CD` · `Business Translation`
 
 ---
 
