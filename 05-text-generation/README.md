@@ -2,14 +2,15 @@
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-Simple%20RNN-orange.svg)](https://pytorch.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-Deployment%20Ready-red.svg)](#deployment)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
 [![Text Generation Simple RNN CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/text-generation-rnn-ci.yml/badge.svg)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/text-generation-rnn-ci.yml)
 
 An end-to-end NLP and generative sequence-modeling project that uses a **character-level Simple Recurrent Neural Network** to predict the next character and generate new text from a seed prompt. The project includes leakage-aware preprocessing, reusable training and inference modules, a saved PyTorch model, quantitative and qualitative evaluation, automated tests, GitHub Actions CI, and an interactive Streamlit application.
 
-**Status:** Portfolio-ready  
-**Live demo:** `ADD_STREAMLIT_APP_URL_AFTER_DEPLOYMENT`  
+**Status:** Portfolio-ready and deployed  
+**Live demo:** [Open the Streamlit application](https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/)  
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/)  
 **Primary stack:** Python · PyTorch · NumPy · pandas · Matplotlib · Streamlit · pytest
 
 > **Responsible use:** This project is for educational and portfolio demonstration purposes only. Generated text may be inaccurate, repetitive, biased, or nonsensical. Do not use it to create harmful, misleading, private, sensitive, or high-stakes content. Human review is required before using any output.
@@ -404,12 +405,22 @@ git clone https://github.com/unit-mole/simple-rnn-projects.git
 cd simple-rnn-projects\05-text-generation
 ```
 
-Create and activate a virtual environment:
+Create the virtual environment in a short Windows path. This avoids Windows path-length errors when the repository is stored inside a deeply nested OneDrive folder:
 
 ```bat
-py -3.12 -m venv .venv
+if not exist "C:\venvs" mkdir "C:\venvs"
 
-.venv\Scripts\activate.bat
+python -m venv "C:\venvs\textgen"
+
+call "C:\venvs\textgen\Scripts\activate.bat"
+```
+
+Confirm that the activated interpreter is being used:
+
+```bat
+where python
+
+python --version
 ```
 
 Install the application and test dependencies:
@@ -448,6 +459,18 @@ Open the local URL shown by Streamlit, normally:
 
 ```text
 http://localhost:8501
+```
+
+### Future Windows runs
+
+After the first installation, use:
+
+```bat
+cd simple-rnn-projects\05-text-generation
+
+call "C:\venvs\textgen\Scripts\activate.bat"
+
+python -m streamlit run app\streamlit_app.py
 ```
 
 ### macOS or Linux
@@ -533,7 +556,10 @@ The GitHub Actions workflow runs when the text-generation project or its workflo
 
 ## Deployment
 
-Streamlit Community Cloud is the recommended first hosting option because the application is already written in Streamlit, the saved model is compact, and CPU inference is sufficient.
+The application is deployed on **Streamlit Community Cloud** and connected directly to the `main` branch of this GitHub repository. The deployed app loads the committed Simple RNN model and supporting vocabulary artifacts; retraining is not performed during startup.
+
+**Live application:**  
+[Open the Character-Level Text Generation application](https://simple-rnn-projects-72u2s8vhngrexwwgbjpy6r.streamlit.app/)
 
 **Streamlit entrypoint:**
 
@@ -541,9 +567,9 @@ Streamlit Community Cloud is the recommended first hosting option because the ap
 05-text-generation/app/streamlit_app.py
 ```
 
-After deployment, replace the placeholder near the top of this README with the live app URL and update the Streamlit badge if desired.
+Changes pushed to the relevant project files on the `main` branch automatically trigger a Streamlit application update.
 
-See [`README_HOSTING.md`](README_HOSTING.md) for complete deployment, maintenance, and troubleshooting instructions.
+See [`README_HOSTING.md`](README_HOSTING.md) for complete deployment configuration, maintenance instructions, and troubleshooting guidance.
 
 ---
 
