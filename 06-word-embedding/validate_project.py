@@ -67,6 +67,43 @@ REQUIRED_FILES = [
     "tests/test_artifact_consistency.py",
 ]
 
+# Each logical README requirement may be satisfied by one of several equivalent
+# headings. This keeps validation aligned with the polished portfolio README
+# while still catching accidental removal of an essential section.
+README_SECTION_GROUPS = {
+    "NLP problem": ("## NLP Problem",),
+    "project highlights": ("## Project Highlights",),
+    "dataset": ("## Dataset",),
+    "embedding approach": (
+        "## Neural Embedding Architecture",
+        "## Word Embedding Approach",
+    ),
+    "evaluation": (
+        "## Saved-Model Results",
+        "## Model-Performance Analysis",
+        "## Evaluation",
+    ),
+    "Streamlit application": ("## Streamlit Application",),
+    "local execution": ("## Run Locally",),
+    "deployment": ("## Deployment",),
+    "limitations": ("## Known Limitations",),
+    "skills": ("## Skills Demonstrated",),
+    "portfolio description": ("## Portfolio Description",),
+}
+
+REQUIRED_README_REFERENCES = [
+    "images/01_application_overview.png",
+    "images/02_word_explorer_results.png",
+    "images/03_sentence_embedding_analysis.png",
+    "images/04_semantic_search_results.png",
+    "images/05_training_validation_loss.png",
+    "images/06_validation_context_accuracy.png",
+    "images/07_domain_purity_comparison.png",
+    "images/08_embedding_norm_distribution.png",
+    "images/09_embedding_visualization_2d.png",
+    "https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/",
+]
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -164,21 +201,21 @@ def check_notebooks() -> dict:
 
 def check_readme() -> dict:
     text = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
-    required_sections = [
-        "## NLP Problem",
-        "## Project Highlights",
-        "## Dataset",
-        "## Word Embedding Approach",
-        "## Evaluation",
-        "## Streamlit Application",
-        "## Run Locally",
-        "## Deployment",
-        "## Known Limitations",
-        "## Skills Demonstrated",
-        "## Portfolio Description",
+
+    missing_section_groups = {
+        label: list(alternatives)
+        for label, alternatives in README_SECTION_GROUPS.items()
+        if not any(heading in text for heading in alternatives)
+    }
+    missing_references = [
+        reference for reference in REQUIRED_README_REFERENCES if reference not in text
     ]
-    missing = [section for section in required_sections if section not in text]
-    return {"passed": not missing, "missing_sections": missing}
+
+    return {
+        "passed": not missing_section_groups and not missing_references,
+        "missing_section_groups": missing_section_groups,
+        "missing_references": missing_references,
+    }
 
 
 def main() -> None:
@@ -198,8 +235,13 @@ def main() -> None:
     print("Word Embedding Project Validation")
     print("=" * 34)
     for name, result in checks.items():
-        print(f"{name}: {'PASSED' if result['passed'] else 'FAILED'}")
+        status = "PASSED" if result["passed"] else "FAILED"
+        print(f"{name}: {status}")
+        if not result["passed"]:
+            details = {key: value for key, value in result.items() if key != "passed"}
+            print(json.dumps(details, indent=2))
     print(f"overall: {'PASSED' if overall else 'FAILED'}")
+    print(f"validation_report: {output_path.name}")
 
     if not overall:
         raise SystemExit(1)

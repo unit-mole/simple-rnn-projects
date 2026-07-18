@@ -17,6 +17,8 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     defaults:
       run:
         working-directory: 06-word-embedding
@@ -53,3 +55,11 @@ jobs:
 
       - name: Validate saved artifacts and project structure
         run: python validate_project.py
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: word-embedding-validation-report
+          path: 06-word-embedding/VALIDATION_REPORT.json
+          if-no-files-found: warn
