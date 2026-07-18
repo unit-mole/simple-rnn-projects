@@ -4,7 +4,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange.svg)](https://pytorch.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Live%20Demo-red.svg)](https://simple-rnn-projects-kgg7njs6sltnwqqvmjirvm.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
-[![Word Embedding CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/word-embedding-rnn-ci.yml/badge.svg)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/word-embedding-rnn-ci.yml)
+[![Word Embedding CI](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/word-embedding-rnn-ci.yml/badge.svg?branch=main&event=push)](https://github.com/unit-mole/simple-rnn-projects/actions/workflows/word-embedding-rnn-ci.yml?query=branch%3Amain+event%3Apush)
 
 An end-to-end NLP representation-learning project that converts words into dense numerical vectors using a neural skip-gram model. The project combines deterministic text preprocessing, vocabulary management, sentence-bounded context generation, PyTorch embedding training, nearest-word analysis, sentence-vector construction, semantic search, PCA visualization, baseline comparison, automated testing, and Streamlit deployment.
 
