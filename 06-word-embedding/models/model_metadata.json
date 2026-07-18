@@ -1,0 +1,38 @@
+{
+  "artifacts": {
+    "embedding_matrix": "embedding_matrix.npy",
+    "model": "word_embedding_model.pt",
+    "training_config": "training_config.json",
+    "vocabulary": "vocabulary.json"
+  },
+  "corpus_sentences": 1020,
+  "corpus_tokens": 9306,
+  "created_utc": "2026-07-18T01:04:36.052070+00:00",
+  "data_scope": "Privacy-safe synthetic educational corpus based on the domains present in the supplied notebook. Optional 20 Newsgroups loading is available for local experimentation but is not required by the deployed app.",
+  "embedding_dimension": 32,
+  "framework": "PyTorch",
+  "framework_version": "2.10.0+cpu",
+  "metrics": {
+    "corpus_sentences": 1020,
+    "corpus_tokens": 9306,
+    "domain_purity_at_5": 0.9434343434343435,
+    "embedding_dimension": 32,
+    "epochs_completed": 59,
+    "lsa_baseline_domain_purity_at_5": 0.8060606060606059,
+    "training_pairs": 26438,
+    "validation_loss": 3.3069588816119935,
+    "validation_pairs": 4666,
+    "validation_perplexity": 27.301970569311887,
+    "validation_top1_accuracy": 0.20767252464637806,
+    "validation_top5_accuracy": 0.5375053579082726,
+    "vocabulary_size": 171
+  },
+  "model_type": "neural_skipgram_full_softmax",
+  "padding_index": 0,
+  "project_name": "Word Embedding and NLP Representation Learning",
+  "training_pairs": 26438,
+  "unknown_index": 1,
+  "validation_pairs": 4666,
+  "vocabulary_size": 171,
+  "window_size": 2
+}

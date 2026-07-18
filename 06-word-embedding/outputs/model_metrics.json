@@ -1,0 +1,15 @@
+{
+  "corpus_sentences": 1020,
+  "corpus_tokens": 9306,
+  "domain_purity_at_5": 0.9434343434343435,
+  "embedding_dimension": 32,
+  "epochs_completed": 59,
+  "lsa_baseline_domain_purity_at_5": 0.8060606060606059,
+  "training_pairs": 26438,
+  "validation_loss": 3.3069588816119935,
+  "validation_pairs": 4666,
+  "validation_perplexity": 27.301970569311887,
+  "validation_top1_accuracy": 0.20767252464637806,
+  "validation_top5_accuracy": 0.5375053579082726,
+  "vocabulary_size": 171
+}

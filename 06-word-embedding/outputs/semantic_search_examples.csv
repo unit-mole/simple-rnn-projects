@@ -1,0 +1,16 @@
+query,sentence_id,topic,text,source_type,similarity,status
+language model training,s0086,artificial_intelligence,Modern artificial intelligence workflows connect training with language.,synthetic_privacy_safe,0.4434939,matched
+language model training,s0046,artificial_intelligence,Modern artificial intelligence workflows connect training with prediction.,synthetic_privacy_safe,0.4187454,matched
+language model training,s0121,artificial_intelligence,Professionals use sequence with classification to improve training.,synthetic_privacy_safe,0.4118357,matched
+portfolio market risk,s1006,finance,Portfolio analysis balances investment return against market risk and volatility.,synthetic_privacy_safe,0.82960874,matched
+portfolio market risk,s1019,finance,Portfolio analysis balances investment return against market risk and volatility.,synthetic_privacy_safe,0.82960874,matched
+portfolio market risk,s1005,finance,Portfolio analysis balances investment return against market risk and volatility.,synthetic_privacy_safe,0.82960874,matched
+patient medical treatment,s0999,healthcare,Clinical research connects patient symptoms with diagnosis treatment and recovery.,synthetic_privacy_safe,0.72373843,matched
+patient medical treatment,s0998,healthcare,Clinical research connects patient symptoms with diagnosis treatment and recovery.,synthetic_privacy_safe,0.72373843,matched
+patient medical treatment,s0997,healthcare,Clinical research connects patient symptoms with diagnosis treatment and recovery.,synthetic_privacy_safe,0.72373843,matched
+renewable electricity grid,s0960,energy,Energy forecasting links electricity demand with grid load and renewable capacity.,synthetic_privacy_safe,0.7353867,matched
+renewable electricity grid,s0961,energy,Energy forecasting links electricity demand with grid load and renewable capacity.,synthetic_privacy_safe,0.7353867,matched
+renewable electricity grid,s0962,energy,Energy forecasting links electricity demand with grid load and renewable capacity.,synthetic_privacy_safe,0.7353867,matched
+root cause quality failure,s0957,quality_manufacturing,Quality analytics connects defect patterns with root cause and process improvement.,synthetic_privacy_safe,0.7338333,matched
+root cause quality failure,s0956,quality_manufacturing,Quality analytics connects defect patterns with root cause and process improvement.,synthetic_privacy_safe,0.7338333,matched
+root cause quality failure,s0959,quality_manufacturing,Quality analytics connects defect patterns with root cause and process improvement.,synthetic_privacy_safe,0.7338333,matched

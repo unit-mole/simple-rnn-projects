@@ -1,0 +1,35 @@
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local Streamlit settings and secrets
+.streamlit/secrets.toml
+
+# Local datasets and downloaded corpora
+data/20news_home/
+data/raw/
+scikit_learn_data/
+
+# Generated local runs
+outputs/runs/
+logs/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,8 @@
+{
+  "embedding_matrix.npy": "ac258151fba5ae6fcee2a63fc4fb013b05e200ac19623fe78ad8489eebcd8719",
+  "model_metadata.json": "7de6d0cb15e34c3727d49b3601e016b5e0074522e01147619650668b6c1df373",
+  "sample_text.csv": "dca1a0b0553ac86768e097bd5ddca96c8fd096d766179d99714de47d08a45133",
+  "training_config.json": "ec2afce1419e6dd597f943f50961c2b4e9b0ddc098dd5cdc461435baa9534935",
+  "vocabulary.json": "6f19c8a061ce2097a0a8d158b2d15e5d860a8b4fa8fdb475972c31e6e2775b33",
+  "word_embedding_model.pt": "1a79c2711a0aafe61577ebc868c3975def110a3c2b0a4ab64e3b6758465373bd"
+}

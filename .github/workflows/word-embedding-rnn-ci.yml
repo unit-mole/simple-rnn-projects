@@ -1,0 +1,53 @@
+name: Word Embedding Simple RNN CI
+
+on:
+  push:
+    paths:
+      - "06-word-embedding/**"
+      - ".github/workflows/word-embedding-rnn-ci.yml"
+  pull_request:
+    paths:
+      - "06-word-embedding/**"
+      - ".github/workflows/word-embedding-rnn-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 06-word-embedding
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: |
+            06-word-embedding/requirements.txt
+            06-word-embedding/requirements-ci.txt
+
+      - name: Upgrade packaging tools
+        run: python -m pip install --upgrade pip setuptools wheel
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements-ci.txt
+
+      - name: Check dependency consistency
+        run: python -m pip check
+
+      - name: Compile project files
+        run: python -m compileall app src tests train_model.py validate_project.py
+
+      - name: Run automated tests
+        run: python -m pytest -q
+
+      - name: Validate saved artifacts and project structure
+        run: python validate_project.py

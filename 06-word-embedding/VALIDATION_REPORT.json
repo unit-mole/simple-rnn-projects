@@ -1,0 +1,58 @@
+{
+  "overall_passed": true,
+  "checks": {
+    "required_files": {
+      "passed": true,
+      "missing": []
+    },
+    "artifacts": {
+      "passed": true,
+      "expected_shape": [
+        171,
+        32
+      ],
+      "actual_shape": [
+        171,
+        32
+      ],
+      "vocabulary_entries": 171,
+      "finite_values": true
+    },
+    "model_inference": {
+      "passed": true,
+      "nearest_words": [
+        "defect",
+        "failure",
+        "inspection",
+        "manufacturing",
+        "improvement"
+      ],
+      "known_sentence_tokens": [
+        "quality",
+        "inspection",
+        "defect"
+      ]
+    },
+    "checksums": {
+      "passed": true,
+      "mismatches": {}
+    },
+    "notebooks": {
+      "passed": true,
+      "notebooks": {
+        "notebooks/word_embedding.ipynb": {
+          "valid": true,
+          "cells": 22
+        },
+        "notebooks/archive/word_embedding_original.ipynb": {
+          "valid": true,
+          "cells": 252
+        }
+      }
+    },
+    "readme": {
+      "passed": true,
+      "missing_sections": []
+    }
+  }
+}

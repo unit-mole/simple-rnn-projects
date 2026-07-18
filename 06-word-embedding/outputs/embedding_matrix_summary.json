@@ -1,0 +1,12 @@
+{
+  "dtype": "float32",
+  "maximum": 4.117965221405029,
+  "mean": 0.054913293570280075,
+  "mean_l2_norm_excluding_special_tokens": 6.801522254943848,
+  "minimum": -4.1982879638671875,
+  "shape": [
+    171,
+    32
+  ],
+  "standard_deviation": 1.2093561887741089
+}

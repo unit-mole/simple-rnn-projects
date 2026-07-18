@@ -1,0 +1,6 @@
+sentence,cleaned_text,tokens,indices,known_tokens,oov_tokens,embedding_shape,sentence_vector_norm
+neural language model learns semantic vectors,neural language model learns semantic vectors,neural | language | model | learns | semantic | vectors,125 | 64 | 95 | 1 | 65 | 166,5,learns,5 x 32,4.069371223449707
+market risk affects investment return,market risk affects investment return,market | risk | affects | investment | return,76 | 74 | 1 | 60 | 57,4,affects,4 x 32,5.126162052154541
+doctor diagnosis supports patient treatment,doctor diagnosis supports patient treatment,doctor | diagnosis | supports | patient | treatment,134 | 83 | 46 | 70 | 81,5,,5 x 32,3.6052727699279785
+electricity demand changes grid load,electricity demand changes grid load,electricity | demand | changes | grid | load,80 | 73 | 1 | 56 | 78,4,changes,4 x 32,5.177427291870117
+quality inspection finds manufacturing defect,quality inspection finds manufacturing defect,quality | inspection | finds | manufacturing | defect,15 | 124 | 1 | 16 | 61,4,finds,4 x 32,4.739657402038574
